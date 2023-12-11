@@ -1,0 +1,17 @@
+﻿{
+  "Name": "Job Menu",
+  "Type": "Element",
+  "TaxonomyType": "Label",
+  "Id": "Y2uZ3UrVBUSpk7bqMv94Lg",
+  "Reference": "uK6Q7vtFLkuCzEyUGdRLAw/Y2uZ3UrVBUSpk7bqMv94Lg",
+  "ParentRef": "uK6Q7vtFLkuCzEyUGdRLAw/2TY0eAsJDUKa5YLU4NV7Kw",
+  "Created": "2023-12-04T12:55:46.9906185Z",
+  "Updated": "2023-12-04T12:56:54.8692775Z",
+  "CreatedBy": [
+    "UiPath.UIAutomationCore, Version=23.4.8.0, Culture=neutral, PublicKeyToken=null",
+    "UiPath.Platform, Version=23.10.0.0, Culture=neutral, PublicKeyToken=null"
+  ],
+  "UpdatedBy": [
+    "UiPath.Platform, Version=23.10.0.0, Culture=neutral, PublicKeyToken=null"
+  ]
+}

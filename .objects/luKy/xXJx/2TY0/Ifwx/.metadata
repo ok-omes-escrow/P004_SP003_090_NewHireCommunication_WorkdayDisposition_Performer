@@ -1,0 +1,16 @@
+﻿{
+  "Name": "More Categories",
+  "Type": "Element",
+  "TaxonomyType": "Label",
+  "Id": "IfwxIAsi20aLvvju3T70tw",
+  "Reference": "uK6Q7vtFLkuCzEyUGdRLAw/IfwxIAsi20aLvvju3T70tw",
+  "ParentRef": "uK6Q7vtFLkuCzEyUGdRLAw/2TY0eAsJDUKa5YLU4NV7Kw",
+  "Created": "2023-12-05T06:21:15.6699172Z",
+  "Updated": "2023-12-05T06:23:23.7298632Z",
+  "CreatedBy": [
+    "UiPath.Platform, Version=23.10.0.0, Culture=neutral, PublicKeyToken=null"
+  ],
+  "UpdatedBy": [
+    "UiPath.Platform, Version=23.10.0.0, Culture=neutral, PublicKeyToken=null"
+  ]
+}

@@ -6,9 +6,12 @@
   "Reference": "uK6Q7vtFLkuCzEyUGdRLAw/cdXfJ2718Uu43nTB56OksA",
   "ParentRef": "uK6Q7vtFLkuCzEyUGdRLAw/2TY0eAsJDUKa5YLU4NV7Kw",
   "Created": "2023-12-04T12:50:27.3769178Z",
-  "Updated": "2023-12-04T12:50:27.3769178Z",
+  "Updated": "2023-12-13T07:25:42.3152556Z",
   "CreatedBy": [
     "UiPath.UIAutomationCore, Version=23.4.8.0, Culture=neutral, PublicKeyToken=null",
+    "UiPath.Platform, Version=23.10.0.0, Culture=neutral, PublicKeyToken=null"
+  ],
+  "UpdatedBy": [
     "UiPath.Platform, Version=23.10.0.0, Culture=neutral, PublicKeyToken=null"
   ]
 }

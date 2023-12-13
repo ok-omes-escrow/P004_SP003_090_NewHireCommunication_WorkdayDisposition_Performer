@@ -1,0 +1,16 @@
+﻿{
+  "Name": "Next Stage",
+  "Type": "Element",
+  "TaxonomyType": "Dropdown",
+  "Id": "blGZDPRHpECAz0jAnentuw",
+  "Reference": "uK6Q7vtFLkuCzEyUGdRLAw/blGZDPRHpECAz0jAnentuw",
+  "ParentRef": "uK6Q7vtFLkuCzEyUGdRLAw/2TY0eAsJDUKa5YLU4NV7Kw",
+  "Created": "2023-12-11T08:57:07.1031972Z",
+  "Updated": "2023-12-13T07:49:17.8595374Z",
+  "CreatedBy": [
+    "UiPath.Platform, Version=23.10.0.0, Culture=neutral, PublicKeyToken=null"
+  ],
+  "UpdatedBy": [
+    "UiPath.Platform, Version=23.10.0.0, Culture=neutral, PublicKeyToken=null"
+  ]
+}

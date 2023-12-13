@@ -1,14 +1,18 @@
-<Activity mc:Ignorable="sap sap2010" x:Class="Process" this:Process.in_HiringManagerName="Vinu" this:Process.in_EmployeeName="Rithanika" this:Process.in_HiringManagerEmail="Vinusangari.Saravanan@omes.ok.gov" xmlns="http://schemas.microsoft.com/netfx/2009/xaml/activities" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:p="http://schemas.uipath.com/workflow/activities/word" xmlns:s="clr-namespace:System;assembly=System.Private.CoreLib" xmlns:sap="http://schemas.microsoft.com/netfx/2009/xaml/activities/presentation" xmlns:sap2010="http://schemas.microsoft.com/netfx/2010/xaml/activities/presentation" xmlns:scg="clr-namespace:System.Collections.Generic;assembly=System.Private.CoreLib" xmlns:str="clr-namespace:System.Text.RegularExpressions;assembly=System.Text.RegularExpressions" xmlns:this="clr-namespace:" xmlns:ucat="clr-namespace:UiPath.Core.Activities.TextModifications;assembly=UiPath.System.Activities" xmlns:ui="http://schemas.uipath.com/workflow/activities" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+<Activity mc:Ignorable="sap sap2010" x:Class="Process" this:Process.in_HiringManagerName="Vinu" this:Process.in_EmployeeName="Rithanika" this:Process.in_HiringManagerEmail="Vinusangari.Saravanan@omes.ok.gov" this:Process.in_DOH="12/15/23" this:Process.in_Location="Texas" this:Process.in_NewHireOrientationDate="12/12/23" this:Process.in_EmployeeEmail="Vinusangari.Saravanan@omes.ok.gov" xmlns="http://schemas.microsoft.com/netfx/2009/xaml/activities" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:p="http://schemas.uipath.com/workflow/activities/word" xmlns:s="clr-namespace:System;assembly=System.Private.CoreLib" xmlns:sap="http://schemas.microsoft.com/netfx/2009/xaml/activities/presentation" xmlns:sap2010="http://schemas.microsoft.com/netfx/2010/xaml/activities/presentation" xmlns:scg="clr-namespace:System.Collections.Generic;assembly=System.Private.CoreLib" xmlns:str="clr-namespace:System.Text.RegularExpressions;assembly=System.Text.RegularExpressions" xmlns:this="clr-namespace:" xmlns:ucat="clr-namespace:UiPath.Core.Activities.TextModifications;assembly=UiPath.System.Activities" xmlns:ui="http://schemas.uipath.com/workflow/activities" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
   <x:Members>
     <x:Property sap2010:Annotation.AnnotationText="Dictionary structure to store configuration data of the process (settings, constants and assets)." Name="in_Config" Type="InArgument(scg:Dictionary(x:String, x:Object))" />
     <x:Property Name="in_HiringManagerName" Type="InArgument(x:String)" />
     <x:Property Name="in_EmployeeName" Type="InArgument(x:String)" />
     <x:Property Name="in_HiringManagerEmail" Type="InArgument(x:String)" />
+    <x:Property Name="in_DOH" Type="InArgument(x:String)" />
+    <x:Property Name="in_Location" Type="InArgument(x:String)" />
+    <x:Property Name="in_NewHireOrientationDate" Type="InArgument(x:String)" />
+    <x:Property Name="in_EmployeeEmail" Type="InArgument(x:String)" />
   </x:Members>
   <VisualBasic.Settings>
     <x:Null />
   </VisualBasic.Settings>
-  <sap:VirtualizedContainerService.HintSize>1514,1884</sap:VirtualizedContainerService.HintSize>
+  <sap:VirtualizedContainerService.HintSize>1514,2037</sap:VirtualizedContainerService.HintSize>
   <sap2010:WorkflowViewState.IdRef>ProcessTransaction_1</sap2010:WorkflowViewState.IdRef>
   <TextExpression.NamespacesForImplementation>
     <scg:List x:TypeArguments="x:String" Capacity="50">
@@ -109,7 +113,7 @@
       <AssemblyReference>System.Memory.Data</AssemblyReference>
     </scg:List>
   </TextExpression.ReferencesForImplementation>
-  <Sequence sap2010:Annotation.AnnotationText="Send email to Hiring Manager and New Hire Employee" DisplayName="Send Welcome Email" sap:VirtualizedContainerService.HintSize="592,1819" sap2010:WorkflowViewState.IdRef="Sequence_1">
+  <Sequence sap2010:Annotation.AnnotationText="Send email to Hiring Manager and New Hire Employee" DisplayName="Send Welcome Email" sap:VirtualizedContainerService.HintSize="592,1972" sap2010:WorkflowViewState.IdRef="Sequence_1">
     <Sequence.Variables>
       <Variable x:TypeArguments="x:String" Name="str_HiringManagerTemplateText" />
       <Variable x:TypeArguments="x:String" Name="str_WelcomeEmailTemplateText" />
@@ -126,7 +130,7 @@
       </scg:Dictionary>
     </sap:WorkflowViewStateService.ViewState>
     <ui:LogMessage DisplayName="Log Message Process Start" sap:VirtualizedContainerService.HintSize="530,141" sap2010:WorkflowViewState.IdRef="LogMessage_1" Level="Info" Message="[&quot;Started Welcome Email Process&quot;]" />
-    <p:WordApplicationScope DisplayName="Word Application Scope" FilePath="[in_Config(&quot;HiringManagerTemplatePath&quot;).ToString]" sap:VirtualizedContainerService.HintSize="530,306" sap2010:WorkflowViewState.IdRef="WordApplicationScope_1">
+    <p:WordApplicationScope DisplayName="Word Application Scope" FilePath="C:\Users\56382C\Documents\Hiring Manager Template.docx" sap:VirtualizedContainerService.HintSize="530,306" sap2010:WorkflowViewState.IdRef="WordApplicationScope_1">
       <p:WordApplicationScope.Body>
         <ActivityAction x:TypeArguments="ui:WordDocument">
           <ActivityAction.Argument>
@@ -183,7 +187,7 @@
     <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="Email\SendEmail-Outlook.xaml - Invoke Workflow File" sap:VirtualizedContainerService.HintSize="530,113" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_1" UnSafe="False" WorkflowFileName="Email\SendEmail-Outlook.xaml">
       <ui:InvokeWorkflowFile.Arguments>
         <InArgument x:TypeArguments="x:String" x:Key="in_Account">
-          <VisualBasicValue x:TypeArguments="x:String" ExpressionText="in_Config(&quot;EmailAccount&quot;).ToString" />
+          <Literal x:TypeArguments="x:String">Vinusangari.Saravanan@omes.ok.gov</Literal>
         </InArgument>
         <InArgument x:TypeArguments="x:String" x:Key="in_Body">
           <VisualBasicValue x:TypeArguments="x:String" ExpressionText="str_HiringEmailBody" />
@@ -203,63 +207,82 @@
         </scg:Dictionary>
       </sap:WorkflowViewStateService.ViewState>
     </ui:InvokeWorkflowFile>
-    <ui:CommentOut DisplayName="Comment Out" sap:VirtualizedContainerService.HintSize="530,52" sap2010:WorkflowViewState.IdRef="CommentOut_2">
-      <ui:CommentOut.Body>
-        <Sequence DisplayName="Ignored Activities" sap:VirtualizedContainerService.HintSize="450,163" sap2010:WorkflowViewState.IdRef="Sequence_8">
-          <sap:WorkflowViewStateService.ViewState>
-            <scg:Dictionary x:TypeArguments="x:String, x:Object">
-              <x:Boolean x:Key="IsExpanded">True</x:Boolean>
-            </scg:Dictionary>
-          </sap:WorkflowViewStateService.ViewState>
-          <p:WordApplicationScope DisplayName="Word Application Scope" FilePath="C:\Users\56382C\Documents\WelcomeEmailTemplate.docx" sap:VirtualizedContainerService.HintSize="388,52" sap2010:WorkflowViewState.IdRef="WordApplicationScope_2">
-            <p:WordApplicationScope.Body>
-              <ActivityAction x:TypeArguments="ui:WordDocument">
-                <ActivityAction.Argument>
-                  <DelegateInArgument x:TypeArguments="ui:WordDocument" Name="WordDocumentScope" />
-                </ActivityAction.Argument>
-                <Sequence DisplayName="Do" sap:VirtualizedContainerService.HintSize="496,751" sap2010:WorkflowViewState.IdRef="Sequence_4">
-                  <sap:WorkflowViewStateService.ViewState>
-                    <scg:Dictionary x:TypeArguments="x:String, x:Object">
-                      <x:Boolean x:Key="IsExpanded">True</x:Boolean>
-                    </scg:Dictionary>
-                  </sap:WorkflowViewStateService.ViewState>
-                  <p:WordReadText DisplayName="Read Text" sap:VirtualizedContainerService.HintSize="434,85" sap2010:WorkflowViewState.IdRef="WordReadText_2" Text="[str_WelcomeEmailTemplateText]" />
-                  <ui:Matches FirstMatch="{x:Null}" BuilderPattern="\S*(http|https)\S*" DisplayName="Find Matching Patterns" sap:VirtualizedContainerService.HintSize="434,60" sap2010:WorkflowViewState.IdRef="Matches_1" Input="[str_WelcomeEmailTemplateText]" IsBuilderTabModified="True" Model="[{&quot;Index&quot;:0,&quot;OperationID&quot;:&quot;LIT&quot;,&quot;OperationName&quot;:&quot;Literal&quot;,&quot;OperationValue&quot;:&quot;\\S*(http|https)\\S*&quot;,&quot;QuantifierFirstValue&quot;:&quot;1&quot;,&quot;QuantifierID&quot;:&quot;EXT&quot;,&quot;QuantifierName&quot;:&quot;Exactly&quot;,&quot;QuantifierSecondValue&quot;:null}]" Pattern="\S*(http|https)\S*" RegexOption="IgnoreCase, Compiled" Result="[arr_Links]" />
-                  <ui:ForEach x:TypeArguments="str:Match" CurrentIndex="{x:Null}" DisplayName="For Each" sap:VirtualizedContainerService.HintSize="434,415" sap2010:WorkflowViewState.IdRef="ForEach`1_1" Values="[arr_Links]">
-                    <ui:ForEach.Body>
-                      <ActivityAction x:TypeArguments="str:Match">
-                        <ActivityAction.Argument>
-                          <DelegateInArgument x:TypeArguments="str:Match" Name="currentItem" />
-                        </ActivityAction.Argument>
-                        <Sequence DisplayName="Body" sap:VirtualizedContainerService.HintSize="376,229" sap2010:WorkflowViewState.IdRef="Sequence_7">
-                          <sap:WorkflowViewStateService.ViewState>
-                            <scg:Dictionary x:TypeArguments="x:String, x:Object">
-                              <x:Boolean x:Key="IsExpanded">True</x:Boolean>
-                            </scg:Dictionary>
-                          </sap:WorkflowViewStateService.ViewState>
-                          <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="334,141" sap2010:WorkflowViewState.IdRef="LogMessage_2" Message="[currentItem.ToString]" />
-                        </Sequence>
-                      </ActivityAction>
-                    </ui:ForEach.Body>
-                  </ui:ForEach>
-                </Sequence>
-              </ActivityAction>
-            </p:WordApplicationScope.Body>
+    <p:WordApplicationScope DisplayName="Word Application Scope" FilePath="C:\Users\56382C\Documents\WelcomeEmailTemplate.docx" sap:VirtualizedContainerService.HintSize="530,52" sap2010:WorkflowViewState.IdRef="WordApplicationScope_3">
+      <p:WordApplicationScope.Body>
+        <ActivityAction x:TypeArguments="ui:WordDocument">
+          <ActivityAction.Argument>
+            <DelegateInArgument x:TypeArguments="ui:WordDocument" Name="WordDocumentScope" />
+          </ActivityAction.Argument>
+          <Sequence DisplayName="Do" sap:VirtualizedContainerService.HintSize="496,410" sap2010:WorkflowViewState.IdRef="Sequence_4">
             <sap:WorkflowViewStateService.ViewState>
               <scg:Dictionary x:TypeArguments="x:String, x:Object">
-                <x:Boolean x:Key="IsExpanded">False</x:Boolean>
-                <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                <x:Boolean x:Key="IsExpanded">True</x:Boolean>
               </scg:Dictionary>
             </sap:WorkflowViewStateService.ViewState>
-          </p:WordApplicationScope>
-        </Sequence>
-      </ui:CommentOut.Body>
+            <p:WordReadText DisplayName="Read Text" sap:VirtualizedContainerService.HintSize="434,85" sap2010:WorkflowViewState.IdRef="WordReadText_2" Text="[str_WelcomeEmailTemplateText]" />
+            <Assign sap:VirtualizedContainerService.HintSize="434,82" sap2010:WorkflowViewState.IdRef="Assign_2">
+              <Assign.To>
+                <OutArgument x:TypeArguments="x:String">[str_WelcomeEmailBody]</OutArgument>
+              </Assign.To>
+              <Assign.Value>
+                <InArgument x:TypeArguments="x:String">[str_WelcomeEmailTemplateText.Substring(str_WelcomeEmailTemplateText.IndexOf("Good")).Trim]</InArgument>
+              </Assign.Value>
+            </Assign>
+            <ui:ModifyText DisplayName="Modify Text" sap:VirtualizedContainerService.HintSize="434,52" sap2010:WorkflowViewState.IdRef="ModifyText_2" OutputText="[str_WelcomeEmailBody]" SourceText="[str_WelcomeEmailBody]">
+              <ui:ModifyText.Body>
+                <ActivityAction>
+                  <Sequence DisplayName="Do" sap2010:WorkflowViewState.IdRef="Sequence_9">
+                    <sap:WorkflowViewStateService.ViewState>
+                      <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                        <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                      </scg:Dictionary>
+                    </sap:WorkflowViewStateService.ViewState>
+                    <ucat:FindAndReplaceTextModification DisplayName="Find and replace text" sap:VirtualizedContainerService.HintSize="334,149" sap2010:WorkflowViewState.IdRef="FindAndReplaceTextModification_3" ReplaceText="[in_DOH]" SearchText="(insert DOH)" />
+                    <ucat:FindAndReplaceTextModification DisplayName="Find and replace text" sap:VirtualizedContainerService.HintSize="334,149" sap2010:WorkflowViewState.IdRef="FindAndReplaceTextModification_4" ReplaceText="[in_Location]" SearchText="(insert location)" />
+                    <ucat:FindAndReplaceTextModification DisplayName="Find and replace text" sap:VirtualizedContainerService.HintSize="334,149" sap2010:WorkflowViewState.IdRef="FindAndReplaceTextModification_5" ReplaceText="[in_HiringManagerName]" SearchText="(Insert Supervisor)" />
+                    <ucat:FindAndReplaceTextModification DisplayName="Find and replace text" sap:VirtualizedContainerService.HintSize="334,149" sap2010:WorkflowViewState.IdRef="FindAndReplaceTextModification_6" ReplaceText="[in_NewHireOrientationDate]" SearchText="(Insert Date)" />
+                  </Sequence>
+                </ActivityAction>
+              </ui:ModifyText.Body>
+              <sap:WorkflowViewStateService.ViewState>
+                <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                  <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+                  <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                </scg:Dictionary>
+              </sap:WorkflowViewStateService.ViewState>
+            </ui:ModifyText>
+          </Sequence>
+        </ActivityAction>
+      </p:WordApplicationScope.Body>
       <sap:WorkflowViewStateService.ViewState>
         <scg:Dictionary x:TypeArguments="x:String, x:Object">
           <x:Boolean x:Key="IsExpanded">False</x:Boolean>
           <x:Boolean x:Key="IsPinned">False</x:Boolean>
         </scg:Dictionary>
       </sap:WorkflowViewStateService.ViewState>
-    </ui:CommentOut>
+    </p:WordApplicationScope>
+    <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="Email\SendEmail-Outlook.xaml - Invoke Workflow File" sap:VirtualizedContainerService.HintSize="530,113" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_2" UnSafe="False" WorkflowFileName="Email\SendEmail-Outlook.xaml">
+      <ui:InvokeWorkflowFile.Arguments>
+        <InArgument x:TypeArguments="x:String" x:Key="in_Account">
+          <Literal x:TypeArguments="x:String">Vinusangari.Saravanan@omes.ok.gov</Literal>
+        </InArgument>
+        <InArgument x:TypeArguments="x:String" x:Key="in_Body">
+          <VisualBasicValue x:TypeArguments="x:String" ExpressionText="str_WelcomeEmailBody" />
+        </InArgument>
+        <InArgument x:TypeArguments="x:String" x:Key="in_Subject">
+          <Literal x:TypeArguments="x:String">TEST</Literal>
+        </InArgument>
+        <InArgument x:TypeArguments="x:String" x:Key="in_ToEmail">
+          <VisualBasicValue x:TypeArguments="x:String" ExpressionText="in_EmployeeEmail" />
+        </InArgument>
+        <InArgument x:TypeArguments="s:String[]" x:Key="in_AttachmentFiles" />
+      </ui:InvokeWorkflowFile.Arguments>
+      <sap:WorkflowViewStateService.ViewState>
+        <scg:Dictionary x:TypeArguments="x:String, x:Object">
+          <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+          <x:Boolean x:Key="IsPinned">False</x:Boolean>
+        </scg:Dictionary>
+      </sap:WorkflowViewStateService.ViewState>
+    </ui:InvokeWorkflowFile>
   </Sequence>
 </Activity>

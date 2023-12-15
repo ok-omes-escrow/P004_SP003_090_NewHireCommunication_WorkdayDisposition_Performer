@@ -1,0 +1,16 @@
+﻿{
+  "Name": "Benefits Service Date",
+  "Type": "Element",
+  "TaxonomyType": "Date",
+  "Id": "uEZlNRfgHEaNe7DN4B1aTA",
+  "Reference": "uK6Q7vtFLkuCzEyUGdRLAw/uEZlNRfgHEaNe7DN4B1aTA",
+  "ParentRef": "uK6Q7vtFLkuCzEyUGdRLAw/NIQMiYzInEO8b9bkfRXi5w",
+  "Created": "2023-12-14T07:34:55.9199535Z",
+  "Updated": "2023-12-14T07:37:58.959118Z",
+  "CreatedBy": [
+    "UiPath.Platform, Version=23.10.0.0, Culture=neutral, PublicKeyToken=null"
+  ],
+  "UpdatedBy": [
+    "UiPath.Platform, Version=23.10.0.0, Culture=neutral, PublicKeyToken=null"
+  ]
+}

@@ -85,7 +85,7 @@
   </TextExpression.ReferencesForImplementation>
   <Sequence sap2010:Annotation.AnnotationText="Use the Kill Process activity to force the termination of the Windows processes representing applications used in the business process being automated.&#xA;Note that killing processes might have undesirable outcomes, such as losing unsaved changes to files." DisplayName="Kill All Processes" sap:VirtualizedContainerService.HintSize="496,893" sap2010:WorkflowViewState.IdRef="Sequence_2">
     <Sequence.Variables>
-      <Variable x:TypeArguments="s:String[]" Name="arr_ProcessToKill" />
+      <Variable x:TypeArguments="s:String[]" Name="arrProcessToKill" />
     </Sequence.Variables>
     <sap:WorkflowViewStateService.ViewState>
       <scg:Dictionary x:TypeArguments="x:String, x:Object">
@@ -94,15 +94,15 @@
       </scg:Dictionary>
     </sap:WorkflowViewStateService.ViewState>
     <ui:LogMessage DisplayName="Log message (Kill processes)" sap:VirtualizedContainerService.HintSize="434,141" sap2010:WorkflowViewState.IdRef="LogMessage_1" Level="Trace" Message="[&quot;Killing processes...&quot;]" />
-    <Assign sap:VirtualizedContainerService.HintSize="434,82" sap2010:WorkflowViewState.IdRef="Assign_1">
+    <Assign DisplayName="Assign Process to kill" sap:VirtualizedContainerService.HintSize="434,82" sap2010:WorkflowViewState.IdRef="Assign_1">
       <Assign.To>
-        <OutArgument x:TypeArguments="s:String[]">[arr_ProcessToKill]</OutArgument>
+        <OutArgument x:TypeArguments="s:String[]">[arrProcessToKill]</OutArgument>
       </Assign.To>
       <Assign.Value>
         <InArgument x:TypeArguments="s:String[]">[in_ProcessToKill.Split(","c)]</InArgument>
       </Assign.Value>
     </Assign>
-    <ui:ForEach x:TypeArguments="x:String" CurrentIndex="{x:Null}" DisplayName="For Each" sap:VirtualizedContainerService.HintSize="434,407" sap2010:WorkflowViewState.IdRef="ForEach`1_1" Values="[arr_ProcessToKill]">
+    <ui:ForEach x:TypeArguments="x:String" CurrentIndex="{x:Null}" DisplayName="For Each Process" sap:VirtualizedContainerService.HintSize="434,407" sap2010:WorkflowViewState.IdRef="ForEach`1_1" Values="[arrProcessToKill]">
       <ui:ForEach.Body>
         <ActivityAction x:TypeArguments="x:String">
           <ActivityAction.Argument>
@@ -114,7 +114,7 @@
                 <x:Boolean x:Key="IsExpanded">True</x:Boolean>
               </scg:Dictionary>
             </sap:WorkflowViewStateService.ViewState>
-            <ui:KillProcess AppliesTo="{x:Null}" ContinueOnError="{x:Null}" Process="{x:Null}" DisplayName="Kill Process" sap:VirtualizedContainerService.HintSize="334,133" sap2010:WorkflowViewState.IdRef="KillProcess_1" ProcessName="[currentItem.ToString]" />
+            <ui:KillProcess AppliesTo="{x:Null}" ContinueOnError="{x:Null}" Process="{x:Null}" DisplayName="Kill Process Involved" sap:VirtualizedContainerService.HintSize="334,133" sap2010:WorkflowViewState.IdRef="KillProcess_1" ProcessName="[currentItem.ToString]" />
           </Sequence>
         </ActivityAction>
       </ui:ForEach.Body>

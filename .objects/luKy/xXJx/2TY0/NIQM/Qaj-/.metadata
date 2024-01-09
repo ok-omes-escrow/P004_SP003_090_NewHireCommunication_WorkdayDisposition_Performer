@@ -1,0 +1,16 @@
+﻿{
+  "Name": "Tick Button",
+  "Type": "Element",
+  "TaxonomyType": "Button",
+  "Id": "Qaj-KDpyMUK8vrvtC9CFuQ",
+  "Reference": "uK6Q7vtFLkuCzEyUGdRLAw/Qaj-KDpyMUK8vrvtC9CFuQ",
+  "ParentRef": "uK6Q7vtFLkuCzEyUGdRLAw/NIQMiYzInEO8b9bkfRXi5w",
+  "Created": "2024-01-02T13:56:29.9917686Z",
+  "Updated": "2024-01-02T13:57:23.5869619Z",
+  "CreatedBy": [
+    "UiPath.Platform, Version=23.10.0.0, Culture=neutral, PublicKeyToken=null"
+  ],
+  "UpdatedBy": [
+    "UiPath.Platform, Version=23.10.0.0, Culture=neutral, PublicKeyToken=null"
+  ]
+}

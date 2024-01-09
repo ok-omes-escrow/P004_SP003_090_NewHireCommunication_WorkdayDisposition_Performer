@@ -1,0 +1,16 @@
+﻿{
+  "Name": "Open Button",
+  "Type": "Element",
+  "TaxonomyType": "Button",
+  "Id": "9C4zskSh_0qiKL6VKOOfbg",
+  "Reference": "uK6Q7vtFLkuCzEyUGdRLAw/9C4zskSh_0qiKL6VKOOfbg",
+  "ParentRef": "uK6Q7vtFLkuCzEyUGdRLAw/NIQMiYzInEO8b9bkfRXi5w",
+  "Created": "2024-01-02T13:37:24.6770658Z",
+  "Updated": "2024-01-02T13:39:04.810363Z",
+  "CreatedBy": [
+    "UiPath.Platform, Version=23.10.0.0, Culture=neutral, PublicKeyToken=null"
+  ],
+  "UpdatedBy": [
+    "UiPath.Platform, Version=23.10.0.0, Culture=neutral, PublicKeyToken=null"
+  ]
+}

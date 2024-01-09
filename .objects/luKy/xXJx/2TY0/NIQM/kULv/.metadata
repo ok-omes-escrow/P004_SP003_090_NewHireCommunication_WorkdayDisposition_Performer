@@ -1,0 +1,16 @@
+﻿{
+  "Name": "Change Reason",
+  "Type": "Element",
+  "TaxonomyType": "Dropdown",
+  "Id": "kULvOmJoDUiAaGhcZnIg7g",
+  "Reference": "uK6Q7vtFLkuCzEyUGdRLAw/kULvOmJoDUiAaGhcZnIg7g",
+  "ParentRef": "uK6Q7vtFLkuCzEyUGdRLAw/NIQMiYzInEO8b9bkfRXi5w",
+  "Created": "2024-01-02T11:57:44.9323841Z",
+  "Updated": "2024-01-02T11:59:56.7974057Z",
+  "CreatedBy": [
+    "UiPath.Platform, Version=23.10.0.0, Culture=neutral, PublicKeyToken=null"
+  ],
+  "UpdatedBy": [
+    "UiPath.Platform, Version=23.10.0.0, Culture=neutral, PublicKeyToken=null"
+  ]
+}

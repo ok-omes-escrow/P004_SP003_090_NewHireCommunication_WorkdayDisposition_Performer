@@ -1,0 +1,16 @@
+﻿{
+  "Name": "Change Job - Edit",
+  "Type": "Element",
+  "TaxonomyType": "Button",
+  "Id": "kKwnrlYP9kOUQcxnmhkPcw",
+  "Reference": "uK6Q7vtFLkuCzEyUGdRLAw/kKwnrlYP9kOUQcxnmhkPcw",
+  "ParentRef": "uK6Q7vtFLkuCzEyUGdRLAw/NIQMiYzInEO8b9bkfRXi5w",
+  "Created": "2024-01-02T11:50:31.8500576Z",
+  "Updated": "2024-01-02T11:53:25.9687527Z",
+  "CreatedBy": [
+    "UiPath.Platform, Version=23.10.0.0, Culture=neutral, PublicKeyToken=null"
+  ],
+  "UpdatedBy": [
+    "UiPath.Platform, Version=23.10.0.0, Culture=neutral, PublicKeyToken=null"
+  ]
+}

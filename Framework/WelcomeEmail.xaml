@@ -12,7 +12,7 @@
   <VisualBasic.Settings>
     <x:Null />
   </VisualBasic.Settings>
-  <sap:VirtualizedContainerService.HintSize>949,2898</sap:VirtualizedContainerService.HintSize>
+  <sap:VirtualizedContainerService.HintSize>1514,2938</sap:VirtualizedContainerService.HintSize>
   <sap2010:WorkflowViewState.IdRef>ProcessTransaction_1</sap2010:WorkflowViewState.IdRef>
   <TextExpression.NamespacesForImplementation>
     <scg:List x:TypeArguments="x:String" Capacity="50">
@@ -143,7 +143,7 @@
       </scg:Dictionary>
     </sap:WorkflowViewStateService.ViewState>
     <ui:LogMessage DisplayName="Log Message Process Start" sap:VirtualizedContainerService.HintSize="388,141" sap2010:WorkflowViewState.IdRef="LogMessage_1" Level="Info" Message="[&quot;Started Welcome Email Process&quot;]" />
-    <ui:ReadRange Range="{x:Null}" AddHeaders="True" DataTable="[dt_HiringTemplate]" DisplayName="Read Range Hiring Template" sap:VirtualizedContainerService.HintSize="388,88" sap2010:WorkflowViewState.IdRef="ReadRange_1" SheetName="Sheet1" WorkbookPath="C:\Users\56382C\Documents\Hiring Manager Template.xlsx" />
+    <ui:ReadRange Range="{x:Null}" AddHeaders="True" DataTable="[dt_HiringTemplate]" DisplayName="Read Range Hiring Template" sap:VirtualizedContainerService.HintSize="388,88" sap2010:WorkflowViewState.IdRef="ReadRange_1" SheetName="Sheet1" WorkbookPath="[in_Config(&quot;HiringManagerTemplatePath&quot;).ToString]" />
     <ui:ModifyText DisplayName="Modify Hiring Email Template Text" sap:VirtualizedContainerService.HintSize="388,343" sap2010:WorkflowViewState.IdRef="ModifyText_1" OutputText="[strHiringEmailBody]" SourceText="[dt_HiringTemplate(0)(&quot;Email Body&quot;).tostring]">
       <ui:ModifyText.Body>
         <ActivityAction>
@@ -197,7 +197,7 @@
         </scg:Dictionary>
       </sap:WorkflowViewStateService.ViewState>
     </ui:InvokeWorkflowFile>
-    <ui:ReadRange Range="{x:Null}" AddHeaders="True" DataTable="[dt_WelcomeEmail]" DisplayName="Read Range Workbook" sap:VirtualizedContainerService.HintSize="388,88" sap2010:WorkflowViewState.IdRef="ReadRange_2" SheetName="Sheet1" WorkbookPath="C:\Users\56382C\Documents\Welcome Email Template.xlsx" />
+    <ui:ReadRange Range="{x:Null}" AddHeaders="True" DataTable="[dt_WelcomeEmail]" DisplayName="Read Range Workbook" sap:VirtualizedContainerService.HintSize="388,88" sap2010:WorkflowViewState.IdRef="ReadRange_2" SheetName="Sheet1" WorkbookPath="[in_Config(&quot;WelcomeEmailTemplatePath&quot;).ToString]" />
     <ui:ModifyText DisplayName="Modify Welcome Email Text" sap:VirtualizedContainerService.HintSize="388,820" sap2010:WorkflowViewState.IdRef="ModifyText_2" OutputText="[strWelcomeEmailBody]" SourceText="[dt_WelcomeEmail(0)(&quot;Email Body&quot;).tostring]">
       <ui:ModifyText.Body>
         <ActivityAction>
@@ -224,14 +224,30 @@
     <ui:LogMessage DisplayName="Log Message - Email Hiring Mager" sap:VirtualizedContainerService.HintSize="388,141" sap2010:WorkflowViewState.IdRef="LogMessage_5" Level="[UiPath.Core.Activities.LogLevel.Trace]" Message="[&quot;Sending welcome email to new employee&quot;]" />
     <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="SendEmail-O365.xaml - Invoke Workflow File" sap:VirtualizedContainerService.HintSize="388,113" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_3" UnSafe="False" WorkflowFileName="Email\SendEmail-O365.xaml">
       <ui:InvokeWorkflowFile.Arguments>
-        <InArgument x:TypeArguments="x:String" x:Key="in_Account">[in_Config("EmailAccount").ToString]</InArgument>
-        <InArgument x:TypeArguments="x:String" x:Key="in_Body">[strWelcomeEmailBody]</InArgument>
-        <InArgument x:TypeArguments="x:String" x:Key="in_Subject">[dt_WelcomeEmail(0)("Email Subject").tostring]</InArgument>
-        <InArgument x:TypeArguments="s:String[]" x:Key="in_ToEmail">[in_EmployeeEmail.Split(";")]</InArgument>
-        <InArgument x:TypeArguments="scg:List(x:String)" x:Key="in_AttachmentFiles" />
-        <InArgument x:TypeArguments="x:String" x:Key="in_TenantIDAsset">[in_Config("O365TenantID").ToString]</InArgument>
-        <InArgument x:TypeArguments="x:String" x:Key="in_AppSecretAsset">[in_Config("O365ApplicationSecret").ToString]</InArgument>
-        <InArgument x:TypeArguments="x:String" x:Key="in_AppIDAsset">[in_Config("O365AppID").ToString]</InArgument>
+        <InArgument x:TypeArguments="x:String" x:Key="in_Account">
+          <VisualBasicValue x:TypeArguments="x:String" ExpressionText="in_Config(&quot;EmailAccount&quot;).ToString" />
+        </InArgument>
+        <InArgument x:TypeArguments="x:String" x:Key="in_Body">
+          <VisualBasicValue x:TypeArguments="x:String" ExpressionText="strWelcomeEmailBody" />
+        </InArgument>
+        <InArgument x:TypeArguments="x:String" x:Key="in_Subject">
+          <VisualBasicValue x:TypeArguments="x:String" ExpressionText="dt_WelcomeEmail(0)(&quot;Email Subject&quot;).tostring" />
+        </InArgument>
+        <InArgument x:TypeArguments="s:String[]" x:Key="in_ToEmail">
+          <VisualBasicValue x:TypeArguments="s:String[]" ExpressionText="in_EmployeeEmail.Split(&quot;;&quot;)" />
+        </InArgument>
+        <InArgument x:TypeArguments="scg:List(x:String)" x:Key="in_AttachmentFiles">
+          <VisualBasicValue x:TypeArguments="scg:List(x:String)" ExpressionText="dt_WelcomeEmail(0)(&quot;Attachment File Path&quot;).tostring.split(&quot;;&quot;c).tolist" />
+        </InArgument>
+        <InArgument x:TypeArguments="x:String" x:Key="in_TenantIDAsset">
+          <VisualBasicValue x:TypeArguments="x:String" ExpressionText="in_Config(&quot;O365TenantID&quot;).ToString" />
+        </InArgument>
+        <InArgument x:TypeArguments="x:String" x:Key="in_AppSecretAsset">
+          <VisualBasicValue x:TypeArguments="x:String" ExpressionText="in_Config(&quot;O365ApplicationSecret&quot;).ToString" />
+        </InArgument>
+        <InArgument x:TypeArguments="x:String" x:Key="in_AppIDAsset">
+          <VisualBasicValue x:TypeArguments="x:String" ExpressionText="in_Config(&quot;O365AppID&quot;).ToString" />
+        </InArgument>
       </ui:InvokeWorkflowFile.Arguments>
       <sap:WorkflowViewStateService.ViewState>
         <scg:Dictionary x:TypeArguments="x:String, x:Object">

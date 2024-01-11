@@ -6,7 +6,7 @@
   <VisualBasic.Settings>
     <x:Null />
   </VisualBasic.Settings>
-  <sap:VirtualizedContainerService.HintSize>1514,3613</sap:VirtualizedContainerService.HintSize>
+  <sap:VirtualizedContainerService.HintSize>1514,3557</sap:VirtualizedContainerService.HintSize>
   <sap2010:WorkflowViewState.IdRef>ProcessTransaction_1</sap2010:WorkflowViewState.IdRef>
   <TextExpression.NamespacesForImplementation>
     <scg:List x:TypeArguments="x:String" Capacity="100">
@@ -139,9 +139,9 @@
       <AssemblyReference>System.Private.Xml</AssemblyReference>
     </scg:List>
   </TextExpression.ReferencesForImplementation>
-  <Sequence sap2010:Annotation.AnnotationText="Invoke major steps of the business process, which are usually implemented by multiple subworkflows.&#xA;&#xA;If a BusinessRuleException is thrown, the transaction is skipped. &#xA;If another kind of exception occurs, the current transaction can be retried. " DisplayName="Process" sap:VirtualizedContainerService.HintSize="639,3548" sap2010:WorkflowViewState.IdRef="Sequence_1">
+  <Sequence sap2010:Annotation.AnnotationText="Invoke major steps of the business process, which are usually implemented by multiple subworkflows.&#xA;&#xA;If a BusinessRuleException is thrown, the transaction is skipped. &#xA;If another kind of exception occurs, the current transaction can be retried. " DisplayName="Process" sap:VirtualizedContainerService.HintSize="639,3492" sap2010:WorkflowViewState.IdRef="Sequence_1">
     <Sequence.Variables>
-      <Variable x:TypeArguments="s:DateOnly" Name="dateDOH" />
+      <Variable x:TypeArguments="s:DateTime" Name="dateDOH" />
       <Variable x:TypeArguments="x:String" Name="strDOHValue" />
     </Sequence.Variables>
     <sap:WorkflowViewStateService.ViewState>
@@ -151,15 +151,23 @@
       </scg:Dictionary>
     </sap:WorkflowViewStateService.ViewState>
     <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="577,141" sap2010:WorkflowViewState.IdRef="LogMessage_5" Level="[UiPath.Core.Activities.LogLevel.Trace]" Message="[&quot;Checking if Date of Hire Value of the employee is updated in sharepoint list &quot;]" />
-    <l:Get_List_Item_Field_Value DisplayName="Get List Item Field Value" sap:VirtualizedContainerService.HintSize="577,447" sap2010:WorkflowViewState.IdRef="Get_List_Item_Field_Value_1" in_ColumnToRetrieveIndex="[Convert.ToInt32(in_Config(&quot;DOH_ColumnIndex&quot;).ToString)]" in_FilterCondition="[&quot;(fields/EmployeeName eq '&quot;+in_TransactionItem.SpecificContent(&quot;Employee Name&quot;).ToString+&quot;') and (fields/JRNumber eq '&quot;+in_TransactionItem.SpecificContent(&quot;JR Number&quot;).ToString+&quot;')&quot;]" in_strApplicationIDAssetName="[in_Config(&quot;O365AppID&quot;).ToString]" in_strApplicationSecretAssetName="[in_Config(&quot;O365ApplicationSecret&quot;).ToString]" in_strSharepointListName="[in_Config(&quot;NHC_SharepointListName&quot;).ToString]" in_strSharepointURL="[in_Config(&quot;NHC_SharepointURL&quot;).ToString]" in_strTenantIDAssetName="[in_Config(&quot;O365TenantID&quot;).ToString]" out_FieldValue="[strDOHValue]" />
-    <If Condition="[strDOHValue isNot Nothing]" sap:VirtualizedContainerService.HintSize="577,2697" sap2010:WorkflowViewState.IdRef="If_1">
+    <l:Get_List_Item_Field_Value DisplayName="Get List Item - DOH" sap:VirtualizedContainerService.HintSize="577,447" sap2010:WorkflowViewState.IdRef="Get_List_Item_Field_Value_1" in_ColumnDisplayName="[in_Config(&quot;DOH_ColumnDisplayName&quot;).ToString]" in_FilterCondition="[&quot;(fields/EmployeeName eq '&quot;+in_TransactionItem.SpecificContent(&quot;Employee Name&quot;).ToString+&quot;') and (fields/JRNumber eq '&quot;+in_TransactionItem.SpecificContent(&quot;JR Number&quot;).ToString+&quot;')&quot;]" in_strApplicationIDAssetName="[in_Config(&quot;O365AppID&quot;).ToString]" in_strApplicationSecretAssetName="[in_Config(&quot;O365ApplicationSecret&quot;).ToString]" in_strSharepointListName="[in_Config(&quot;NHC_SharepointListName&quot;).ToString]" in_strSharepointURL="[in_Config(&quot;NHC_SharepointURL&quot;).ToString]" in_strTenantIDAssetName="[in_Config(&quot;O365TenantID&quot;).ToString]" out_FieldValue="[strDOHValue]" />
+    <If Condition="[strDOHValue isNot Nothing]" sap:VirtualizedContainerService.HintSize="577,2641" sap2010:WorkflowViewState.IdRef="If_1">
       <If.Then>
-        <Sequence sap:VirtualizedContainerService.HintSize="543,2337" sap2010:WorkflowViewState.IdRef="Sequence_6">
+        <Sequence sap:VirtualizedContainerService.HintSize="543,2459" sap2010:WorkflowViewState.IdRef="Sequence_6">
           <sap:WorkflowViewStateService.ViewState>
             <scg:Dictionary x:TypeArguments="x:String, x:Object">
               <x:Boolean x:Key="IsExpanded">True</x:Boolean>
             </scg:Dictionary>
           </sap:WorkflowViewStateService.ViewState>
+          <Assign sap:VirtualizedContainerService.HintSize="501,82" sap2010:WorkflowViewState.IdRef="Assign_1">
+            <Assign.To>
+              <OutArgument x:TypeArguments="s:DateTime">[dateDOH]</OutArgument>
+            </Assign.To>
+            <Assign.Value>
+              <InArgument x:TypeArguments="s:DateTime">[convert.ToDateTime(strDOHValue)]</InArgument>
+            </Assign.Value>
+          </Assign>
           <ui:LogMessage DisplayName="Log Message Process Start" sap:VirtualizedContainerService.HintSize="501,141" sap2010:WorkflowViewState.IdRef="LogMessage_1" Level="Info" Message="[&quot;Started dispositioning in workday for employee &quot;+in_TransactionItem.SpecificContent(&quot;Employee Name&quot;).ToString]" />
           <l1:SearchJRNumber_Workday sap:VirtualizedContainerService.HintSize="501,141" sap2010:WorkflowViewState.IdRef="SearchJRNumber_Workday_1" in_JRNumber="[in_TransactionItem.SpecificContent(&quot;JR Number&quot;).ToString]" in_URL="[in_Config(&quot;WorkdayURL&quot;).ToString]" />
           <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" sap2010:Annotation.AnnotationText="" DisplayName="MoveForwardCandidate_Workday.xaml - Invoke Workflow File" sap:VirtualizedContainerService.HintSize="501,144" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_4" UnSafe="False" WorkflowFileName="Workday\MoveForwardCandidate_Workday.xaml">

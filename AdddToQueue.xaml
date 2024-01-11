@@ -121,7 +121,7 @@
         <InArgument x:TypeArguments="x:String" x:Key="Transfer Type">[in_QueueData.SpecificContent("Transfer Type").ToString]</InArgument>
         <InArgument x:TypeArguments="x:String" x:Key="Supervisor Email">[in_QueueData.SpecificContent("Supervisor Email").ToString]</InArgument>
         <InArgument x:TypeArguments="x:String" x:Key="Annual Salary">[in_QueueData.SpecificContent("Annual Salary").ToString]</InArgument>
-        <InArgument x:TypeArguments="x:String" x:Key="DOH">[in_DOH]</InArgument>
+        <InArgument x:TypeArguments="x:String" x:Key="Date of Hire">[in_DOH]</InArgument>
         <InArgument x:TypeArguments="s:DateTime" x:Key="Creation Date">[Today]</InArgument>
       </ui:AddQueueItem.ItemInformation>
     </ui:AddQueueItem>

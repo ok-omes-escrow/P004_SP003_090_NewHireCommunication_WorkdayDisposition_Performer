@@ -1,14 +1,14 @@
 <Activity mc:Ignorable="sap sap2010" x:Class="AdddToQueue" xmlns="http://schemas.microsoft.com/netfx/2009/xaml/activities" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:s="clr-namespace:System;assembly=System.Private.CoreLib" xmlns:sap="http://schemas.microsoft.com/netfx/2009/xaml/activities/presentation" xmlns:sap2010="http://schemas.microsoft.com/netfx/2010/xaml/activities/presentation" xmlns:scg="clr-namespace:System.Collections.Generic;assembly=System.Private.CoreLib" xmlns:sco="clr-namespace:System.Collections.ObjectModel;assembly=System.Private.CoreLib" xmlns:ui="http://schemas.uipath.com/workflow/activities" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
   <x:Members>
-    <x:Property Name="in_OrchestratorFolderPath" Type="InArgument(x:String)" />
-    <x:Property Name="in_QueueName" Type="InArgument(x:String)" />
     <x:Property Name="in_QueueData" Type="InArgument(ui:QueueItem)" />
-    <x:Property Name="in_DOH" Type="InArgument(x:String)" />
+    <x:Property Name="in_strOrchestratorFolderPath" Type="InArgument(x:String)" />
+    <x:Property Name="in_strQueueName" Type="InArgument(x:String)" />
+    <x:Property Name="in_strDOH" Type="InArgument(x:String)" />
   </x:Members>
   <VisualBasic.Settings>
     <x:Null />
   </VisualBasic.Settings>
-  <sap:VirtualizedContainerService.HintSize>949,732</sap:VirtualizedContainerService.HintSize>
+  <sap:VirtualizedContainerService.HintSize>1514,732</sap:VirtualizedContainerService.HintSize>
   <sap2010:WorkflowViewState.IdRef>AdddToQueue_1</sap2010:WorkflowViewState.IdRef>
   <TextExpression.NamespacesForImplementation>
     <sco:Collection x:TypeArguments="x:String">
@@ -107,8 +107,8 @@
         <x:Boolean x:Key="IsExpanded">True</x:Boolean>
       </scg:Dictionary>
     </sap:WorkflowViewStateService.ViewState>
-    <ui:LogMessage DisplayName="Log Message - Add to Queue" sap:VirtualizedContainerService.HintSize="388,141" sap2010:WorkflowViewState.IdRef="LogMessage_1" Level="[UiPath.Core.Activities.LogLevel.Info]" Message="[&quot;Adding item into disposition approval queue&quot;+in_QueueName]" />
-    <ui:AddQueueItem ServiceBaseAddress="{x:Null}" TimeoutMS="{x:Null}" DisplayName="Add Queue Item - Approval Queue" FolderPath="[in_OrchestratorFolderPath]" sap:VirtualizedContainerService.HintSize="388,194" sap2010:WorkflowViewState.IdRef="AddQueueItem_2" Priority="Normal" QueueType="[in_QueueName]">
+    <ui:LogMessage DisplayName="Log Message - Add to Queue" sap:VirtualizedContainerService.HintSize="388,141" sap2010:WorkflowViewState.IdRef="LogMessage_1" Level="[UiPath.Core.Activities.LogLevel.Info]" Message="[&quot;Adding item into disposition approval queue&quot;+in_strQueueName]" />
+    <ui:AddQueueItem ServiceBaseAddress="{x:Null}" TimeoutMS="{x:Null}" DisplayName="Add Queue Item - Approval Queue" FolderPath="[in_strOrchestratorFolderPath]" sap:VirtualizedContainerService.HintSize="388,194" sap2010:WorkflowViewState.IdRef="AddQueueItem_2" Priority="Normal" QueueType="[in_strQueueName]">
       <ui:AddQueueItem.ItemInformation>
         <InArgument x:TypeArguments="x:String" x:Key="JR Number">[in_QueueData.SpecificContent("JR Number").ToString]</InArgument>
         <InArgument x:TypeArguments="x:String" x:Key="Employee Name">[in_QueueData.SpecificContent("Employee Name").ToString]</InArgument>
@@ -117,10 +117,10 @@
         <InArgument x:TypeArguments="x:String" x:Key="Transfer Type">[in_QueueData.SpecificContent("Transfer Type").ToString]</InArgument>
         <InArgument x:TypeArguments="x:String" x:Key="Supervisor Email">[in_QueueData.SpecificContent("Supervisor Email").ToString]</InArgument>
         <InArgument x:TypeArguments="x:String" x:Key="Annual Salary">[in_QueueData.SpecificContent("Annual Salary").ToString]</InArgument>
-        <InArgument x:TypeArguments="x:String" x:Key="Date of Hire">[in_DOH]</InArgument>
+        <InArgument x:TypeArguments="x:String" x:Key="Date of Hire">[in_strDOH]</InArgument>
         <InArgument x:TypeArguments="s:DateTime" x:Key="Creation Date">[Today]</InArgument>
       </ui:AddQueueItem.ItemInformation>
     </ui:AddQueueItem>
-    <ui:LogMessage DisplayName="Log Message - Add to Queue success" sap:VirtualizedContainerService.HintSize="388,141" sap2010:WorkflowViewState.IdRef="LogMessage_2" Level="[UiPath.Core.Activities.LogLevel.Info]" Message="[&quot;Successfully added  item into disposition approval queue&quot;+in_QueueName]" />
+    <ui:LogMessage DisplayName="Log Message - Add to Queue success" sap:VirtualizedContainerService.HintSize="388,141" sap2010:WorkflowViewState.IdRef="LogMessage_2" Level="[UiPath.Core.Activities.LogLevel.Info]" Message="[&quot;Successfully added  item into disposition approval queue&quot;+in_strQueueName]" />
   </Sequence>
 </Activity>

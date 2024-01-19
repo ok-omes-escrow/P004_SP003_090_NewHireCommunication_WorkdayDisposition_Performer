@@ -5,7 +5,7 @@
   <VisualBasic.Settings>
     <x:Null />
   </VisualBasic.Settings>
-  <sap:VirtualizedContainerService.HintSize>1514,884</sap:VirtualizedContainerService.HintSize>
+  <sap:VirtualizedContainerService.HintSize>1514,935</sap:VirtualizedContainerService.HintSize>
   <sap2010:WorkflowViewState.IdRef>Initialization_1</sap2010:WorkflowViewState.IdRef>
   <TextExpression.NamespacesForImplementation>
     <sco:Collection x:TypeArguments="x:String">
@@ -112,9 +112,13 @@
       <AssemblyReference>UiPath.OCR.Core</AssemblyReference>
       <AssemblyReference>UiPath.Vision.Core</AssemblyReference>
       <AssemblyReference>UiPath.OCR.Contracts</AssemblyReference>
+      <AssemblyReference>System.IO.FileSystem.Watcher</AssemblyReference>
+      <AssemblyReference>System.IO.Packaging</AssemblyReference>
+      <AssemblyReference>System.IO.FileSystem.AccessControl</AssemblyReference>
+      <AssemblyReference>System.IO.FileSystem.DriveInfo</AssemblyReference>
     </sco:Collection>
   </TextExpression.ReferencesForImplementation>
-  <Sequence sap2010:Annotation.AnnotationText="Open applications used in the process and do necessary initialization procedures (e.g., login)." DisplayName="Initialize All Applications" sap:VirtualizedContainerService.HintSize="554,819" sap2010:WorkflowViewState.IdRef="Sequence_9">
+  <Sequence sap2010:Annotation.AnnotationText="Open applications used in the process and do necessary initialization procedures (e.g., login)." DisplayName="Initialize All Applications" sap:VirtualizedContainerService.HintSize="554,870" sap2010:WorkflowViewState.IdRef="Sequence_9">
     <sap:WorkflowViewStateService.ViewState>
       <scg:Dictionary x:TypeArguments="x:String, x:Object">
         <x:Boolean x:Key="IsExpanded">True</x:Boolean>
@@ -122,17 +126,17 @@
       </scg:Dictionary>
     </sap:WorkflowViewStateService.ViewState>
     <ui:LogMessage DisplayName="Log message (Initialize applications)" sap:VirtualizedContainerService.HintSize="492,141" sap2010:WorkflowViewState.IdRef="LogMessage_1" Level="Trace" Message="[&quot;Opening applications...&quot;]" />
-    <ui:CreateDirectory ContinueOnError="{x:Null}" Output="{x:Null}" DisplayName="Create Folder to store runtime files" sap:VirtualizedContainerService.HintSize="492,80" sap2010:WorkflowViewState.IdRef="CreateDirectory_1" Path="[in_Config(&quot;RuntimeLocalFolderPath&quot;).ToString.Replace(&quot;&lt;Username&gt;&quot;,System.Environment.UserName)]" />
-    <ui:RetryScope DisplayName="Retry Scope - Workday LogIn" sap:VirtualizedContainerService.HintSize="492,376" sap2010:WorkflowViewState.IdRef="RetryScope_1" NumberOfRetries="[cint(in_Config(&quot;RetryScopeAttempts&quot;).ToString)]">
+    <ui:CreateDirectory ContinueOnError="{x:Null}" Output="{x:Null}" DisplayName="Create Folder to store runtime files" sap:VirtualizedContainerService.HintSize="492,80" sap2010:WorkflowViewState.IdRef="CreateDirectory_1" Path="[Path.Combine(in_Config(&quot;RuntimeLocalFolderPath&quot;).ToString,in_Config(&quot;logF_BusinessProcessName&quot;).ToString)]" />
+    <ui:RetryScope DisplayName="Retry Scope - Workday LogIn" sap:VirtualizedContainerService.HintSize="492,427" sap2010:WorkflowViewState.IdRef="RetryScope_1" NumberOfRetries="[cint(in_Config(&quot;RetryScopeAttempts&quot;).ToString)]">
       <ui:RetryScope.ActivityBody>
         <ActivityAction>
-          <Sequence DisplayName="Log In" sap:VirtualizedContainerService.HintSize="450,201" sap2010:WorkflowViewState.IdRef="Sequence_10">
+          <Sequence DisplayName="Log In" sap:VirtualizedContainerService.HintSize="450,252" sap2010:WorkflowViewState.IdRef="Sequence_10">
             <sap:WorkflowViewStateService.ViewState>
               <scg:Dictionary x:TypeArguments="x:String, x:Object">
                 <x:Boolean x:Key="IsExpanded">True</x:Boolean>
               </scg:Dictionary>
             </sap:WorkflowViewStateService.ViewState>
-            <l:LoggingToWorkday_WorkdayLogIn DisplayName="Log In to Workday" sap:VirtualizedContainerService.HintSize="388,90" sap2010:WorkflowViewState.IdRef="LoggingToWorkday_WorkdayLogIn_1" in_URL="[in_Config(&quot;WorkdayURL&quot;).ToString]" />
+            <l:LoggingToWorkday_WorkdayLogIn DisplayName="Log In to Workday ()" sap:VirtualizedContainerService.HintSize="388,141" sap2010:WorkflowViewState.IdRef="LoggingToWorkday_WorkdayLogIn_1" in_strSELoginFailure="[in_Config(&quot;SE_1&quot;).ToString]" in_strURL="[in_Config(&quot;WorkdayURL&quot;).ToString]" />
           </Sequence>
         </ActivityAction>
       </ui:RetryScope.ActivityBody>

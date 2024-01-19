@@ -447,10 +447,10 @@
                   <TryCatch.Try>
                     <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="Invoke TakeScreenshot workflow" sap:VirtualizedContainerService.HintSize="334,113" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_5" UnSafe="False" WorkflowFileName="Framework\TakeScreenshot.xaml">
                       <ui:InvokeWorkflowFile.Arguments>
-                        <InArgument x:TypeArguments="x:String" x:Key="in_strFolder">
-                          <VisualBasicValue x:TypeArguments="x:String" ExpressionText="in_Config(&quot;RuntimeLocalFolderPath&quot;).ToString.Replace(&quot;&lt;Username&gt;&quot;,System.Environment.UserName)" />
+                        <InArgument x:TypeArguments="x:String" x:Key="in_Folder">
+                          <VisualBasicValue x:TypeArguments="x:String" ExpressionText="in_Config(&quot;RuntimeLocalFolderPath&quot;).ToString" />
                         </InArgument>
-                        <InOutArgument x:TypeArguments="x:String" x:Key="io_strFilePath">
+                        <InOutArgument x:TypeArguments="x:String" x:Key="io_FilePath">
                           <VisualBasicReference x:TypeArguments="x:String" ExpressionText="ScreenshotPath" />
                         </InOutArgument>
                       </ui:InvokeWorkflowFile.Arguments>

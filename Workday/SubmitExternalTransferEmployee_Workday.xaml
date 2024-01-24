@@ -1,20 +1,20 @@
-<Activity mc:Ignorable="sap sap2010" x:Class="SubmitExternalTransferEmployee_Workday" this:SubmitExternalTransferEmployee_Workday.in_strURL="https://impl.workday.com/wday/authgwy/okgov2/login.htmld?returnTo=%2fokgov2%2fd%2fhome.htmld" this:SubmitExternalTransferEmployee_Workday.in_strEmployeeName="Chris Russell" this:SubmitExternalTransferEmployee_Workday.in_strHireDate="01/22/2024" this:SubmitExternalTransferEmployee_Workday.in_strJobTitle="System Transition Manager" this:SubmitExternalTransferEmployee_Workday.in_strDOJ="01/22/2024" this:SubmitExternalTransferEmployee_Workday.in_strAmount="95,000" this:SubmitExternalTransferEmployee_Workday.in_strCurrency="USD" this:SubmitExternalTransferEmployee_Workday.in_strFrequency="Annual" this:SubmitExternalTransferEmployee_Workday.in_strCompCodeOverride="8810" xmlns="http://schemas.microsoft.com/netfx/2009/xaml/activities" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:sap="http://schemas.microsoft.com/netfx/2009/xaml/activities/presentation" xmlns:sap2010="http://schemas.microsoft.com/netfx/2010/xaml/activities/presentation" xmlns:scg="clr-namespace:System.Collections.Generic;assembly=System.Private.CoreLib" xmlns:sco="clr-namespace:System.Collections.ObjectModel;assembly=System.Private.CoreLib" xmlns:this="clr-namespace:" xmlns:ui="http://schemas.uipath.com/workflow/activities" xmlns:uix="http://schemas.uipath.com/workflow/activities/uix" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+<Activity mc:Ignorable="sap sap2010" x:Class="SubmitExternalTransferEmployee_Workday" xmlns="http://schemas.microsoft.com/netfx/2009/xaml/activities" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:sap="http://schemas.microsoft.com/netfx/2009/xaml/activities/presentation" xmlns:sap2010="http://schemas.microsoft.com/netfx/2010/xaml/activities/presentation" xmlns:scg="clr-namespace:System.Collections.Generic;assembly=System.Private.CoreLib" xmlns:sco="clr-namespace:System.Collections.ObjectModel;assembly=System.Private.CoreLib" xmlns:ui="http://schemas.uipath.com/workflow/activities" xmlns:uix="http://schemas.uipath.com/workflow/activities/uix" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
   <x:Members>
-    <x:Property Name="in_Config" Type="InArgument(scg:Dictionary(x:String, x:Object))" />
-    <x:Property Name="in_strURL" Type="InArgument(x:String)" />
-    <x:Property Name="in_strEmployeeName" Type="InArgument(x:String)" />
-    <x:Property Name="in_strHireDate" Type="InArgument(x:String)" />
-    <x:Property Name="in_strJobTitle" Type="InArgument(x:String)" />
-    <x:Property Name="in_strDOJ" Type="InArgument(x:String)" />
-    <x:Property Name="in_strAmount" Type="InArgument(x:String)" />
-    <x:Property Name="in_strCurrency" Type="InArgument(x:String)" />
-    <x:Property Name="in_strFrequency" Type="InArgument(x:String)" />
-    <x:Property Name="in_strCompCodeOverride" Type="InArgument(x:String)" />
+    <x:Property sap2010:Annotation.AnnotationText="Dictionary structure to store configuration data of the process (settings, constants and assets)." Name="in_Config" Type="InArgument(scg:Dictionary(x:String, x:Object))" />
+    <x:Property sap2010:Annotation.AnnotationText="URL to the workday portal" Name="in_strURL" Type="InArgument(x:String)" />
+    <x:Property sap2010:Annotation.AnnotationText="Name fo the candidate from queue to perform disposition in workday" Name="in_strEmployeeName" Type="InArgument(x:String)" />
+    <x:Property sap2010:Annotation.AnnotationText="Date of Hire of the employee" Name="in_strHireDate" Type="InArgument(x:String)" />
+    <x:Property sap2010:Annotation.AnnotationText="Job Title of the JR number" Name="in_strJobTitle" Type="InArgument(x:String)" />
+    <x:Property sap2010:Annotation.AnnotationText="Date of Joining of the employee" Name="in_strDOJ" Type="InArgument(x:String)" />
+    <x:Property sap2010:Annotation.AnnotationText="Annual Salary" Name="in_strAmount" Type="InArgument(x:String)" />
+    <x:Property sap2010:Annotation.AnnotationText="Currency value of the salary" Name="in_strCurrency" Type="InArgument(x:String)" />
+    <x:Property sap2010:Annotation.AnnotationText="Frequency of payment" Name="in_strFrequency" Type="InArgument(x:String)" />
+    <x:Property sap2010:Annotation.AnnotationText="Value of Compensation code override" Name="in_strCompCodeOverride" Type="InArgument(x:String)" />
   </x:Members>
   <VisualBasic.Settings>
     <x:Null />
   </VisualBasic.Settings>
-  <sap:VirtualizedContainerService.HintSize>1514,10603</sap:VirtualizedContainerService.HintSize>
+  <sap:VirtualizedContainerService.HintSize>1514,10966</sap:VirtualizedContainerService.HintSize>
   <sap2010:WorkflowViewState.IdRef>SubmitExternalTransferEmployee_Workday_1</sap2010:WorkflowViewState.IdRef>
   <TextExpression.NamespacesForImplementation>
     <sco:Collection x:TypeArguments="x:String">
@@ -116,31 +116,62 @@
       <AssemblyReference>System.Collections</AssemblyReference>
     </sco:Collection>
   </TextExpression.ReferencesForImplementation>
-  <Sequence DisplayName="SubmitExternalTransferEmployee_Workday" sap:VirtualizedContainerService.HintSize="1112,10538" sap2010:WorkflowViewState.IdRef="Sequence_1">
+  <Sequence sap2010:Annotation.AnnotationText="This workfow will perform disposition steps in Inbox for external tranfer type candidates" DisplayName="SubmitExternalTransferEmployee_Workday" sap:VirtualizedContainerService.HintSize="1112,10901" sap2010:WorkflowViewState.IdRef="Sequence_1">
     <sap:WorkflowViewStateService.ViewState>
       <scg:Dictionary x:TypeArguments="x:String, x:Object">
         <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+        <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
       </scg:Dictionary>
     </sap:WorkflowViewStateService.ViewState>
     <ui:LogMessage DisplayName="Log Message - Start External Tranfer" sap:VirtualizedContainerService.HintSize="1050,141" sap2010:WorkflowViewState.IdRef="LogMessage_1" Level="[UiPath.Core.Activities.LogLevel.Info]" Message="[&quot;Starting disposition for external transfer employee in workday&quot;]" />
-    <uix:NApplicationCard AttachMode="ByInstance" CloseMode="Never" DisplayName="Edge Workday Portal" sap:VirtualizedContainerService.HintSize="1050,10246" sap2010:WorkflowViewState.IdRef="NApplicationCard_1" InteractionMode="DebuggerApi" OpenMode="Never" ScopeGuid="4cf467ba-777b-4ace-b60a-c936a1ae740e" Version="V2">
+    <uix:NApplicationCard AttachMode="ByInstance" CloseMode="Never" DisplayName="Edge Workday Portal" sap:VirtualizedContainerService.HintSize="1050,10578" sap2010:WorkflowViewState.IdRef="NApplicationCard_1" InteractionMode="DebuggerApi" OpenMode="Never" ScopeGuid="4cf467ba-777b-4ace-b60a-c936a1ae740e" Version="V2">
       <uix:NApplicationCard.Body>
         <ActivityAction x:TypeArguments="x:Object">
           <ActivityAction.Argument>
             <DelegateInArgument x:TypeArguments="x:Object" Name="WSSessionData" />
           </ActivityAction.Argument>
-          <Sequence DisplayName="Do" sap:VirtualizedContainerService.HintSize="1016,10029" sap2010:WorkflowViewState.IdRef="Sequence_6">
+          <Sequence DisplayName="Do" sap:VirtualizedContainerService.HintSize="1016,10361" sap2010:WorkflowViewState.IdRef="Sequence_6">
             <sap:WorkflowViewStateService.ViewState>
               <scg:Dictionary x:TypeArguments="x:String, x:Object">
                 <x:Boolean x:Key="IsExpanded">True</x:Boolean>
                 <x:Boolean x:Key="IsPinned">False</x:Boolean>
               </scg:Dictionary>
             </sap:WorkflowViewStateService.ViewState>
-            <uix:NClick ActivateBefore="True" ClickType="Single" DelayBefore="[Convert.ToDouble(in_Config(&quot;DelayTimeSmall&quot;).ToString)]" DisplayName="Click 'Inbox'" sap:VirtualizedContainerService.HintSize="954,157" sap2010:WorkflowViewState.IdRef="NClick_11" KeyModifiers="None" MouseButton="Left" ScopeIdentifier="4cf467ba-777b-4ace-b60a-c936a1ae740e" Version="V3">
-              <uix:NClick.Target>
+            <uix:NCheckState DisplayName="Check App State 'Inbox'" sap:VirtualizedContainerService.HintSize="954,489" sap2010:WorkflowViewState.IdRef="NCheckState_9" ScopeIdentifier="4cf467ba-777b-4ace-b60a-c936a1ae740e" Timeout="[Cdbl(in_Config(&quot;DelayTimeXS&quot;).ToString)]" Version="V3">
+              <uix:NCheckState.IfExists>
+                <Sequence DisplayName="Target Inbox appears" sap:VirtualizedContainerService.HintSize="450,272" sap2010:WorkflowViewState.IdRef="Sequence_23">
+                  <sap:WorkflowViewStateService.ViewState>
+                    <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                      <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                    </scg:Dictionary>
+                  </sap:WorkflowViewStateService.ViewState>
+                  <uix:NClick ActivateBefore="True" ClickType="Single" DisplayName="Click 'Inbox'" sap:VirtualizedContainerService.HintSize="388,157" sap2010:WorkflowViewState.IdRef="NClick_29" KeyModifiers="None" MouseButton="Left" ScopeIdentifier="4cf467ba-777b-4ace-b60a-c936a1ae740e" Version="V3">
+                    <uix:NClick.Target>
+                      <uix:TargetAnchorable BrowserURL="https://impl.workday.com/okgov2/d/task/2998$44084.htmld" ContentHash="LZgpnuNp3kW-F0-s3KrpJg" DesignTimeRectangle="1751, 116, 44, 44" DesignTimeScaleFactor="1" ElementType="Button" FriendlyName="'Inbox'" FullSelectorArgument="&lt;webctrl aria-labelledby='inbox-badge-id inbox-ally-label' tag='BUTTON' /&gt;" FuzzySelectorArgument="&lt;webctrl aria-labelledby='inbox*label' tag='BUTTON' /&gt;" Guid="758fe562-873a-4cb1-b842-47ec07092b80" ImageBase64="iVBORw0KGgoAAAANSUhEUgAAADQAAAA0CAYAAADFeBvrAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAAPFSURBVGhD7ZjrSxRRGMb7VyK6fAgpbaMwyw+amSJaSkRafnAzyxSstMzU0DBDDVwSu4iWaylZUEREFBX0IdAusuHd9bbruhf3atpe3+acPevexmV2Z2MGmQceduec97y8P86cM2dmE2wwCUD/W3alAkzSTlCXFcF8ZjJM79uJjf6jNlNPF9gXFCQ6WLwBci7pQHe7FuSx20Aeszm0qRhd4008JlC8AHIsLsB81mH64kMYjUFjfcU5kG1iDGaT9tMWzMRoLMrhEbdAdhsoz+TQFhqOFTlHwbW6ilNyCmR41EZbYCTWt93FOTkDQgt6WrTDryjz86fg+rPs7jcZwdjdgdu11eXgUC8CuFzgWlnBcb7jsGO34pycAZn7pH4F6epvYBibfBL091rAodNia2oqwDY9BU6zGYyPH+J+BKuuKPUbj4xycgakOnfarxi9pBmso8P41kHXtslxNwT1THIaDWAdlrmLftFLrT07GLse+I1HXiwRcwc0mygKKshjbX0Vhvn7ewg0tdfAtWyBlW9fcR8GooR+A8ehnJwByeO2BxWErCrKx88WdFuhtaOpLGMMhHLyCmgNxmwCbd113Ka+dIHxLccp0FzKAb9ilKeywDo+gp8nqGg0M2jhq87n+28KM/J1NwWUkzMgtIB9izG0t1LHBivpJaKuUTujbZtyVDcFg9EEAz+GGFvW1EhbFBtHdduuqL4FcQkpjJ0QnwSymC20hUVql8UcHaCp6RlcZHLGCRAXX2bsjox02sIicVSPPldr3LPz/uMX0sJQ1OF0JCuVtsBwPJeWuLb+WAPNzSthz8EjkJadB06nk7Qyl12ngcFY/zNdOEavD079EskWBaDK2gY8Oy9fvyUt4euNtAc+76J/0IZy1F/wPLOTknkSbDYbaQ1faGz60WMgEe1m/gpOva6jTSBQrICq6hrx7HQ/6yctkatT2odz3amswR9C1v1IQh1WHSolGRUsVkCiQ6m4iDzxxaAdrLDkCigWVCTSK5VaA4Wl5UHxuQXFONfexFQSGZlYAaECQnnw5xCJ9Grg+y/aWF+zEWug7FwxufKqoak1qMhANzRLSLRXx3MLcB8bsQbKyTtLrrzq7X8VdEsF+t2HTyTaK5SLcyC6GYpUvJghOiCzxUJ7IPU1igkUb4GaJe24L5RbJPdJtFe8BZINj0J7x5OQHhmbINFe8RYoUvECKD4pg3YXi8QoF6dAnpNCNM3pSWF8Uk67g7HxBJWTjVgB8VECEN8lAPFdAhDfJQDxXQIQ3yUA8V0CEN+1wYAA/gHsGFCSlBTNHwAAAABJRU5ErkJggg==" InformativeScreenshot="e7366a80efdcfce489b5dc81fcf862c4.png" Reference="wDbVrwCpcUa5WxKMRE0Bcg/NIQMiYzInEO8b9bkfRXi5w" ScopeSelectorArgument="&lt;html app='msedge.exe' title='*Workday' /&gt;" SearchSteps="FuzzySelector" Version="V2" Visibility="Interactive" />
+                    </uix:NClick.Target>
+                  </uix:NClick>
+                </Sequence>
+              </uix:NCheckState.IfExists>
+              <uix:NCheckState.IfNotExists>
+                <Sequence DisplayName="Target Inbox does not appear" sap:VirtualizedContainerService.HintSize="450,205" sap2010:WorkflowViewState.IdRef="Sequence_24">
+                  <sap:WorkflowViewStateService.ViewState>
+                    <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                      <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                    </scg:Dictionary>
+                  </sap:WorkflowViewStateService.ViewState>
+                  <Throw DisplayName="Throw Inbox not found error" Exception="[new Exception(in_Config(&quot;SE_9&quot;).ToString)]" sap:VirtualizedContainerService.HintSize="388,90" sap2010:WorkflowViewState.IdRef="Throw_9" />
+                </Sequence>
+              </uix:NCheckState.IfNotExists>
+              <uix:NCheckState.Target>
                 <uix:TargetAnchorable BrowserURL="https://impl.workday.com/okgov2/d/task/2998$44084.htmld" ContentHash="LZgpnuNp3kW-F0-s3KrpJg" DesignTimeRectangle="1751, 116, 44, 44" DesignTimeScaleFactor="1" ElementType="Button" FriendlyName="'Inbox'" FullSelectorArgument="&lt;webctrl aria-labelledby='inbox-badge-id inbox-ally-label' tag='BUTTON' /&gt;" FuzzySelectorArgument="&lt;webctrl aria-labelledby='inbox*label' tag='BUTTON' /&gt;" Guid="758fe562-873a-4cb1-b842-47ec07092b80" ImageBase64="iVBORw0KGgoAAAANSUhEUgAAADQAAAA0CAYAAADFeBvrAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAAPFSURBVGhD7ZjrSxRRGMb7VyK6fAgpbaMwyw+amSJaSkRafnAzyxSstMzU0DBDDVwSu4iWaylZUEREFBX0IdAusuHd9bbruhf3atpe3+acPevexmV2Z2MGmQceduec97y8P86cM2dmE2wwCUD/W3alAkzSTlCXFcF8ZjJM79uJjf6jNlNPF9gXFCQ6WLwBci7pQHe7FuSx20Aeszm0qRhd4008JlC8AHIsLsB81mH64kMYjUFjfcU5kG1iDGaT9tMWzMRoLMrhEbdAdhsoz+TQFhqOFTlHwbW6ilNyCmR41EZbYCTWt93FOTkDQgt6WrTDryjz86fg+rPs7jcZwdjdgdu11eXgUC8CuFzgWlnBcb7jsGO34pycAZn7pH4F6epvYBibfBL091rAodNia2oqwDY9BU6zGYyPH+J+BKuuKPUbj4xycgakOnfarxi9pBmso8P41kHXtslxNwT1THIaDWAdlrmLftFLrT07GLse+I1HXiwRcwc0mygKKshjbX0Vhvn7ewg0tdfAtWyBlW9fcR8GooR+A8ehnJwByeO2BxWErCrKx88WdFuhtaOpLGMMhHLyCmgNxmwCbd113Ka+dIHxLccp0FzKAb9ilKeywDo+gp8nqGg0M2jhq87n+28KM/J1NwWUkzMgtIB9izG0t1LHBivpJaKuUTujbZtyVDcFg9EEAz+GGFvW1EhbFBtHdduuqL4FcQkpjJ0QnwSymC20hUVql8UcHaCp6RlcZHLGCRAXX2bsjox02sIicVSPPldr3LPz/uMX0sJQ1OF0JCuVtsBwPJeWuLb+WAPNzSthz8EjkJadB06nk7Qyl12ngcFY/zNdOEavD079EskWBaDK2gY8Oy9fvyUt4euNtAc+76J/0IZy1F/wPLOTknkSbDYbaQ1faGz60WMgEe1m/gpOva6jTSBQrICq6hrx7HQ/6yctkatT2odz3amswR9C1v1IQh1WHSolGRUsVkCiQ6m4iDzxxaAdrLDkCigWVCTSK5VaA4Wl5UHxuQXFONfexFQSGZlYAaECQnnw5xCJ9Grg+y/aWF+zEWug7FwxufKqoak1qMhANzRLSLRXx3MLcB8bsQbKyTtLrrzq7X8VdEsF+t2HTyTaK5SLcyC6GYpUvJghOiCzxUJ7IPU1igkUb4GaJe24L5RbJPdJtFe8BZINj0J7x5OQHhmbINFe8RYoUvECKD4pg3YXi8QoF6dAnpNCNM3pSWF8Uk67g7HxBJWTjVgB8VECEN8lAPFdAhDfJQDxXQIQ3yUA8V0CEN+1wYAA/gHsGFCSlBTNHwAAAABJRU5ErkJggg==" InformativeScreenshot="e7366a80efdcfce489b5dc81fcf862c4.png" Reference="wDbVrwCpcUa5WxKMRE0Bcg/NIQMiYzInEO8b9bkfRXi5w" ScopeSelectorArgument="&lt;html app='msedge.exe' title='*Workday' /&gt;" SearchSteps="FuzzySelector" Version="V2" Visibility="Interactive" />
-              </uix:NClick.Target>
-            </uix:NClick>
+              </uix:NCheckState.Target>
+              <sap:WorkflowViewStateService.ViewState>
+                <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                  <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                  <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                </scg:Dictionary>
+              </sap:WorkflowViewStateService.ViewState>
+            </uix:NCheckState>
             <uix:NClick ActivateBefore="True" ClickType="Single" DisplayName="Click 'All Items'" sap:VirtualizedContainerService.HintSize="954,157" sap2010:WorkflowViewState.IdRef="NClick_26" KeyModifiers="None" MouseButton="Left" ScopeIdentifier="4cf467ba-777b-4ace-b60a-c936a1ae740e" Version="V3">
               <uix:NClick.Target>
                 <uix:TargetAnchorable BrowserURL="https://impl.workday.com/okgov2/d/task/2998$44084.htmld" ContentHash="-ZR-ca1EtUubWcetrZkdXA" DesignTimeRectangle="416, 289, 256, 26" DesignTimeScaleFactor="1.100000023841858" ElementType="Text" FriendlyName="'All Items'" FullSelectorArgument="&lt;webctrl aaname='All Items' tag='SPAN' /&gt;" FuzzySelectorArgument="&lt;webctrl aaname='All Items' tag='SPAN' check:innerText='All Items' /&gt;" Guid="7690cd2b-c022-4ee6-ba0a-03c97323ef2f" ImageBase64="iVBORw0KGgoAAAANSUhEUgAAAQgAAAAeCAYAAADQDoDNAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAAOLSURBVHhe7Zq7TuNAFIa35EnyCLxBSsrtKCkpoaJ3g0RBE4k0K0QRRaJIQUGzUigiJIpESpOCwkjkYoUQESKbOJd/x8mMPU48aLVJ9ub/SJ+Ex2c8k+J8zIz9Zef4CYQQkgQFQQgxQkEQQoxQEIQQIxQEIcQIBUEIMUJBEEKMrCWIo8cpFuHjct72irIrm5z3lXxCyL/FJ4Lo496XxY4RLqzVnF8VxKUjc8J+hJC/EbMgbj7gyTIOolZ5XsnZpCBWn0UI+dMYBXHelPWqojdEdimHgiDk/yZZENYANVmufVcV7hjFXDxvM4J4R0NexULrv3s9RMOdyRsi3DHKd11k5P1wHq6H8zsPtpoDpmhUe8jk31DuqbkCXk/k5bU5ifu3zlRbMc3Qd9x4DiEpJFEQmcpIFsoEt6UhbHnVbnRjeZsRhJCRP4ttZ7zgujmY52ZKHvqyPR4zNB6ceU40j6QQzwrPUrRQKyLrTYwv20QEY4fhfuA04eyFkLSQIIgOij1ZIAMXByvXUe5mBLFoW31WgHZQ6o5wUWghk3tFqaeKeITzWN8Z7PorslYLB1U/ko7voyj73g5kmxrnQQ0wQfl6cc4SCRJCQmouhKSPVUHk9BXDy7wtWx3LlinKpSh364LQVg92VTsk/a4OUBfzSZZLtHXpP76GfaNc+VtCQYgx5nIRbVYHX6+62BfsnannEZI+VgSx35jIchHbi4Jst6Ji8+x+mLt1QWjFa4rgP/xagrC0OatwJ2g8vuOQciApZ0kQL9oS3BC+2JfL/N8qiOBcIoFaZU1BBO1WF6f1EdrLovDFFoZnECTFxAVRcNGWtfFZqG8iti6IcCshtjv1xYFkyFkLu/LvdQSxm19sJfa/dRZvRc4cnNTH4bixrQ0hKSMmiBNbHf5NUL6RhRMSnU2gOZgX03YEIcYuOdjLtUS7/jXnFPeVFyGFZ2QLA9yLcYLCT55HwM8J4jT8zWMU1WtNTZR2vRP2JSRtaILQ3xh4ONKSFnRQUm8zgkIUS+9NCkJ/czAP2d/8mlOEnOc6gtjJizxtJxNsW8LwxfOWvv0gJE2EgtALVC8onaxYequwq52NCmLn2MFFU/tYSX4HEZC5HqI20D9kmqLdHOJQng+sJQjRlrkyfCh1xe0FSTdLh5SEEBJBQRBCjFAQhBAjFAQhxAgFQQgxQkEQQoxQEIQQIxQEIcQIBUEIMfCEH1HLDkxXCFxxAAAAAElFTkSuQmCC" InformativeScreenshot="d223df3ac10966665c8bbf46518edb33.png" Reference="uK6Q7vtFLkuCzEyUGdRLAw/ZSx3L7WyFkiZGuPAvgxMog" ScopeSelectorArgument="&lt;html app='msedge.exe' title='*Workday' /&gt;" SearchSteps="FuzzySelector" Version="V2" Visibility="Interactive">

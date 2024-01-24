@@ -1,15 +1,15 @@
-<Activity mc:Ignorable="sap sap2010" x:Class="Workday_LogIn" this:Workday_LogIn.in_strURL="https://impl.workday.com/wday/authgwy/okgov2/login.html" this:Workday_LogIn.in_strEmployeeName="Sydney Markham" this:Workday_LogIn.in_strOfferStage="Offer" this:Workday_LogIn.in_strHireStage="Ready for Hire" xmlns="http://schemas.microsoft.com/netfx/2009/xaml/activities" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:sap="http://schemas.microsoft.com/netfx/2009/xaml/activities/presentation" xmlns:sap2010="http://schemas.microsoft.com/netfx/2010/xaml/activities/presentation" xmlns:scg="clr-namespace:System.Collections.Generic;assembly=System.Private.CoreLib" xmlns:sco="clr-namespace:System.Collections.ObjectModel;assembly=System.Private.CoreLib" xmlns:this="clr-namespace:" xmlns:ui="http://schemas.uipath.com/workflow/activities" xmlns:uix="http://schemas.uipath.com/workflow/activities/uix" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+<Activity mc:Ignorable="sap sap2010" x:Class="Workday_LogIn" xmlns="http://schemas.microsoft.com/netfx/2009/xaml/activities" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:sap="http://schemas.microsoft.com/netfx/2009/xaml/activities/presentation" xmlns:sap2010="http://schemas.microsoft.com/netfx/2010/xaml/activities/presentation" xmlns:scg="clr-namespace:System.Collections.Generic;assembly=System.Private.CoreLib" xmlns:sco="clr-namespace:System.Collections.ObjectModel;assembly=System.Private.CoreLib" xmlns:ui="http://schemas.uipath.com/workflow/activities" xmlns:uix="http://schemas.uipath.com/workflow/activities/uix" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
   <x:Members>
-    <x:Property Name="in_Config" Type="InArgument(scg:Dictionary(x:String, x:Object))" />
-    <x:Property Name="in_strURL" Type="InArgument(x:String)" />
-    <x:Property Name="in_strEmployeeName" Type="InArgument(x:String)" />
-    <x:Property Name="in_strOfferStage" Type="InArgument(x:String)" />
-    <x:Property Name="in_strHireStage" Type="InArgument(x:String)" />
+    <x:Property sap2010:Annotation.AnnotationText="Dictionary structure to store configuration data of the process (settings, constants and assets)." Name="in_Config" Type="InArgument(scg:Dictionary(x:String, x:Object))" />
+    <x:Property sap2010:Annotation.AnnotationText="URL to the workday portal" Name="in_strURL" Type="InArgument(x:String)" />
+    <x:Property sap2010:Annotation.AnnotationText="Name fo the candidate from queue to move forward in Workday" Name="in_strEmployeeName" Type="InArgument(x:String)" />
+    <x:Property sap2010:Annotation.AnnotationText="Value of 'Offer' stage in the list" Name="in_strOfferStage" Type="InArgument(x:String)" />
+    <x:Property sap2010:Annotation.AnnotationText="Value of 'Hire' stage in the list" Name="in_strHireStage" Type="InArgument(x:String)" />
   </x:Members>
   <VisualBasic.Settings>
     <x:Null />
   </VisualBasic.Settings>
-  <sap:VirtualizedContainerService.HintSize>1514,5955</sap:VirtualizedContainerService.HintSize>
+  <sap:VirtualizedContainerService.HintSize>1514,6106</sap:VirtualizedContainerService.HintSize>
   <sap2010:WorkflowViewState.IdRef>Workday_LogIn_1</sap2010:WorkflowViewState.IdRef>
   <TextExpression.NamespacesForImplementation>
     <sco:Collection x:TypeArguments="x:String">
@@ -129,19 +129,20 @@
       <AssemblyReference>System.Linq.Queryable</AssemblyReference>
     </sco:Collection>
   </TextExpression.ReferencesForImplementation>
-  <Sequence DisplayName="MoveForwardCandidates" sap:VirtualizedContainerService.HintSize="1112,5890" sap2010:WorkflowViewState.IdRef="Sequence_1">
+  <Sequence sap2010:Annotation.AnnotationText="This workflow will move forward candidates to Offer stage followed by Ready To Hire stage in workday" DisplayName="MoveForwardCandidates" sap:VirtualizedContainerService.HintSize="1112,6041" sap2010:WorkflowViewState.IdRef="Sequence_1">
     <sap:WorkflowViewStateService.ViewState>
       <scg:Dictionary x:TypeArguments="x:String, x:Object">
         <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+        <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
       </scg:Dictionary>
     </sap:WorkflowViewStateService.ViewState>
-    <uix:NApplicationCard AttachMode="ByInstance" CloseMode="Never" DisplayName="Edge Workday Portal" sap:VirtualizedContainerService.HintSize="1050,5779" sap2010:WorkflowViewState.IdRef="NApplicationCard_2" InteractionMode="DebuggerApi" OpenMode="Never" ScopeGuid="b19c4cf9-5d80-48b2-b7f6-62067aaa767e" Version="V2" WindowResize="Maximize">
+    <uix:NApplicationCard AttachMode="ByInstance" CloseMode="Never" DisplayName="Edge Workday Portal" sap:VirtualizedContainerService.HintSize="1050,5899" sap2010:WorkflowViewState.IdRef="NApplicationCard_2" InteractionMode="DebuggerApi" OpenMode="Never" ScopeGuid="b19c4cf9-5d80-48b2-b7f6-62067aaa767e" Version="V2" WindowResize="Maximize">
       <uix:NApplicationCard.Body>
         <ActivityAction x:TypeArguments="x:Object">
           <ActivityAction.Argument>
             <DelegateInArgument x:TypeArguments="x:Object" Name="WSSessionData" />
           </ActivityAction.Argument>
-          <Sequence DisplayName="Do" sap:VirtualizedContainerService.HintSize="1016,5562" sap2010:WorkflowViewState.IdRef="Sequence_4">
+          <Sequence DisplayName="Do" sap:VirtualizedContainerService.HintSize="1016,5682" sap2010:WorkflowViewState.IdRef="Sequence_4">
             <Sequence.Variables>
               <Variable x:TypeArguments="x:Boolean" Name="boolEmployeeEnabled" />
             </Sequence.Variables>
@@ -163,16 +164,50 @@
                 </ui:Target>
               </ui:Activate.Target>
             </ui:Activate>
-            <uix:NClick ActivateBefore="True" ClickType="Single" DisplayName="Click 'Candidates Tab'" sap:VirtualizedContainerService.HintSize="954,157" sap2010:WorkflowViewState.IdRef="NClick_16" KeyModifiers="None" MouseButton="Left" ScopeIdentifier="b19c4cf9-5d80-48b2-b7f6-62067aaa767e" Version="V3">
-              <uix:NClick.Target>
-                <uix:TargetAnchorable BrowserURL="https://impl.workday.com/okgov2/d/inst/1$5303/5303$16952.htmld#TABINDEX=0&amp;SUBTABINDEX=0" ContentHash="hj5TjAnooU2DLVcEW8hXvA" DesignTimeRectangle="466, 658, 65, 44" DesignTimeScaleFactor="1" ElementType="Text" FriendlyName="'Candidates Tab'" FullSelectorArgument="&lt;webctrl aaname='Candidates' tag='DIV' /&gt;" FuzzySelectorArgument="&lt;webctrl aaname='Candidates' tag='DIV' type='' class='gwt-Label WCF2' check:innerText='Candidates' /&gt;" Guid="48647109-2e16-45f8-bcbe-a600298d4da9" ImageBase64="iVBORw0KGgoAAAANSUhEUgAAAEwAAAA0CAYAAAAg5t6HAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAAN4SURBVGhD7ZYhc7NAEIb7+zAoDCoKU3UKg4rCRKEw/ABMFCoGFYVBoTAoajAo1PvtwZFwSdNkZ5rpJ/aZYaZw9G7vYXcvHxBYfHx9fUGu1y/JMCYijIkIYyLCmIgwJiKMiQhjIsKYiDAmIoyJCGMiwpiIMCYijIkIYyLCmIgwJiKMyZ8L6wsFJ6nN3TNqJI5C0ZvbP+BOWF+lCH0XjuPAcX2EaYXBjL0DW9iAtmp/WO8/E6aDd12FvOkx0f3UN8iVC582NC6v/DqWsOGEkD5S1i639/CE1Ql99Jez9zWuwqYzYtdFfL5R0+XYvfGrvrMk3yusSeE5Mc46tSx0mVRo1zoZKqShD3cuWQ9qW7J9AeUccCxjBJ4uaxdedES3mXNsC8SBGQtipIfP66bm/98KGVClCp5r2kOWYn83HsLX43o+laKag9Fi9bP1SuiJQcevPBN/gPjUmQFibFHEwWVvQXzCZnTmKqxO7Im/pUVG/U0du7lkMVZIfAdRabJy3rCLz6RCTy9MFJweV+sOxyWL1bFdSr4rEdP4I2FdHsDxE5IwT4Ymp5axGW8z+nBq/SAjqsSHE5WX9nGXYROJ3MQ/9bS+5yGp5wnofZJ+OC8JMHU4Ujvy0mYeW2EKmzCO4yLLYAVlMqxa7ma242MZwdnl1lezStIS1iD1HGoR1mpWSU4Uy2gHY+3hVth0ju/W7/IdXPNOk1LmqQxVu/bwGlW9/L3yQkkuga2PxzpHFJiUXi9rw7b0bdCznHir8ydhWk4ASoYNNz1srJFHwVKyl3geC5vX2sa9Xpd3BtTFAeFO748Ou3At8SvfNP0bY9umP5aIaBNpPVwE3mfYY2G/m2EjyshBkNbQFTvzJMPm9VWB1bfNTa/W8lJqCfT+1tlVGKGDd/09imYRcvezYtAbMsKmCX17+qYHPRb2uz1sQKFWYRPF2uIUUw/brK/LzdlTT9Pj+sG8vo990RgJNOcxRlLp3Q30AWivcWmEGmGbnqixhGm6klLS/HB1vQBRZv9w7fUJaE4lP8yQHzwqs/MS0DNhxPWUpPlZpySdyLenpG7a61x+iCw/2G2F5ovm05r+Z91Eb5/y1kloTsmlxJ+VpPASIoyJCGMiwpiIMCYijIkIYyLCmIgwJiKMiQhjIsKYiDAmIoyJCGMiwpiIMCYijIkIYyLCmIgwFsA/VdXDYU+/YFEAAAAASUVORK5CYII=" InformativeScreenshot="0adf323d50cd40517f22fa75ad7f9315.png" Reference="uK6Q7vtFLkuCzEyUGdRLAw/waY-XSRwk0iQd8gT4pKT7Q" ScopeSelectorArgument="&lt;html app='msedge.exe' title='*Workday*' /&gt;" SearchSteps="Selector" Version="V2" Visibility="Interactive">
+            <uix:NCheckState DisplayName="Check App State Candidates" sap:VirtualizedContainerService.HintSize="954,529" sap2010:WorkflowViewState.IdRef="NCheckState_3" ScopeIdentifier="b19c4cf9-5d80-48b2-b7f6-62067aaa767e" Timeout="[Cdbl(in_Config(&quot;DelayTimeXS&quot;).ToString)]" Version="V3">
+              <uix:NCheckState.IfExists>
+                <Sequence DisplayName="Candidate Tab appears" sap:VirtualizedContainerService.HintSize="450,272" sap2010:WorkflowViewState.IdRef="Sequence_18">
+                  <sap:WorkflowViewStateService.ViewState>
+                    <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                      <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                    </scg:Dictionary>
+                  </sap:WorkflowViewStateService.ViewState>
+                  <uix:NClick ActivateBefore="True" ClickType="Single" DisplayName="Click 'Candidates Tab'" sap:VirtualizedContainerService.HintSize="388,157" sap2010:WorkflowViewState.IdRef="NClick_16" KeyModifiers="None" MouseButton="Left" ScopeIdentifier="b19c4cf9-5d80-48b2-b7f6-62067aaa767e" Version="V3">
+                    <uix:NClick.Target>
+                      <uix:TargetAnchorable BrowserURL="https://impl.workday.com/okgov2/d/inst/1$5303/5303$16952.htmld#TABINDEX=0&amp;SUBTABINDEX=0" ContentHash="hj5TjAnooU2DLVcEW8hXvA" DesignTimeRectangle="466, 658, 65, 44" DesignTimeScaleFactor="1" ElementType="Text" FriendlyName="'Candidates Tab'" FullSelectorArgument="&lt;webctrl aaname='Candidates' tag='DIV' /&gt;" FuzzySelectorArgument="&lt;webctrl aaname='Candidates' tag='DIV' type='' class='gwt-Label WCF2' check:innerText='Candidates' /&gt;" Guid="48647109-2e16-45f8-bcbe-a600298d4da9" ImageBase64="iVBORw0KGgoAAAANSUhEUgAAAEwAAAA0CAYAAAAg5t6HAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAAN4SURBVGhD7ZYhc7NAEIb7+zAoDCoKU3UKg4rCRKEw/ABMFCoGFYVBoTAoajAo1PvtwZFwSdNkZ5rpJ/aZYaZw9G7vYXcvHxBYfHx9fUGu1y/JMCYijIkIYyLCmIgwJiKMiQhjIsKYiDAmIoyJCGMiwpiIMCYijIkIYyLCmIgwJiKMyZ8L6wsFJ6nN3TNqJI5C0ZvbP+BOWF+lCH0XjuPAcX2EaYXBjL0DW9iAtmp/WO8/E6aDd12FvOkx0f3UN8iVC582NC6v/DqWsOGEkD5S1i639/CE1Ql99Jez9zWuwqYzYtdFfL5R0+XYvfGrvrMk3yusSeE5Mc46tSx0mVRo1zoZKqShD3cuWQ9qW7J9AeUccCxjBJ4uaxdedES3mXNsC8SBGQtipIfP66bm/98KGVClCp5r2kOWYn83HsLX43o+laKag9Fi9bP1SuiJQcevPBN/gPjUmQFibFHEwWVvQXzCZnTmKqxO7Im/pUVG/U0du7lkMVZIfAdRabJy3rCLz6RCTy9MFJweV+sOxyWL1bFdSr4rEdP4I2FdHsDxE5IwT4Ymp5axGW8z+nBq/SAjqsSHE5WX9nGXYROJ3MQ/9bS+5yGp5wnofZJ+OC8JMHU4Ujvy0mYeW2EKmzCO4yLLYAVlMqxa7ma242MZwdnl1lezStIS1iD1HGoR1mpWSU4Uy2gHY+3hVth0ju/W7/IdXPNOk1LmqQxVu/bwGlW9/L3yQkkuga2PxzpHFJiUXi9rw7b0bdCznHir8ydhWk4ASoYNNz1srJFHwVKyl3geC5vX2sa9Xpd3BtTFAeFO748Ou3At8SvfNP0bY9umP5aIaBNpPVwE3mfYY2G/m2EjyshBkNbQFTvzJMPm9VWB1bfNTa/W8lJqCfT+1tlVGKGDd/09imYRcvezYtAbMsKmCX17+qYHPRb2uz1sQKFWYRPF2uIUUw/brK/LzdlTT9Pj+sG8vo990RgJNOcxRlLp3Q30AWivcWmEGmGbnqixhGm6klLS/HB1vQBRZv9w7fUJaE4lP8yQHzwqs/MS0DNhxPWUpPlZpySdyLenpG7a61x+iCw/2G2F5ovm05r+Z91Eb5/y1kloTsmlxJ+VpPASIoyJCGMiwpiIMCYijIkIYyLCmIgwJiKMiQhjIsKYiDAmIoyJCGMiwpiIMCYijIkIYyLCmIgwFsA/VdXDYU+/YFEAAAAASUVORK5CYII=" InformativeScreenshot="0adf323d50cd40517f22fa75ad7f9315.png" Reference="uK6Q7vtFLkuCzEyUGdRLAw/waY-XSRwk0iQd8gT4pKT7Q" ScopeSelectorArgument="&lt;html app='msedge.exe' title='*Workday*' /&gt;" SearchSteps="Selector" Version="V2" Visibility="Interactive">
+                        <uix:TargetAnchorable.PointOffset>
+                          <uix:PointOffset Position="BottomRight" X="-29" Y="-22" />
+                        </uix:TargetAnchorable.PointOffset>
+                      </uix:TargetAnchorable>
+                    </uix:NClick.Target>
+                  </uix:NClick>
+                </Sequence>
+              </uix:NCheckState.IfExists>
+              <uix:NCheckState.IfNotExists>
+                <Sequence DisplayName="Candidate Tab does not appear" sap:VirtualizedContainerService.HintSize="450,205" sap2010:WorkflowViewState.IdRef="Sequence_19">
+                  <sap:WorkflowViewStateService.ViewState>
+                    <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                      <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                    </scg:Dictionary>
+                  </sap:WorkflowViewStateService.ViewState>
+                  <Throw DisplayName="Throw Candidate tab not found" Exception="[new Exception(in_Config(&quot;SE_8&quot;).ToString)]" sap:VirtualizedContainerService.HintSize="388,90" sap2010:WorkflowViewState.IdRef="Throw_3" />
+                </Sequence>
+              </uix:NCheckState.IfNotExists>
+              <uix:NCheckState.Target>
+                <uix:TargetAnchorable BrowserURL="https://impl.workday.com/okgov2/d/inst/1$5303/5303$16952.htmld#TABINDEX=0&amp;SUBTABINDEX=0" ContentHash="hj5TjAnooU2DLVcEW8hXvA" DesignTimeRectangle="466, 658, 65, 44" DesignTimeScaleFactor="1" ElementType="Text" FriendlyName="'Candidates Tab'" FullSelectorArgument="&lt;webctrl aaname='Candidates' tag='DIV' /&gt;" FuzzySelectorArgument="&lt;webctrl aaname='Candidates' tag='DIV' type='' class='gwt-Label WCF2' check:innerText='Candidates' /&gt;" Guid="48647109-2e16-45f8-bcbe-a600298d4da9" ImageBase64="iVBORw0KGgoAAAANSUhEUgAAAEwAAAA0CAYAAAAg5t6HAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAAN4SURBVGhD7ZYhc7NAEIb7+zAoDCoKU3UKg4rCRKEw/ABMFCoGFYVBoTAoajAo1PvtwZFwSdNkZ5rpJ/aZYaZw9G7vYXcvHxBYfHx9fUGu1y/JMCYijIkIYyLCmIgwJiKMiQhjIsKYiDAmIoyJCGMiwpiIMCYijIkIYyLCmIgwJiKMyZ8L6wsFJ6nN3TNqJI5C0ZvbP+BOWF+lCH0XjuPAcX2EaYXBjL0DW9iAtmp/WO8/E6aDd12FvOkx0f3UN8iVC582NC6v/DqWsOGEkD5S1i639/CE1Ql99Jez9zWuwqYzYtdFfL5R0+XYvfGrvrMk3yusSeE5Mc46tSx0mVRo1zoZKqShD3cuWQ9qW7J9AeUccCxjBJ4uaxdedES3mXNsC8SBGQtipIfP66bm/98KGVClCp5r2kOWYn83HsLX43o+laKag9Fi9bP1SuiJQcevPBN/gPjUmQFibFHEwWVvQXzCZnTmKqxO7Im/pUVG/U0du7lkMVZIfAdRabJy3rCLz6RCTy9MFJweV+sOxyWL1bFdSr4rEdP4I2FdHsDxE5IwT4Ymp5axGW8z+nBq/SAjqsSHE5WX9nGXYROJ3MQ/9bS+5yGp5wnofZJ+OC8JMHU4Ujvy0mYeW2EKmzCO4yLLYAVlMqxa7ma242MZwdnl1lezStIS1iD1HGoR1mpWSU4Uy2gHY+3hVth0ju/W7/IdXPNOk1LmqQxVu/bwGlW9/L3yQkkuga2PxzpHFJiUXi9rw7b0bdCznHir8ydhWk4ASoYNNz1srJFHwVKyl3geC5vX2sa9Xpd3BtTFAeFO748Ou3At8SvfNP0bY9umP5aIaBNpPVwE3mfYY2G/m2EjyshBkNbQFTvzJMPm9VWB1bfNTa/W8lJqCfT+1tlVGKGDd/09imYRcvezYtAbMsKmCX17+qYHPRb2uz1sQKFWYRPF2uIUUw/brK/LzdlTT9Pj+sG8vo990RgJNOcxRlLp3Q30AWivcWmEGmGbnqixhGm6klLS/HB1vQBRZv9w7fUJaE4lP8yQHzwqs/MS0DNhxPWUpPlZpySdyLenpG7a61x+iCw/2G2F5ovm05r+Z91Eb5/y1kloTsmlxJ+VpPASIoyJCGMiwpiIMCYijIkIYyLCmIgwJiKMiQhjIsKYiDAmIoyJCGMiwpiIMCYijIkIYyLCmIgwFsA/VdXDYU+/YFEAAAAASUVORK5CYII=" InformativeScreenshot="0adf323d50cd40517f22fa75ad7f9315.png" Reference="wDbVrwCpcUa5WxKMRE0Bcg/waY-XSRwk0iQd8gT4pKT7Q" ScopeSelectorArgument="&lt;html app='msedge.exe' title='*Workday*' /&gt;" SearchSteps="Selector" Version="V2" Visibility="Interactive">
                   <uix:TargetAnchorable.PointOffset>
                     <uix:PointOffset Position="BottomRight" X="-29" Y="-22" />
                   </uix:TargetAnchorable.PointOffset>
                 </uix:TargetAnchorable>
-              </uix:NClick.Target>
-            </uix:NClick>
-            <uix:NClick ActivateBefore="True" ClickType="Single" DisplayName="Click 'All Active Candidates'  - Offer" sap:VirtualizedContainerService.HintSize="954,157" sap2010:WorkflowViewState.IdRef="NClick_25" KeyModifiers="None" MouseButton="Left" ScopeIdentifier="b19c4cf9-5d80-48b2-b7f6-62067aaa767e" Version="V3">
+              </uix:NCheckState.Target>
+              <sap:WorkflowViewStateService.ViewState>
+                <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                  <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                  <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                </scg:Dictionary>
+              </sap:WorkflowViewStateService.ViewState>
+            </uix:NCheckState>
+            <uix:NClick ActivateBefore="True" ClickType="Single" DelayAfter="[Convert.ToDouble(in_Config(&quot;DelayTimeSmall&quot;).ToString)]" DisplayName="Click 'All Active Candidates'  - Offer" sap:VirtualizedContainerService.HintSize="954,157" sap2010:WorkflowViewState.IdRef="NClick_25" KeyModifiers="None" MouseButton="Left" ScopeIdentifier="b19c4cf9-5d80-48b2-b7f6-62067aaa767e" Version="V3">
               <uix:NClick.Target>
                 <uix:TargetAnchorable BrowserURL="https://impl.workday.com/okgov2/d/inst/1$14180/5303$19713.htmld#TABINDEX=1&amp;SUBTABINDEX=0" ContentHash="pn2wj1Ahd0W0WQnZRF1O1w" DesignTimeRectangle="373, 546, 198, 40" DesignTimeScaleFactor="1" ElementType="Button" FriendlyName="'All Active Candidates'" FullSelectorArgument="&lt;webctrl aria-label='All Active Candidates 9423!CM9JEgoKBggEENucARIAEiQKBggEEO_cARIaQ*' tag='BUTTON' type='button' /&gt;" FuzzySelectorArgument="&lt;webctrl tag='BUTTON' type='button' aaname='All Active Candidates' check:innerText='All Active Candidates' /&gt;" Guid="ff20b126-6426-4c06-b09d-f8dd6fdfeca7" ImageBase64="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" InformativeScreenshot="40cb8cf42f2df9d99dec1ab59a016634.png" Reference="wDbVrwCpcUa5WxKMRE0Bcg/cPME5LD0uUewuERoGg4sRQ" ScopeSelectorArgument="&lt;html app='msedge.exe' title='JR21479 Administrative Programs Ofcr - Workday' /&gt;" SearchSteps="FuzzySelector" Version="V2" Visibility="Interactive">
                   <uix:TargetAnchorable.Anchors>
@@ -183,9 +218,39 @@
                 </uix:TargetAnchorable>
               </uix:NClick.Target>
             </uix:NClick>
-            <ui:LogMessage DisplayName="Move forward to offer Log Message" sap:VirtualizedContainerService.HintSize="954,143" sap2010:WorkflowViewState.IdRef="LogMessage_4" Level="[UiPath.Core.Activities.LogLevel.Trace]" Message="[&quot;Moving forward candidate to &quot;+in_strOfferStage]" />
-            <uix:NGetAttributeGeneric x:TypeArguments="x:Boolean" Attribute="checked" DisplayName="Get Attribute 'Employee Checkbox'" sap:VirtualizedContainerService.HintSize="954,207" sap2010:WorkflowViewState.IdRef="NGetAttributeGeneric`1_5" Result="[boolEmployeeEnabled]" ScopeIdentifier="b19c4cf9-5d80-48b2-b7f6-62067aaa767e" Version="V3">
-              <uix:NGetAttributeGeneric.Target>
+            <ui:LogMessage DisplayName="Move forward to offer Log Message" sap:VirtualizedContainerService.HintSize="954,141" sap2010:WorkflowViewState.IdRef="LogMessage_4" Level="[UiPath.Core.Activities.LogLevel.Trace]" Message="[&quot;Moving forward candidate to &quot;+in_strOfferStage]" />
+            <uix:NCheckState DisplayName="Check App State Employee Checkbox" sap:VirtualizedContainerService.HintSize="954,52" sap2010:WorkflowViewState.IdRef="NCheckState_4" ScopeIdentifier="b19c4cf9-5d80-48b2-b7f6-62067aaa767e" Timeout="[Cdbl(in_Config(&quot;DelayTimeSmall&quot;).ToString)]" Version="V3">
+              <uix:NCheckState.IfExists>
+                <Sequence DisplayName="Employee Checkbox found" sap:VirtualizedContainerService.HintSize="450,320" sap2010:WorkflowViewState.IdRef="Sequence_20">
+                  <sap:WorkflowViewStateService.ViewState>
+                    <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                      <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                    </scg:Dictionary>
+                  </sap:WorkflowViewStateService.ViewState>
+                  <uix:NGetAttributeGeneric x:TypeArguments="x:Boolean" Attribute="checked" DisplayName="Get Attribute 'Employee Checkbox'" sap:VirtualizedContainerService.HintSize="388,207" sap2010:WorkflowViewState.IdRef="NGetAttributeGeneric`1_5" Result="[boolEmployeeEnabled]" ScopeIdentifier="b19c4cf9-5d80-48b2-b7f6-62067aaa767e" Version="V3">
+                    <uix:NGetAttributeGeneric.Target>
+                      <uix:TargetAnchorable BrowserURL="https://impl.workday.com/okgov2/d/inst/1$5303/5303$18770.htmld#TABINDEX=1&amp;SUBTABINDEX=0" ContentHash="tmyEWJhjgkKLs66Bdo-CsQ" DesignTimeRectangle="399, 641, 18, 18" DesignTimeScaleFactor="1" ElementType="CheckBox" FriendlyName="'Employee Checkbox'" FullSelectorArgument="&lt;webctrl class='lockedTable' tag='TABLE' /&gt;&lt;webctrl class='WKJF' parentid='wd-CompositeWidget-NO_METADATA_ID-uid322' tableRow='2' tag='DIV' /&gt;" FuzzySelectorArgument="&lt;webctrl class='lockedTable' tag='TABLE' /&gt;&lt;webctrl class='WKJF' tag='DIV' /&gt;" Guid="110d944f-c1d7-4b2b-828d-a4281a117d1c" ImageBase64="iVBORw0KGgoAAAANSUhEUgAAABYAAAAWCAYAAADEtGw7AAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAABySURBVEhLY/hPI0B7g99/+Pi/f/qC/9Wt/WThvunz/79//xFqGpLBIIlrN+9AeaQDkF6Qw2AAbjDIVkoBshmjBkNZowaPGgwDowbDAX0NBhV5lBaboKIXBuAGvwMW9CAJkK3kYJDD3mEr6KkNaGTw//8ANIIsitqoG9gAAAAASUVORK5CYII=" InformativeScreenshot="fb867ea8e49ac3052d925895be5cc44a.png" Reference="wDbVrwCpcUa5WxKMRE0Bcg/ZSA1W-E530-VxF-jV71OzA" ScopeSelectorArgument="&lt;html app='msedge.exe' title='JR20401 Statewide Central Purchasing Manager - Workday' /&gt;" SearchSteps="FuzzySelector" Version="V2" Visibility="Interactive">
+                        <uix:TargetAnchorable.Anchors>
+                          <scg:List x:TypeArguments="uix:ITarget" Capacity="1">
+                            <uix:Target DesignTimeRectangle="458, 641, 65, 32" ElementType="Text" FriendlyName="'Employee Checkbox'" FullSelectorArgument="&lt;webctrl class='lockedTable' tag='TABLE' /&gt;&lt;webctrl id='promptOption-gwt-uid-322' tableRow='2' tag='DIV' /&gt;" FuzzySelectorArgument="[string.Format(&quot;&lt;webctrl class='lockedTable' tag='TABLE' /&gt;&lt;webctrl tag='DIV' aaname='{0}*' check:innerText='{0}*' /&gt;&quot;, in_strEmployeeName)]" ImageBase64="iVBORw0KGgoAAAANSUhEUgAAAEUAAAAkCAYAAADfJffWAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAAU3SURBVGhD7Zi/SyNNGMf9L1JaWlpapkxpaXUINmkEsTHFNWkkkCZN4LDRwkK7FBYRyS8WMYgXwiKsoqBBkHCKLIRgzCF873lmZjezu5P15Dx4vXe/sCS7Mzs/PvvMM88zM0gUUQLFoASKQQkUgz4Aygu6BxYWy5foqyefXRMoDzYWvxxhRrsWNs/Qdl9Fcb/eomct7D2IW00DVEtHSK13cEF3st4RCo4s9eWcBtr2rkg9bxzbN+qBWVP7+QBFoKS3ztG0r9C0TpFZocFlT9Eex0EJ6i0oywfUNrevrgtXlXv6L0JZrD+pB8Dt4aRjD0pu9xhphrXSwrfrZ6r1hL08f3WCR3dvQTFOwr1EYYPboP5LFtL060MZ3uHbZg2z9CyVbaFkS4rhfkbXHSyvyjbm8p6F36BA9/PlU7/9dMnBrXxlqmKgDNHcqlFDDezcTwaR2XbQbHewxGDy5+RH3gclYCm9ARXI5Tez0kDBukJlu4EU1ZNQqKzIZfQB2lfYK/N4LFSIS6Af10GWxpPKd1C1beQYzuY5XAVlZvUYO/77Uz6MplifwleaBjeiYjkIb/m8oFnmcgbxPiiBS0z8Bjn+v6UsQ18+7jmW6H/6QLlwVZZtDwL9yP/y47GkhVuoDhUUz+rUGPTVYNJ0n2L3aL2/qMIwFKC9zRN7P5TI87CF6lC8/6GL60ahhOvxWD8IyrQX/hoUz8RjLGVhtwd3OJCX68Idvxqg1FByVJ0h1XGHZOGfBEp09/kdnyLLmu0usustVGgMgX48n/L1FBVqs3pIm4Hwd58ESvgS9Wjtl9TukCkfTyyFNbwnB9kQu8/MSg3LuzfkQKP9jHo21lQbs6uW2qX+FEoiXwkUgxIoBiVQDEqgGJRAMSiBYlAUyoODtaKtMsmfuLVOkMmG93+l8Q90rS5yxQbmvFhASc9aZzdOUH2Q5zJSP9G3z1S5jG+CesXtQSMUUzyiSvHKnMjQa1javxM5mdQL3B4lfPsn1Kblx1JCLsVA+ZoMCCkIXKvfy/euz7BIY9Zm4ysIZdxDgQa61h6KW7dticbSpS5ln45I4TmcLjicE6nAiAYpAisdyvgKuXDWutFVoGnCFHiJdosdikD70YGpCFWHcnvIkGrI1Sli3Zfv577L3MwL5GbFO5MAE7hDifsOZMmUDlzzB3oUQefC7p2sqikARXQsUm4WNcgW4k+GNL7EGgMoXxLtAfr3fJ4SihpZKnLM2YZTO8pnlqnMNBipZ5GBpwJQVNT81bNg+nhcrvKlkfuo5UMalPuuOJtZPHyU9+Govdehch2ilAalj531Iyx5L6hkLDBZo6JQIoNTkDgkZ+vjr7Vcaqml4B1WKZFZL/C7dT0kD/ehIOXtwLlwpN+QXEv2LS2FJeecOfyh7qUmUBQEP2fRs9VYvQ+KLCNLEUtSLa2VEzTHXFFOdp7aGgXylA+AQvPhg7GUSBQ9vaK9Re0UncASnkARELQG/5KlhMuk5ciy0fdjWjYWqjzCj4TCh03Ct5BTl+7Sl0hsQ+1Mh/KmT/EUhRLnU8xQ2KSfUOGJcluhq+DE+xRPZijSofIy3QvsgFLxUMLLh8SdTN99PBmgxO0+ameZL2rLZ/UMXdpW+4521nIgLYhPAvnEP2738RSFooDQe1n9HMd5VB/1reVDrAKOVugZF/WYOEXIAIUUF6foZx9zkRhGKbB8WHFxilQEiucXw5dvGW85WlJwS/4fiLbsTGS5haDI4I1M1A55o39Svxm8CQXC/H9YHOZvXRpXRRRKogSKSQmUiIBfYmdIffpPOe0AAAAASUVORK5CYII=" SearchSteps="FuzzySelector" />
+                          </scg:List>
+                        </uix:TargetAnchorable.Anchors>
+                      </uix:TargetAnchorable>
+                    </uix:NGetAttributeGeneric.Target>
+                  </uix:NGetAttributeGeneric>
+                </Sequence>
+              </uix:NCheckState.IfExists>
+              <uix:NCheckState.IfNotExists>
+                <Sequence DisplayName="Employee Checkbox not  found" sap:VirtualizedContainerService.HintSize="450,205" sap2010:WorkflowViewState.IdRef="Sequence_21">
+                  <sap:WorkflowViewStateService.ViewState>
+                    <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                      <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                    </scg:Dictionary>
+                  </sap:WorkflowViewStateService.ViewState>
+                  <Throw DisplayName="Throw Employee Checkbox not found" Exception="[new Exception(in_Config(&quot;SE_7&quot;).ToString+&quot; : &quot;+in_strOfferStage)]" sap:VirtualizedContainerService.HintSize="388,90" sap2010:WorkflowViewState.IdRef="Throw_4" />
+                </Sequence>
+              </uix:NCheckState.IfNotExists>
+              <uix:NCheckState.Target>
                 <uix:TargetAnchorable BrowserURL="https://impl.workday.com/okgov2/d/inst/1$5303/5303$18770.htmld#TABINDEX=1&amp;SUBTABINDEX=0" ContentHash="tmyEWJhjgkKLs66Bdo-CsQ" DesignTimeRectangle="399, 641, 18, 18" DesignTimeScaleFactor="1" ElementType="CheckBox" FriendlyName="'Employee Checkbox'" FullSelectorArgument="&lt;webctrl class='lockedTable' tag='TABLE' /&gt;&lt;webctrl class='WKJF' parentid='wd-CompositeWidget-NO_METADATA_ID-uid322' tableRow='2' tag='DIV' /&gt;" FuzzySelectorArgument="&lt;webctrl class='lockedTable' tag='TABLE' /&gt;&lt;webctrl class='WKJF' tag='DIV' /&gt;" Guid="110d944f-c1d7-4b2b-828d-a4281a117d1c" ImageBase64="iVBORw0KGgoAAAANSUhEUgAAABYAAAAWCAYAAADEtGw7AAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAABySURBVEhLY/hPI0B7g99/+Pi/f/qC/9Wt/WThvunz/79//xFqGpLBIIlrN+9AeaQDkF6Qw2AAbjDIVkoBshmjBkNZowaPGgwDowbDAX0NBhV5lBaboKIXBuAGvwMW9CAJkK3kYJDD3mEr6KkNaGTw//8ANIIsitqoG9gAAAAASUVORK5CYII=" InformativeScreenshot="fb867ea8e49ac3052d925895be5cc44a.png" Reference="wDbVrwCpcUa5WxKMRE0Bcg/ZSA1W-E530-VxF-jV71OzA" ScopeSelectorArgument="&lt;html app='msedge.exe' title='JR20401 Statewide Central Purchasing Manager - Workday' /&gt;" SearchSteps="FuzzySelector" Version="V2" Visibility="Interactive">
                   <uix:TargetAnchorable.Anchors>
                     <scg:List x:TypeArguments="uix:ITarget" Capacity="1">
@@ -193,8 +258,14 @@
                     </scg:List>
                   </uix:TargetAnchorable.Anchors>
                 </uix:TargetAnchorable>
-              </uix:NGetAttributeGeneric.Target>
-            </uix:NGetAttributeGeneric>
+              </uix:NCheckState.Target>
+              <sap:WorkflowViewStateService.ViewState>
+                <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                  <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+                  <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                </scg:Dictionary>
+              </sap:WorkflowViewStateService.ViewState>
+            </uix:NCheckState>
             <If Condition="[boolEmployeeEnabled=False]" DisplayName="If checkbox disabled" sap:VirtualizedContainerService.HintSize="954,427" sap2010:WorkflowViewState.IdRef="If_1">
               <sap:WorkflowViewStateService.ViewState>
                 <scg:Dictionary x:TypeArguments="x:String, x:Object">
@@ -232,7 +303,7 @@
                 </Sequence>
               </If.Else>
             </If>
-            <uix:NClick ActivateBefore="True" ClickType="Single" DisplayName="Click 'Move Forward' - Offer" sap:VirtualizedContainerService.HintSize="954,157" sap2010:WorkflowViewState.IdRef="NClick_20" KeyModifiers="None" MouseButton="Left" ScopeIdentifier="b19c4cf9-5d80-48b2-b7f6-62067aaa767e" Version="V3">
+            <uix:NClick ActivateBefore="True" ClickType="Single" DelayBefore="[Convert.ToDouble(in_Config(&quot;DelayTimeXS&quot;).ToString)]" DisplayName="Click 'Move Forward' - Offer" sap:VirtualizedContainerService.HintSize="954,157" sap2010:WorkflowViewState.IdRef="NClick_20" KeyModifiers="None" MouseButton="Left" ScopeIdentifier="b19c4cf9-5d80-48b2-b7f6-62067aaa767e" Version="V3">
               <uix:NClick.Target>
                 <uix:TargetAnchorable BrowserURL="https://impl.workday.com/okgov2/d/inst/1$5303/5303$18770.htmld#TABINDEX=1&amp;SUBTABINDEX=0" ContentHash="BFpwfNl0hki70Ng6d4VERQ" DesignTimeRectangle="399, 999, 89, 20" DesignTimeScaleFactor="1" ElementType="Text" FriendlyName="'Move Forward'" FullSelectorArgument="&lt;webctrl aaname='Move Forward' class='WILN' tag='SPAN' /&gt;" FuzzySelectorArgument="&lt;webctrl aaname='Move Forward' tag='SPAN' check:innerText='Move Forward' /&gt;" Guid="a43427a4-a314-4fbf-8e5d-1001bff1f445" ImageBase64="iVBORw0KGgoAAAANSUhEUgAAAF0AAAAYCAYAAACY5PEcAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAAOoSURBVGhD7ZbbS1VBFMb7a3zvD+g16Dl6CKKnIIqICCLqoctr0UtEEBQUVERCRiUWaZZmGqVlaRfvaaZ5PanHoyd1Nb+zXO7ttDtnS+j2YQ9+bGfNrDVrvvlmzdkiN8okxcYiJT0BpKQngJT0BJCSngBS0tcbHXel0Pgu2wLS64+J5Gd0wkBt4GT4eEVkMa9ovfT3+HohnJffQhvZtIhN+sx3kcpdgSMYadaxpEjP/hTprliNl8ejfTYTYpH+2wFiUbaN1R0Vmc84+3xypGc6o8c3O2KRnh1SgoffBI5fbyvho+9Xk85tYB42Wn7Kzb0jcmur+iwtivRW6txHO0WmB0Ry4yK1h0QaTor86nVOS+5vQWTsg8jjPcGahlKkl28T+fbUiWVWc+BLHzvj+GGb7tc9DDWJLMyJ/Hil46/PuvHsv/ttV13OY9F5+rFbL4s8O+D21a3z4QU+aUVJJ9B4mxKPwiu2a5DssKv1NQHpEEsCJDLSItLzQEml//lmcDvwJcbbc26zOT2k2oO6EdbrdwQN1mtc4hHXcgrn5TfyebJXc+JwJzu05PCljx1/9kMjxni7SPt19Z3q07wQBc1Kame55tJ2TaTpjCPV+c2O6J45MGKbIP3Y7y6KTHwJOCH23ITOKUl64dF0J4dabWEeV07fSIdUlG3JE8NUwsL0eQfy01p7ScB8uQ0owW4BREMW8YhrOYGVG+jV9E+OPOaiJA6wZr/O50sfe9XuZTU6/4YTQUzLq/GU5o846CMMxuYmRZ4fVkWTO4cbzoWY9P3YUZzEKi8EYhHUgEoH6zQw5IdJB/xv1xCYn23YfvF0OZJIxNSET1RjffKweH5eYXuxMfp2gIX/vbjcRPLqq9J5HGJuVG8cuSMAhLBSupx/uNl6fuyWC6tLF4hNOn2UTQAUYCVirUoPHwL2/mq1d93Ta4rSWdfw4khQiw1+XmFwsHGU7pOOilEz74upmpLBPG54z0Odx+FYOeFN8nPxY/+X0ukbgSxKmcEWJr1UTbe4HB6NWMTExnUsXGm3HjUd34w7WOri/R2BLyhGOohT08PEACtnNN4vbHYrw3laGSQGsRGT9aNi+5ysqabT56RQuCkBW5h0+sV+vVhce0Dttpi98bS++iTIRqjZzeeDcUMp0uP8evFJBxASFpTdEISDqrEhAMgjR8AYe7RHPCp29T5nd3u1Xy+ZLv1Gkp5iw5CSngBS0hNASnoCSElPACnpCSAlPQGkpG84yuQPGm8Qd4r1xd0AAAAASUVORK5CYII=" InformativeScreenshot="c1e95704e5722d5cfa70172c1b668c85.png" Reference="uK6Q7vtFLkuCzEyUGdRLAw/InITKP8vD02CVrSWacJOLQ" ScopeSelectorArgument="&lt;html app='msedge.exe' title='JR20401 Statewide Central Purchasing Manager - Workday' /&gt;" SearchSteps="FuzzySelector" Version="V2" Visibility="Interactive">
                   <uix:TargetAnchorable.Anchors>
@@ -255,7 +326,7 @@
               </uix:NTypeInto.Target>
             </uix:NTypeInto>
             <uix:NKeyboardShortcuts ActivateBefore="True" ClickBeforeMode="None" DelayAfter="[Cdbl(in_Config(&quot;DelayTimeXS&quot;).ToString)]" DelayBefore="[Cdbl(in_Config(&quot;DelayTimeXS&quot;).ToString)]" DisplayName="Keyboard Shortcuts - ENTER - Offer" sap:VirtualizedContainerService.HintSize="954,179" sap2010:WorkflowViewState.IdRef="NKeyboardShortcuts_1" InteractionMode="SameAsCard" Shortcuts="[d(hk)][k(enter)][u(hk)]" Version="V3" />
-            <uix:NCheckState DisplayName="Check App State 'No Matches Found' - Offer" sap:VirtualizedContainerService.HintSize="954,475" sap2010:WorkflowViewState.IdRef="NCheckState_1" ScopeIdentifier="b19c4cf9-5d80-48b2-b7f6-62067aaa767e" Timeout="[Cdbl(in_Config(&quot;DelayTimeXS&quot;).ToString)]" Version="V3">
+            <uix:NCheckState DisplayName="Check App State 'No Matches Found' - Offer" sap:VirtualizedContainerService.HintSize="954,52" sap2010:WorkflowViewState.IdRef="NCheckState_1" ScopeIdentifier="b19c4cf9-5d80-48b2-b7f6-62067aaa767e" Timeout="[Cdbl(in_Config(&quot;DelayTimeXS&quot;).ToString)]" Version="V3">
               <uix:NCheckState.IfExists>
                 <Sequence DisplayName="No Matches Found - Offer" sap:VirtualizedContainerService.HintSize="450,205" sap2010:WorkflowViewState.IdRef="Sequence_14">
                   <sap:WorkflowViewStateService.ViewState>
@@ -281,7 +352,7 @@
               </uix:NCheckState.Target>
               <sap:WorkflowViewStateService.ViewState>
                 <scg:Dictionary x:TypeArguments="x:String, x:Object">
-                  <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                  <x:Boolean x:Key="IsExpanded">False</x:Boolean>
                   <x:Boolean x:Key="IsPinned">False</x:Boolean>
                 </scg:Dictionary>
               </sap:WorkflowViewStateService.ViewState>
@@ -297,8 +368,8 @@
                 </uix:TargetAnchorable>
               </uix:NClick.Target>
             </uix:NClick>
-            <ui:LogMessage DisplayName="Move Forward to hire stage Log Message" sap:VirtualizedContainerService.HintSize="954,143" sap2010:WorkflowViewState.IdRef="LogMessage_5" Level="[UiPath.Core.Activities.LogLevel.Trace]" Message="[&quot;Moving forward candidate to &quot;+in_strHireStage]" />
-            <uix:NClick ActivateBefore="True" ClickType="Single" DisplayName="Click 'All Active Candidates'" sap:VirtualizedContainerService.HintSize="954,157" sap2010:WorkflowViewState.IdRef="NClick_26" KeyModifiers="None" MouseButton="Left" ScopeIdentifier="b19c4cf9-5d80-48b2-b7f6-62067aaa767e" Version="V3">
+            <ui:LogMessage DisplayName="Move Forward to hire stage Log Message" sap:VirtualizedContainerService.HintSize="954,141" sap2010:WorkflowViewState.IdRef="LogMessage_5" Level="[UiPath.Core.Activities.LogLevel.Trace]" Message="[&quot;Moving forward candidate to &quot;+in_strHireStage]" />
+            <uix:NClick ActivateBefore="True" ClickType="Single" DelayAfter="[Convert.ToDouble(in_Config(&quot;DelayTimeSmall&quot;).ToString)]" DisplayName="Click 'All Active Candidates'" sap:VirtualizedContainerService.HintSize="954,157" sap2010:WorkflowViewState.IdRef="NClick_26" KeyModifiers="None" MouseButton="Left" ScopeIdentifier="b19c4cf9-5d80-48b2-b7f6-62067aaa767e" Version="V3">
               <uix:NClick.Target>
                 <uix:TargetAnchorable BrowserURL="https://impl.workday.com/okgov2/d/inst/1$14180/5303$19713.htmld#TABINDEX=1&amp;SUBTABINDEX=0" ContentHash="pn2wj1Ahd0W0WQnZRF1O1w" DesignTimeRectangle="373, 546, 198, 40" DesignTimeScaleFactor="1" ElementType="Button" FriendlyName="'All Active Candidates'" FullSelectorArgument="&lt;webctrl aria-label='All Active Candidates 9423!CM9JEgoKBggEENucARIAEiQKBggEEO_cARIaQ*' tag='BUTTON' type='button' /&gt;" FuzzySelectorArgument="&lt;webctrl tag='BUTTON' type='button' aaname='All Active Candidates' check:innerText='All Active Candidates' /&gt;" Guid="ff20b126-6426-4c06-b09d-f8dd6fdfeca7" ImageBase64="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" InformativeScreenshot="40cb8cf42f2df9d99dec1ab59a016634.png" Reference="wDbVrwCpcUa5WxKMRE0Bcg/cPME5LD0uUewuERoGg4sRQ" ScopeSelectorArgument="&lt;html app='msedge.exe' title='JR21479 Administrative Programs Ofcr - Workday' /&gt;" SearchSteps="FuzzySelector" Version="V2" Visibility="Interactive">
                   <uix:TargetAnchorable.Anchors>
@@ -309,8 +380,38 @@
                 </uix:TargetAnchorable>
               </uix:NClick.Target>
             </uix:NClick>
-            <uix:NGetAttributeGeneric x:TypeArguments="x:Boolean" Attribute="checked" DisplayName="Get Attribute 'Employee Checkbox' - Hire" sap:VirtualizedContainerService.HintSize="954,207" sap2010:WorkflowViewState.IdRef="NGetAttributeGeneric`1_3" Result="[boolEmployeeEnabled]" ScopeIdentifier="b19c4cf9-5d80-48b2-b7f6-62067aaa767e" Version="V3">
-              <uix:NGetAttributeGeneric.Target>
+            <uix:NCheckState DisplayName="Check App State Employee Checkbox -Hire" sap:VirtualizedContainerService.HintSize="954,539" sap2010:WorkflowViewState.IdRef="NCheckState_5" ScopeIdentifier="b19c4cf9-5d80-48b2-b7f6-62067aaa767e" Timeout="[Cdbl(in_Config(&quot;DelayTimeSmall&quot;).ToString)]" Version="V3">
+              <uix:NCheckState.IfExists>
+                <Sequence DisplayName="Employee Checkbox found - Hire" sap:VirtualizedContainerService.HintSize="450,322" sap2010:WorkflowViewState.IdRef="Sequence_22">
+                  <sap:WorkflowViewStateService.ViewState>
+                    <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                      <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                    </scg:Dictionary>
+                  </sap:WorkflowViewStateService.ViewState>
+                  <uix:NGetAttributeGeneric x:TypeArguments="x:Boolean" Attribute="checked" DisplayName="Get Attribute 'Employee Checkbox' - Hire" sap:VirtualizedContainerService.HintSize="388,207" sap2010:WorkflowViewState.IdRef="NGetAttributeGeneric`1_6" Result="[boolEmployeeEnabled]" ScopeIdentifier="b19c4cf9-5d80-48b2-b7f6-62067aaa767e" Version="V3">
+                    <uix:NGetAttributeGeneric.Target>
+                      <uix:TargetAnchorable BrowserURL="https://impl.workday.com/okgov2/d/inst/1$5303/5303$18770.htmld#TABINDEX=1&amp;SUBTABINDEX=0" ContentHash="tmyEWJhjgkKLs66Bdo-CsQ" DesignTimeRectangle="399, 641, 18, 18" DesignTimeScaleFactor="1" ElementType="CheckBox" FriendlyName="'Employee Checkbox'" FullSelectorArgument="&lt;webctrl class='lockedTable' tag='TABLE' /&gt;&lt;webctrl class='WKJF' parentid='wd-CompositeWidget-NO_METADATA_ID-uid322' tableRow='2' tag='DIV' /&gt;" FuzzySelectorArgument="&lt;webctrl class='lockedTable' tag='TABLE' /&gt;&lt;webctrl class='WKJF' tag='DIV' /&gt;" Guid="110d944f-c1d7-4b2b-828d-a4281a117d1c" ImageBase64="iVBORw0KGgoAAAANSUhEUgAAABYAAAAWCAYAAADEtGw7AAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAABySURBVEhLY/hPI0B7g99/+Pi/f/qC/9Wt/WThvunz/79//xFqGpLBIIlrN+9AeaQDkF6Qw2AAbjDIVkoBshmjBkNZowaPGgwDowbDAX0NBhV5lBaboKIXBuAGvwMW9CAJkK3kYJDD3mEr6KkNaGTw//8ANIIsitqoG9gAAAAASUVORK5CYII=" InformativeScreenshot="fb867ea8e49ac3052d925895be5cc44a.png" Reference="wDbVrwCpcUa5WxKMRE0Bcg/ZSA1W-E530-VxF-jV71OzA" ScopeSelectorArgument="&lt;html app='msedge.exe' title='JR20401 Statewide Central Purchasing Manager - Workday' /&gt;" SearchSteps="FuzzySelector" Version="V2" Visibility="Interactive">
+                        <uix:TargetAnchorable.Anchors>
+                          <scg:List x:TypeArguments="uix:ITarget" Capacity="1">
+                            <uix:Target DesignTimeRectangle="458, 641, 65, 32" ElementType="Text" FriendlyName="'Employee Checkbox'" FullSelectorArgument="&lt;webctrl class='lockedTable' tag='TABLE' /&gt;&lt;webctrl id='promptOption-gwt-uid-322' tableRow='2' tag='DIV' /&gt;" FuzzySelectorArgument="[string.Format(&quot;&lt;webctrl class='lockedTable' tag='TABLE' /&gt;&lt;webctrl tag='DIV' aaname='{0}*' check:innerText='{0}*' /&gt;&quot;, in_strEmployeeName)]" ImageBase64="iVBORw0KGgoAAAANSUhEUgAAAEUAAAAkCAYAAADfJffWAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAAU3SURBVGhD7Zi/SyNNGMf9L1JaWlpapkxpaXUINmkEsTHFNWkkkCZN4LDRwkK7FBYRyS8WMYgXwiKsoqBBkHCKLIRgzCF873lmZjezu5P15Dx4vXe/sCS7Mzs/PvvMM88zM0gUUQLFoASKQQkUgz4Aygu6BxYWy5foqyefXRMoDzYWvxxhRrsWNs/Qdl9Fcb/eomct7D2IW00DVEtHSK13cEF3st4RCo4s9eWcBtr2rkg9bxzbN+qBWVP7+QBFoKS3ztG0r9C0TpFZocFlT9Eex0EJ6i0oywfUNrevrgtXlXv6L0JZrD+pB8Dt4aRjD0pu9xhphrXSwrfrZ6r1hL08f3WCR3dvQTFOwr1EYYPboP5LFtL060MZ3uHbZg2z9CyVbaFkS4rhfkbXHSyvyjbm8p6F36BA9/PlU7/9dMnBrXxlqmKgDNHcqlFDDezcTwaR2XbQbHewxGDy5+RH3gclYCm9ARXI5Tez0kDBukJlu4EU1ZNQqKzIZfQB2lfYK/N4LFSIS6Af10GWxpPKd1C1beQYzuY5XAVlZvUYO/77Uz6MplifwleaBjeiYjkIb/m8oFnmcgbxPiiBS0z8Bjn+v6UsQ18+7jmW6H/6QLlwVZZtDwL9yP/y47GkhVuoDhUUz+rUGPTVYNJ0n2L3aL2/qMIwFKC9zRN7P5TI87CF6lC8/6GL60ahhOvxWD8IyrQX/hoUz8RjLGVhtwd3OJCX68Idvxqg1FByVJ0h1XGHZOGfBEp09/kdnyLLmu0usustVGgMgX48n/L1FBVqs3pIm4Hwd58ESvgS9Wjtl9TukCkfTyyFNbwnB9kQu8/MSg3LuzfkQKP9jHo21lQbs6uW2qX+FEoiXwkUgxIoBiVQDEqgGJRAMSiBYlAUyoODtaKtMsmfuLVOkMmG93+l8Q90rS5yxQbmvFhASc9aZzdOUH2Q5zJSP9G3z1S5jG+CesXtQSMUUzyiSvHKnMjQa1javxM5mdQL3B4lfPsn1Kblx1JCLsVA+ZoMCCkIXKvfy/euz7BIY9Zm4ysIZdxDgQa61h6KW7dticbSpS5ln45I4TmcLjicE6nAiAYpAisdyvgKuXDWutFVoGnCFHiJdosdikD70YGpCFWHcnvIkGrI1Sli3Zfv577L3MwL5GbFO5MAE7hDifsOZMmUDlzzB3oUQefC7p2sqikARXQsUm4WNcgW4k+GNL7EGgMoXxLtAfr3fJ4SihpZKnLM2YZTO8pnlqnMNBipZ5GBpwJQVNT81bNg+nhcrvKlkfuo5UMalPuuOJtZPHyU9+Govdehch2ilAalj531Iyx5L6hkLDBZo6JQIoNTkDgkZ+vjr7Vcaqml4B1WKZFZL/C7dT0kD/ehIOXtwLlwpN+QXEv2LS2FJeecOfyh7qUmUBQEP2fRs9VYvQ+KLCNLEUtSLa2VEzTHXFFOdp7aGgXylA+AQvPhg7GUSBQ9vaK9Re0UncASnkARELQG/5KlhMuk5ciy0fdjWjYWqjzCj4TCh03Ct5BTl+7Sl0hsQ+1Mh/KmT/EUhRLnU8xQ2KSfUOGJcluhq+DE+xRPZijSofIy3QvsgFLxUMLLh8SdTN99PBmgxO0+ameZL2rLZ/UMXdpW+4521nIgLYhPAvnEP2738RSFooDQe1n9HMd5VB/1reVDrAKOVugZF/WYOEXIAIUUF6foZx9zkRhGKbB8WHFxilQEiucXw5dvGW85WlJwS/4fiLbsTGS5haDI4I1M1A55o39Svxm8CQXC/H9YHOZvXRpXRRRKogSKSQmUiIBfYmdIffpPOe0AAAAASUVORK5CYII=" SearchSteps="FuzzySelector" />
+                          </scg:List>
+                        </uix:TargetAnchorable.Anchors>
+                      </uix:TargetAnchorable>
+                    </uix:NGetAttributeGeneric.Target>
+                  </uix:NGetAttributeGeneric>
+                </Sequence>
+              </uix:NCheckState.IfExists>
+              <uix:NCheckState.IfNotExists>
+                <Sequence DisplayName="Employee Checkbox not  found - Hire" sap:VirtualizedContainerService.HintSize="450,205" sap2010:WorkflowViewState.IdRef="Sequence_23">
+                  <sap:WorkflowViewStateService.ViewState>
+                    <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                      <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                    </scg:Dictionary>
+                  </sap:WorkflowViewStateService.ViewState>
+                  <Throw DisplayName="Throw Employee Checkbox not found-Hire" Exception="[new Exception(in_Config(&quot;SE_7&quot;).ToString+&quot; : &quot;+in_strOfferStage)]" sap:VirtualizedContainerService.HintSize="388,90" sap2010:WorkflowViewState.IdRef="Throw_5" />
+                </Sequence>
+              </uix:NCheckState.IfNotExists>
+              <uix:NCheckState.Target>
                 <uix:TargetAnchorable BrowserURL="https://impl.workday.com/okgov2/d/inst/1$5303/5303$18770.htmld#TABINDEX=1&amp;SUBTABINDEX=0" ContentHash="tmyEWJhjgkKLs66Bdo-CsQ" DesignTimeRectangle="399, 641, 18, 18" DesignTimeScaleFactor="1" ElementType="CheckBox" FriendlyName="'Employee Checkbox'" FullSelectorArgument="&lt;webctrl class='lockedTable' tag='TABLE' /&gt;&lt;webctrl class='WKJF' parentid='wd-CompositeWidget-NO_METADATA_ID-uid322' tableRow='2' tag='DIV' /&gt;" FuzzySelectorArgument="&lt;webctrl class='lockedTable' tag='TABLE' /&gt;&lt;webctrl class='WKJF' tag='DIV' /&gt;" Guid="110d944f-c1d7-4b2b-828d-a4281a117d1c" ImageBase64="iVBORw0KGgoAAAANSUhEUgAAABYAAAAWCAYAAADEtGw7AAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAABySURBVEhLY/hPI0B7g99/+Pi/f/qC/9Wt/WThvunz/79//xFqGpLBIIlrN+9AeaQDkF6Qw2AAbjDIVkoBshmjBkNZowaPGgwDowbDAX0NBhV5lBaboKIXBuAGvwMW9CAJkK3kYJDD3mEr6KkNaGTw//8ANIIsitqoG9gAAAAASUVORK5CYII=" InformativeScreenshot="fb867ea8e49ac3052d925895be5cc44a.png" Reference="wDbVrwCpcUa5WxKMRE0Bcg/ZSA1W-E530-VxF-jV71OzA" ScopeSelectorArgument="&lt;html app='msedge.exe' title='JR20401 Statewide Central Purchasing Manager - Workday' /&gt;" SearchSteps="FuzzySelector" Version="V2" Visibility="Interactive">
                   <uix:TargetAnchorable.Anchors>
                     <scg:List x:TypeArguments="uix:ITarget" Capacity="1">
@@ -318,8 +419,14 @@
                     </scg:List>
                   </uix:TargetAnchorable.Anchors>
                 </uix:TargetAnchorable>
-              </uix:NGetAttributeGeneric.Target>
-            </uix:NGetAttributeGeneric>
+              </uix:NCheckState.Target>
+              <sap:WorkflowViewStateService.ViewState>
+                <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                  <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                  <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                </scg:Dictionary>
+              </sap:WorkflowViewStateService.ViewState>
+            </uix:NCheckState>
             <If Condition="[boolEmployeeEnabled=False]" DisplayName="If checkbox disabled - Hire" sap:VirtualizedContainerService.HintSize="954,427" sap2010:WorkflowViewState.IdRef="If_2">
               <sap:WorkflowViewStateService.ViewState>
                 <scg:Dictionary x:TypeArguments="x:String, x:Object">
@@ -357,7 +464,7 @@
                 </Sequence>
               </If.Else>
             </If>
-            <uix:NClick ActivateBefore="True" ClickType="Single" DisplayName="Click 'Move Forward' - Hire" sap:VirtualizedContainerService.HintSize="954,157" sap2010:WorkflowViewState.IdRef="NClick_23" KeyModifiers="None" MouseButton="Left" ScopeIdentifier="b19c4cf9-5d80-48b2-b7f6-62067aaa767e" Version="V3">
+            <uix:NClick ActivateBefore="True" ClickType="Single" DelayBefore="[Convert.ToDouble(in_Config(&quot;DelayTimeXS&quot;).ToString)]" DisplayName="Click 'Move Forward' - Hire" sap:VirtualizedContainerService.HintSize="954,157" sap2010:WorkflowViewState.IdRef="NClick_23" KeyModifiers="None" MouseButton="Left" ScopeIdentifier="b19c4cf9-5d80-48b2-b7f6-62067aaa767e" Version="V3">
               <uix:NClick.Target>
                 <uix:TargetAnchorable BrowserURL="https://impl.workday.com/okgov2/d/inst/1$5303/5303$18770.htmld#TABINDEX=1&amp;SUBTABINDEX=0" ContentHash="BFpwfNl0hki70Ng6d4VERQ" DesignTimeRectangle="399, 999, 89, 20" DesignTimeScaleFactor="1" ElementType="Text" FriendlyName="'Move Forward'" FullSelectorArgument="&lt;webctrl aaname='Move Forward' class='WILN' tag='SPAN' /&gt;" FuzzySelectorArgument="&lt;webctrl aaname='Move Forward' tag='SPAN' check:innerText='Move Forward' /&gt;" Guid="a43427a4-a314-4fbf-8e5d-1001bff1f445" ImageBase64="iVBORw0KGgoAAAANSUhEUgAAAF0AAAAYCAYAAACY5PEcAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAAOoSURBVGhD7ZbbS1VBFMb7a3zvD+g16Dl6CKKnIIqICCLqoctr0UtEEBQUVERCRiUWaZZmGqVlaRfvaaZ5PanHoyd1Nb+zXO7ttDtnS+j2YQ9+bGfNrDVrvvlmzdkiN8okxcYiJT0BpKQngJT0BJCSngBS0tcbHXel0Pgu2wLS64+J5Gd0wkBt4GT4eEVkMa9ovfT3+HohnJffQhvZtIhN+sx3kcpdgSMYadaxpEjP/hTprliNl8ejfTYTYpH+2wFiUbaN1R0Vmc84+3xypGc6o8c3O2KRnh1SgoffBI5fbyvho+9Xk85tYB42Wn7Kzb0jcmur+iwtivRW6txHO0WmB0Ry4yK1h0QaTor86nVOS+5vQWTsg8jjPcGahlKkl28T+fbUiWVWc+BLHzvj+GGb7tc9DDWJLMyJ/Hil46/PuvHsv/ttV13OY9F5+rFbL4s8O+D21a3z4QU+aUVJJ9B4mxKPwiu2a5DssKv1NQHpEEsCJDLSItLzQEml//lmcDvwJcbbc26zOT2k2oO6EdbrdwQN1mtc4hHXcgrn5TfyebJXc+JwJzu05PCljx1/9kMjxni7SPt19Z3q07wQBc1Kame55tJ2TaTpjCPV+c2O6J45MGKbIP3Y7y6KTHwJOCH23ITOKUl64dF0J4dabWEeV07fSIdUlG3JE8NUwsL0eQfy01p7ScB8uQ0owW4BREMW8YhrOYGVG+jV9E+OPOaiJA6wZr/O50sfe9XuZTU6/4YTQUzLq/GU5o846CMMxuYmRZ4fVkWTO4cbzoWY9P3YUZzEKi8EYhHUgEoH6zQw5IdJB/xv1xCYn23YfvF0OZJIxNSET1RjffKweH5eYXuxMfp2gIX/vbjcRPLqq9J5HGJuVG8cuSMAhLBSupx/uNl6fuyWC6tLF4hNOn2UTQAUYCVirUoPHwL2/mq1d93Ta4rSWdfw4khQiw1+XmFwsHGU7pOOilEz74upmpLBPG54z0Odx+FYOeFN8nPxY/+X0ukbgSxKmcEWJr1UTbe4HB6NWMTExnUsXGm3HjUd34w7WOri/R2BLyhGOohT08PEACtnNN4vbHYrw3laGSQGsRGT9aNi+5ysqabT56RQuCkBW5h0+sV+vVhce0Dttpi98bS++iTIRqjZzeeDcUMp0uP8evFJBxASFpTdEISDqrEhAMgjR8AYe7RHPCp29T5nd3u1Xy+ZLv1Gkp5iw5CSngBS0hNASnoCSElPACnpCSAlPQGkpG84yuQPGm8Qd4r1xd0AAAAASUVORK5CYII=" InformativeScreenshot="c1e95704e5722d5cfa70172c1b668c85.png" Reference="uK6Q7vtFLkuCzEyUGdRLAw/InITKP8vD02CVrSWacJOLQ" ScopeSelectorArgument="&lt;html app='msedge.exe' title='JR20401 Statewide Central Purchasing Manager - Workday' /&gt;" SearchSteps="FuzzySelector" Version="V2" Visibility="Interactive">
                   <uix:TargetAnchorable.Anchors>
@@ -422,7 +529,7 @@
                 </uix:TargetAnchorable>
               </uix:NClick.Target>
             </uix:NClick>
-            <ui:LogMessage DisplayName="Workflow end Log Message" sap:VirtualizedContainerService.HintSize="954,143" sap2010:WorkflowViewState.IdRef="LogMessage_6" Level="[UiPath.Core.Activities.LogLevel.Trace]" Message="[&quot;Candidate moved forward to &quot;+in_strHireStage]" />
+            <ui:LogMessage DisplayName="Workflow end Log Message" sap:VirtualizedContainerService.HintSize="954,141" sap2010:WorkflowViewState.IdRef="LogMessage_6" Level="[UiPath.Core.Activities.LogLevel.Trace]" Message="[&quot;Candidate moved forward to &quot;+in_strHireStage]" />
           </Sequence>
         </ActivityAction>
       </uix:NApplicationCard.Body>

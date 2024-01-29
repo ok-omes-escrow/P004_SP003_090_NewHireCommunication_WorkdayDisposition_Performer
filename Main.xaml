@@ -251,9 +251,9 @@
             </scg:Dictionary>
           </sap:WorkflowViewStateService.ViewState>
           <Transition.To>
-            <State x:Name="__ReferenceID2" sap2010:Annotation.AnnotationText="Process a single transaction. &#xA;The result of the processing can be: 1) Success, 2) Business Exception, 3) System Exception. &#xA;In the case of a system exception, the transaction can be automatically retried." DisplayName="Process Transaction" sap:VirtualizedContainerService.HintSize="636,2769" sap2010:WorkflowViewState.IdRef="State_3">
+            <State x:Name="__ReferenceID2" sap2010:Annotation.AnnotationText="Process a single transaction. &#xA;The result of the processing can be: 1) Success, 2) Business Exception, 3) System Exception. &#xA;In the case of a system exception, the transaction can be automatically retried." DisplayName="Process Transaction" sap:VirtualizedContainerService.HintSize="231,188" sap2010:WorkflowViewState.IdRef="State_3">
               <State.Entry>
-                <TryCatch DisplayName="Try to process transaction" sap:VirtualizedContainerService.HintSize="590,2297" sap2010:WorkflowViewState.IdRef="TryCatch_9">
+                <TryCatch DisplayName="Try to process transaction" sap:VirtualizedContainerService.HintSize="590,2747" sap2010:WorkflowViewState.IdRef="TryCatch_9">
                   <sap:WorkflowViewStateService.ViewState>
                     <scg:Dictionary x:TypeArguments="x:String, x:Object">
                       <x:Boolean x:Key="IsExpanded">True</x:Boolean>
@@ -340,15 +340,15 @@
                         <ActivityAction.Argument>
                           <DelegateInArgument x:TypeArguments="ui:BusinessRuleException" Name="Exception" />
                         </ActivityAction.Argument>
-                        <Sequence sap2010:Annotation.AnnotationText="Take screenshot and Send Email to business" DisplayName="Handle Business Exception" sap:VirtualizedContainerService.HintSize="500,1781" sap2010:WorkflowViewState.IdRef="Sequence_29">
+                        <Sequence sap2010:Annotation.AnnotationText="Take screenshot and Send Email to business" DisplayName="Handle Business Exception" sap:VirtualizedContainerService.HintSize="572,112" sap2010:WorkflowViewState.IdRef="Sequence_29">
                           <sap:WorkflowViewStateService.ViewState>
                             <scg:Dictionary x:TypeArguments="x:String, x:Object">
-                              <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                              <x:Boolean x:Key="IsExpanded">False</x:Boolean>
                               <x:Boolean x:Key="IsPinned">False</x:Boolean>
                               <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
                             </scg:Dictionary>
                           </sap:WorkflowViewStateService.ViewState>
-                          <Assign DisplayName="Set transaction status to BusinessRuleException" sap:VirtualizedContainerService.HintSize="438,82" sap2010:WorkflowViewState.IdRef="Assign_26">
+                          <Assign DisplayName="Set transaction status to BusinessRuleException" sap:VirtualizedContainerService.HintSize="510,82" sap2010:WorkflowViewState.IdRef="Assign_26">
                             <Assign.To>
                               <OutArgument x:TypeArguments="ui:BusinessRuleException">[BusinessException]</OutArgument>
                             </Assign.To>
@@ -356,16 +356,16 @@
                               <InArgument x:TypeArguments="ui:BusinessRuleException">[Exception]</InArgument>
                             </Assign.Value>
                           </Assign>
-                          <ui:ModifyText DisplayName="Modify Text - BE Email Subject" sap:VirtualizedContainerService.HintSize="438,343" sap2010:WorkflowViewState.IdRef="ModifyText_5" OutputText="[strExceptionEmailSubject]" SourceText="[Config(&quot;BusinessException_EmailSubject&quot;).ToString]">
+                          <ui:ModifyText DisplayName="Modify Text - BE Email Subject" sap:VirtualizedContainerService.HintSize="510,343" sap2010:WorkflowViewState.IdRef="ModifyText_5" OutputText="[strExceptionEmailSubject]" SourceText="[Config(&quot;BusinessException_EmailSubject&quot;).ToString]">
                             <ui:ModifyText.Body>
                               <ActivityAction>
-                                <Sequence DisplayName="Replace Process Name - BE" sap:VirtualizedContainerService.HintSize="449.99999999999994,262" sap2010:WorkflowViewState.IdRef="Sequence_49">
+                                <Sequence DisplayName="Replace Process Name - BE" sap:VirtualizedContainerService.HintSize="450,260" sap2010:WorkflowViewState.IdRef="Sequence_49">
                                   <sap:WorkflowViewStateService.ViewState>
                                     <scg:Dictionary x:TypeArguments="x:String, x:Object">
                                       <x:Boolean x:Key="IsExpanded">True</x:Boolean>
                                     </scg:Dictionary>
                                   </sap:WorkflowViewStateService.ViewState>
-                                  <ucat:FindAndReplaceTextModification DisplayName="Find and replace process name - BE" sap:VirtualizedContainerService.HintSize="334,149" sap2010:WorkflowViewState.IdRef="FindAndReplaceTextModification_9" MatchCase="True" ReplaceText="[Config(&quot;logF_BusinessProcessName&quot;).ToString]" SearchText="&lt;ProcessName&gt;" />
+                                  <ucat:FindAndReplaceTextModification DisplayName="Find and replace exception detail - BE" sap:VirtualizedContainerService.HintSize="334,149" sap2010:WorkflowViewState.IdRef="FindAndReplaceTextModification_9" MatchCase="True" ReplaceText="[BusinessException.Message]" SearchText="&lt;ExceptionDetail&gt;" />
                                 </Sequence>
                               </ActivityAction>
                             </ui:ModifyText.Body>
@@ -376,7 +376,7 @@
                               </scg:Dictionary>
                             </sap:WorkflowViewStateService.ViewState>
                           </ui:ModifyText>
-                          <ui:ModifyText DisplayName="Modify Text - BE Email Body" sap:VirtualizedContainerService.HintSize="438,661" sap2010:WorkflowViewState.IdRef="ModifyText_6" OutputText="[strExceptionEmailBody]" SourceText="[Config(&quot;BusinessException_EmailBody&quot;).ToString]">
+                          <ui:ModifyText DisplayName="Modify Text - BE Email Body" sap:VirtualizedContainerService.HintSize="510,820" sap2010:WorkflowViewState.IdRef="ModifyText_6" OutputText="[strExceptionEmailBody]" SourceText="[Config(&quot;BusinessException_EmailBody&quot;).ToString]">
                             <ui:ModifyText.Body>
                               <ActivityAction>
                                 <Sequence DisplayName="Replace Value in BE Body" sap:VirtualizedContainerService.HintSize="449.99999999999994,644" sap2010:WorkflowViewState.IdRef="Sequence_50">
@@ -388,6 +388,7 @@
                                   <ucat:FindAndReplaceTextModification DisplayName="Find and replace Process Name - BE" sap:VirtualizedContainerService.HintSize="334,149" sap2010:WorkflowViewState.IdRef="FindAndReplaceTextModification_10" ReplaceText="[Config(&quot;logF_BusinessProcessName&quot;).ToString]" SearchText="&lt;ProcessName&gt;" />
                                   <ucat:FindAndReplaceTextModification DisplayName="Find and replace Time - BE" sap:VirtualizedContainerService.HintSize="334,149" sap2010:WorkflowViewState.IdRef="FindAndReplaceTextModification_11" ReplaceText="[Now.ToString(&quot;MM/dd/yyyy hh:mm tt&quot;)]" SearchText="&lt;MM/DD/YYYY HH:MM AM/PM&gt;" />
                                   <ucat:FindAndReplaceTextModification DisplayName="Find and replace BE message" sap:VirtualizedContainerService.HintSize="334,149" sap2010:WorkflowViewState.IdRef="FindAndReplaceTextModification_12" ReplaceText="[BusinessException.Message]" SearchText="&lt;BusinessException&gt;" />
+                                  <ucat:FindAndReplaceTextModification DisplayName="Find and replace HR Email - BE" sap:VirtualizedContainerService.HintSize="334,149" sap2010:WorkflowViewState.IdRef="FindAndReplaceTextModification_17" ReplaceText="[Config(&quot;HR_Email&quot;).ToString]" SearchText="&lt;HR Email&gt;" />
                                 </Sequence>
                               </ActivityAction>
                             </ui:ModifyText.Body>
@@ -398,64 +399,79 @@
                               </scg:Dictionary>
                             </sap:WorkflowViewStateService.ViewState>
                           </ui:ModifyText>
-                          <TryCatch DisplayName="Try Catch - Handle Business Exception" sap:VirtualizedContainerService.HintSize="438,52" sap2010:WorkflowViewState.IdRef="TryCatch_15">
+                          <TryCatch DisplayName="Try Catch - Handle Business Exception" sap:VirtualizedContainerService.HintSize="510,1076" sap2010:WorkflowViewState.IdRef="TryCatch_15">
                             <sap:WorkflowViewStateService.ViewState>
                               <scg:Dictionary x:TypeArguments="x:String, x:Object">
-                                <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+                                <x:Boolean x:Key="IsExpanded">True</x:Boolean>
                                 <x:Boolean x:Key="IsPinned">False</x:Boolean>
                               </scg:Dictionary>
                             </sap:WorkflowViewStateService.ViewState>
                             <TryCatch.Try>
-                              <Sequence DisplayName="Handle BE" sap:VirtualizedContainerService.HintSize="450,377" sap2010:WorkflowViewState.IdRef="Sequence_51">
+                              <Sequence DisplayName="Handle BE" sap:VirtualizedContainerService.HintSize="472,848" sap2010:WorkflowViewState.IdRef="Sequence_51">
                                 <sap:WorkflowViewStateService.ViewState>
                                   <scg:Dictionary x:TypeArguments="x:String, x:Object">
                                     <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                                    <x:Boolean x:Key="IsPinned">False</x:Boolean>
                                   </scg:Dictionary>
                                 </sap:WorkflowViewStateService.ViewState>
-                                <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="Take Screenshot - BE" sap:VirtualizedContainerService.HintSize="388,113" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_36" UnSafe="False" WorkflowFileName="Framework\TakeScreenshot.xaml">
-                                  <ui:InvokeWorkflowFile.Arguments>
-                                    <InArgument x:TypeArguments="x:String" x:Key="in_Folder">[Path.Combine(Config("RuntimeLocalFolderPath").ToString,Config("logF_BusinessProcessName").ToString)]</InArgument>
-                                    <InOutArgument x:TypeArguments="x:String" x:Key="io_FilePath">[strScreenshotFilePath]</InOutArgument>
-                                  </ui:InvokeWorkflowFile.Arguments>
-                                </ui:InvokeWorkflowFile>
-                                <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="Send BE Email" sap:VirtualizedContainerService.HintSize="388,113" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_39" UnSafe="False" WorkflowFileName="Email\SendEmail-O365.xaml">
-                                  <ui:InvokeWorkflowFile.Arguments>
-                                    <InArgument x:TypeArguments="x:String" x:Key="in_strAccount">
-                                      <VisualBasicValue x:TypeArguments="x:String" ExpressionText="Config(&quot;EmailAccount&quot;).ToString" />
-                                    </InArgument>
-                                    <InArgument x:TypeArguments="x:String" x:Key="in_strBody">
-                                      <VisualBasicValue x:TypeArguments="x:String" ExpressionText="strExceptionEmailBody" />
-                                    </InArgument>
-                                    <InArgument x:TypeArguments="x:String" x:Key="in_strSubject">
-                                      <VisualBasicValue x:TypeArguments="x:String" ExpressionText="strExceptionEmailSubject" />
-                                    </InArgument>
-                                    <InArgument x:TypeArguments="s:String[]" x:Key="in_arrToEmail">
-                                      <VisualBasicValue x:TypeArguments="s:String[]" ExpressionText="Config(&quot;BusinessExceptionEmail&quot;).ToString.Split(&quot;,&quot;c)" />
-                                    </InArgument>
-                                    <InArgument x:TypeArguments="scg:List(x:String)" x:Key="in_listAttachmentFiles">
-                                      <VisualBasicValue x:TypeArguments="scg:List(x:String)" ExpressionText="strScreenshotFilePath.Split(&quot;,&quot;c).ToList" />
-                                    </InArgument>
-                                    <InArgument x:TypeArguments="x:String" x:Key="in_strTenantIDAsset">
-                                      <VisualBasicValue x:TypeArguments="x:String" ExpressionText="Config(&quot;O365TenantID&quot;).ToString" />
-                                    </InArgument>
-                                    <InArgument x:TypeArguments="x:String" x:Key="in_strAppSecretAsset">
-                                      <VisualBasicValue x:TypeArguments="x:String" ExpressionText="Config(&quot;O365ApplicationSecret&quot;).ToString" />
-                                    </InArgument>
-                                    <InArgument x:TypeArguments="x:String" x:Key="in_strAppIDAsset">
-                                      <VisualBasicValue x:TypeArguments="x:String" ExpressionText="Config(&quot;O365AppID&quot;).ToString" />
-                                    </InArgument>
-                                    <InArgument x:TypeArguments="x:String" x:Key="in_strOrchestratorFolder">
-                                      <VisualBasicValue x:TypeArguments="x:String" ExpressionText="Config(&quot;OrchestratorFolder&quot;).ToString" />
-                                    </InArgument>
-                                    <InArgument x:TypeArguments="s:String[]" x:Key="in_arrCCEmail">
-                                      <VisualBasicValue x:TypeArguments="s:String[]" ExpressionText="Config(&quot;BE_EmailCC&quot;).ToString.Split(&quot;,&quot;c)" />
-                                    </InArgument>
-                                  </ui:InvokeWorkflowFile.Arguments>
-                                </ui:InvokeWorkflowFile>
+                                <If Condition="[BusinessException.Message.Trim = Config(&quot;BE_1&quot;).ToString.Trim.Replace(&quot;&lt;JR Number&gt;&quot;,TransactionItem.SpecificContent(&quot;JR Number&quot;).ToString)]" DisplayName="If BE in Workday" sap:VirtualizedContainerService.HintSize="410,737" sap2010:WorkflowViewState.IdRef="If_18">
+                                  <If.Then>
+                                    <Sequence sap:VirtualizedContainerService.HintSize="376,354" sap2010:WorkflowViewState.IdRef="Sequence_56">
+                                      <sap:WorkflowViewStateService.ViewState>
+                                        <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                          <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                                        </scg:Dictionary>
+                                      </sap:WorkflowViewStateService.ViewState>
+                                      <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="Take Screenshot - BE" sap:VirtualizedContainerService.HintSize="334,113" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_36" UnSafe="False" WorkflowFileName="Framework\TakeScreenshot.xaml">
+                                        <ui:InvokeWorkflowFile.Arguments>
+                                          <InArgument x:TypeArguments="x:String" x:Key="in_Folder">[Path.Combine(Config("RuntimeLocalFolderPath").ToString,Config("logF_BusinessProcessName").ToString)]</InArgument>
+                                          <InOutArgument x:TypeArguments="x:String" x:Key="io_FilePath">[strScreenshotFilePath]</InOutArgument>
+                                        </ui:InvokeWorkflowFile.Arguments>
+                                      </ui:InvokeWorkflowFile>
+                                      <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="Send BE Email with screenshot" sap:VirtualizedContainerService.HintSize="334,113" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_41" UnSafe="False" WorkflowFileName="Email\SendEmail-O365.xaml">
+                                        <ui:InvokeWorkflowFile.Arguments>
+                                          <InArgument x:TypeArguments="x:String" x:Key="in_strAccount">[Config("EmailAccount").ToString]</InArgument>
+                                          <InArgument x:TypeArguments="x:String" x:Key="in_strBody">[strExceptionEmailBody]</InArgument>
+                                          <InArgument x:TypeArguments="x:String" x:Key="in_strSubject">[strExceptionEmailSubject]</InArgument>
+                                          <InArgument x:TypeArguments="s:String[]" x:Key="in_arrToEmail">[Config("BusinessExceptionEmail").ToString.Split(","c)]</InArgument>
+                                          <InArgument x:TypeArguments="scg:List(x:String)" x:Key="in_listAttachmentFiles">[strScreenshotFilePath.Split(","c).ToList]</InArgument>
+                                          <InArgument x:TypeArguments="x:String" x:Key="in_strTenantIDAsset">[Config("O365TenantID").ToString]</InArgument>
+                                          <InArgument x:TypeArguments="x:String" x:Key="in_strAppSecretAsset">[Config("O365ApplicationSecret").ToString]</InArgument>
+                                          <InArgument x:TypeArguments="x:String" x:Key="in_strAppIDAsset">[Config("O365AppID").ToString]</InArgument>
+                                          <InArgument x:TypeArguments="x:String" x:Key="in_strOrchestratorFolder">[Config("OrchestratorFolder").ToString]</InArgument>
+                                          <InArgument x:TypeArguments="s:String[]" x:Key="in_arrCCEmail">[Config("BE_EmailCC").ToString.Split(","c)]</InArgument>
+                                        </ui:InvokeWorkflowFile.Arguments>
+                                      </ui:InvokeWorkflowFile>
+                                    </Sequence>
+                                  </If.Then>
+                                  <If.Else>
+                                    <Sequence sap:VirtualizedContainerService.HintSize="376,201" sap2010:WorkflowViewState.IdRef="Sequence_57">
+                                      <sap:WorkflowViewStateService.ViewState>
+                                        <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                          <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                                        </scg:Dictionary>
+                                      </sap:WorkflowViewStateService.ViewState>
+                                      <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="Send BE Email" sap:VirtualizedContainerService.HintSize="334,113" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_42" UnSafe="False" WorkflowFileName="Email\SendEmail-O365.xaml">
+                                        <ui:InvokeWorkflowFile.Arguments>
+                                          <InArgument x:TypeArguments="x:String" x:Key="in_strAccount">[Config("EmailAccount").ToString]</InArgument>
+                                          <InArgument x:TypeArguments="x:String" x:Key="in_strBody">[strExceptionEmailBody]</InArgument>
+                                          <InArgument x:TypeArguments="x:String" x:Key="in_strSubject">[strExceptionEmailSubject]</InArgument>
+                                          <InArgument x:TypeArguments="s:String[]" x:Key="in_arrToEmail">[Config("BusinessExceptionEmail").ToString.Split(","c)]</InArgument>
+                                          <InArgument x:TypeArguments="scg:List(x:String)" x:Key="in_listAttachmentFiles">[new List(of string)]</InArgument>
+                                          <InArgument x:TypeArguments="x:String" x:Key="in_strTenantIDAsset">[Config("O365TenantID").ToString]</InArgument>
+                                          <InArgument x:TypeArguments="x:String" x:Key="in_strAppSecretAsset">[Config("O365ApplicationSecret").ToString]</InArgument>
+                                          <InArgument x:TypeArguments="x:String" x:Key="in_strAppIDAsset">[Config("O365AppID").ToString]</InArgument>
+                                          <InArgument x:TypeArguments="x:String" x:Key="in_strOrchestratorFolder">[Config("OrchestratorFolder").ToString]</InArgument>
+                                          <InArgument x:TypeArguments="s:String[]" x:Key="in_arrCCEmail">[Config("BE_EmailCC").ToString.Split(","c)]</InArgument>
+                                        </ui:InvokeWorkflowFile.Arguments>
+                                      </ui:InvokeWorkflowFile>
+                                    </Sequence>
+                                  </If.Else>
+                                </If>
                               </Sequence>
                             </TryCatch.Try>
                             <TryCatch.Catches>
-                              <Catch x:TypeArguments="s:Exception" sap:VirtualizedContainerService.HintSize="454,21" sap2010:WorkflowViewState.IdRef="Catch`1_16">
+                              <Catch x:TypeArguments="s:Exception" sap:VirtualizedContainerService.HintSize="476,21" sap2010:WorkflowViewState.IdRef="Catch`1_16">
                                 <sap:WorkflowViewStateService.ViewState>
                                   <scg:Dictionary x:TypeArguments="x:String, x:Object">
                                     <x:Boolean x:Key="IsExpanded">False</x:Boolean>
@@ -471,7 +487,7 @@
                               </Catch>
                             </TryCatch.Catches>
                           </TryCatch>
-                          <TryCatch DisplayName="Try Catch Set Transaction Status (BRE)" sap:VirtualizedContainerService.HintSize="438,341" sap2010:WorkflowViewState.IdRef="TryCatch_11">
+                          <TryCatch DisplayName="Try Catch Set Transaction Status (BRE)" sap:VirtualizedContainerService.HintSize="510,341" sap2010:WorkflowViewState.IdRef="TryCatch_11">
                             <sap:WorkflowViewStateService.ViewState>
                               <scg:Dictionary x:TypeArguments="x:String, x:Object">
                                 <x:Boolean x:Key="IsExpanded">True</x:Boolean>
@@ -515,7 +531,7 @@
                         </Sequence>
                       </ActivityAction>
                     </Catch>
-                    <Catch x:TypeArguments="s:Exception" sap:VirtualizedContainerService.HintSize="556,2112" sap2010:WorkflowViewState.IdRef="Catch`1_10">
+                    <Catch x:TypeArguments="s:Exception" sap:VirtualizedContainerService.HintSize="556,2562" sap2010:WorkflowViewState.IdRef="Catch`1_10">
                       <sap:WorkflowViewStateService.ViewState>
                         <scg:Dictionary x:TypeArguments="x:String, x:Object">
                           <x:Boolean x:Key="IsExpanded">True</x:Boolean>
@@ -526,7 +542,7 @@
                         <ActivityAction.Argument>
                           <DelegateInArgument x:TypeArguments="s:Exception" Name="Exception" />
                         </ActivityAction.Argument>
-                        <Sequence sap2010:Annotation.AnnotationText="Take screenshot and Send Email to support in case of system exception" DisplayName="Handle System Exception Sequence" sap:VirtualizedContainerService.HintSize="550,2043" sap2010:WorkflowViewState.IdRef="Sequence_30">
+                        <Sequence sap2010:Annotation.AnnotationText="Take screenshot and Send Email to support in case of system exception" DisplayName="Handle System Exception Sequence" sap:VirtualizedContainerService.HintSize="550,2493" sap2010:WorkflowViewState.IdRef="Sequence_30">
                           <sap:WorkflowViewStateService.ViewState>
                             <scg:Dictionary x:TypeArguments="x:String, x:Object">
                               <x:Boolean x:Key="IsExpanded">True</x:Boolean>
@@ -542,7 +558,7 @@
                               <InArgument x:TypeArguments="s:Exception">[Exception]</InArgument>
                             </Assign.Value>
                           </Assign>
-                          <ui:ModifyText DisplayName="Modify Text - System Exception Email Subject" sap:VirtualizedContainerService.HintSize="488,52" sap2010:WorkflowViewState.IdRef="ModifyText_3" OutputText="[strExceptionEmailSubject]" SourceText="[Config(&quot;SystemException_EmailSubject&quot;).ToString]">
+                          <ui:ModifyText DisplayName="Modify Text - System Exception Email Subject" sap:VirtualizedContainerService.HintSize="488,343" sap2010:WorkflowViewState.IdRef="ModifyText_3" OutputText="[strExceptionEmailSubject]" SourceText="[Config(&quot;SystemException_EmailSubject&quot;).ToString]">
                             <ui:ModifyText.Body>
                               <ActivityAction>
                                 <Sequence DisplayName="Replace SE" sap:VirtualizedContainerService.HintSize="449.99999999999994,262" sap2010:WorkflowViewState.IdRef="Sequence_44">
@@ -551,18 +567,18 @@
                                       <x:Boolean x:Key="IsExpanded">True</x:Boolean>
                                     </scg:Dictionary>
                                   </sap:WorkflowViewStateService.ViewState>
-                                  <ucat:FindAndReplaceTextModification DisplayName="Find and replace process name - SE" sap:VirtualizedContainerService.HintSize="334,149" sap2010:WorkflowViewState.IdRef="FindAndReplaceTextModification_5" MatchCase="True" ReplaceText="[Config(&quot;logF_BusinessProcessName&quot;).ToString]" SearchText="&lt;ProcessName&gt;" />
+                                  <ucat:FindAndReplaceTextModification DisplayName="Find and replace exception detail - SE" sap:VirtualizedContainerService.HintSize="334,149" sap2010:WorkflowViewState.IdRef="FindAndReplaceTextModification_5" MatchCase="True" ReplaceText="[SystemException.Message]" SearchText="&lt;ExceptionDetail&gt;" />
                                 </Sequence>
                               </ActivityAction>
                             </ui:ModifyText.Body>
                             <sap:WorkflowViewStateService.ViewState>
                               <scg:Dictionary x:TypeArguments="x:String, x:Object">
-                                <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+                                <x:Boolean x:Key="IsExpanded">True</x:Boolean>
                                 <x:Boolean x:Key="IsPinned">False</x:Boolean>
                               </scg:Dictionary>
                             </sap:WorkflowViewStateService.ViewState>
                           </ui:ModifyText>
-                          <ui:ModifyText DisplayName="Modify Text - System Exception Email Body" sap:VirtualizedContainerService.HintSize="488,661" sap2010:WorkflowViewState.IdRef="ModifyText_4" OutputText="[strExceptionEmailBody]" SourceText="[Config(&quot;SystemException_EmailBody&quot;).ToString]">
+                          <ui:ModifyText DisplayName="Modify Text - System Exception Email Body" sap:VirtualizedContainerService.HintSize="488,820" sap2010:WorkflowViewState.IdRef="ModifyText_4" OutputText="[strExceptionEmailBody]" SourceText="[Config(&quot;SystemException_EmailBody&quot;).ToString]">
                             <ui:ModifyText.Body>
                               <ActivityAction>
                                 <Sequence DisplayName="Replace Value - SE Body" sap:VirtualizedContainerService.HintSize="449.99999999999994,644" sap2010:WorkflowViewState.IdRef="Sequence_45">
@@ -573,6 +589,7 @@
                                   </sap:WorkflowViewStateService.ViewState>
                                   <ucat:FindAndReplaceTextModification DisplayName="Find and replace Process Name - SE" sap:VirtualizedContainerService.HintSize="334,149" sap2010:WorkflowViewState.IdRef="FindAndReplaceTextModification_6" ReplaceText="[Config(&quot;logF_BusinessProcessName&quot;).ToString]" SearchText="&lt;ProcessName&gt;" />
                                   <ucat:FindAndReplaceTextModification DisplayName="Find and replace Time - SE" sap:VirtualizedContainerService.HintSize="334,149" sap2010:WorkflowViewState.IdRef="FindAndReplaceTextModification_7" ReplaceText="[Now.ToString(&quot;MM/dd/yyyy hh:mm tt&quot;)]" SearchText="&lt;MM/DD/YYYY HH:MM AM/PM&gt;" />
+                                  <ucat:FindAndReplaceTextModification DisplayName="Find and replace HR Email SE" sap:VirtualizedContainerService.HintSize="334,149" sap2010:WorkflowViewState.IdRef="FindAndReplaceTextModification_18" ReplaceText="[Config(&quot;HR_Email&quot;).ToString]" SearchText="&lt;HR Email&gt;" />
                                   <ucat:FindAndReplaceTextModification DisplayName="Find and replace system exception message" sap:VirtualizedContainerService.HintSize="334,149" sap2010:WorkflowViewState.IdRef="FindAndReplaceTextModification_8" ReplaceText="[SystemException.Message+&quot; at &quot;+SystemException.Source]" SearchText="&lt;SystemException&gt;" />
                                 </Sequence>
                               </ActivityAction>
@@ -606,36 +623,16 @@
                                 </ui:InvokeWorkflowFile>
                                 <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="Send SE Email - Process" sap:VirtualizedContainerService.HintSize="388,113" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_40" UnSafe="False" WorkflowFileName="Email\SendEmail-O365.xaml">
                                   <ui:InvokeWorkflowFile.Arguments>
-                                    <InArgument x:TypeArguments="x:String" x:Key="in_strAccount">
-                                      <VisualBasicValue x:TypeArguments="x:String" ExpressionText="Config(&quot;EmailAccount&quot;).ToString" />
-                                    </InArgument>
-                                    <InArgument x:TypeArguments="x:String" x:Key="in_strBody">
-                                      <VisualBasicValue x:TypeArguments="x:String" ExpressionText="strExceptionEmailBody" />
-                                    </InArgument>
-                                    <InArgument x:TypeArguments="x:String" x:Key="in_strSubject">
-                                      <VisualBasicValue x:TypeArguments="x:String" ExpressionText="strExceptionEmailSubject" />
-                                    </InArgument>
-                                    <InArgument x:TypeArguments="s:String[]" x:Key="in_arrToEmail">
-                                      <VisualBasicValue x:TypeArguments="s:String[]" ExpressionText="Config(&quot;SystemExceptionEmail&quot;).ToString.Split(&quot;,&quot;c)" />
-                                    </InArgument>
-                                    <InArgument x:TypeArguments="scg:List(x:String)" x:Key="in_listAttachmentFiles">
-                                      <VisualBasicValue x:TypeArguments="scg:List(x:String)" ExpressionText="strScreenshotFilePath.Split(&quot;,&quot;c).ToList" />
-                                    </InArgument>
-                                    <InArgument x:TypeArguments="x:String" x:Key="in_strTenantIDAsset">
-                                      <VisualBasicValue x:TypeArguments="x:String" ExpressionText="Config(&quot;O365TenantID&quot;).ToString" />
-                                    </InArgument>
-                                    <InArgument x:TypeArguments="x:String" x:Key="in_strAppSecretAsset">
-                                      <VisualBasicValue x:TypeArguments="x:String" ExpressionText="Config(&quot;O365ApplicationSecret&quot;).ToString" />
-                                    </InArgument>
-                                    <InArgument x:TypeArguments="x:String" x:Key="in_strAppIDAsset">
-                                      <VisualBasicValue x:TypeArguments="x:String" ExpressionText="Config(&quot;O365AppID&quot;).ToString" />
-                                    </InArgument>
-                                    <InArgument x:TypeArguments="x:String" x:Key="in_strOrchestratorFolder">
-                                      <VisualBasicValue x:TypeArguments="x:String" ExpressionText="Config(&quot;OrchestratorFolder&quot;).ToString" />
-                                    </InArgument>
-                                    <InArgument x:TypeArguments="s:String[]" x:Key="in_arrCCEmail">
-                                      <VisualBasicValue x:TypeArguments="s:String[]" ExpressionText="Config(&quot;SE_EmailCC&quot;).ToString.Split(&quot;,&quot;c)" />
-                                    </InArgument>
+                                    <InArgument x:TypeArguments="x:String" x:Key="in_strAccount">[Config("EmailAccount").ToString]</InArgument>
+                                    <InArgument x:TypeArguments="x:String" x:Key="in_strBody">[strExceptionEmailBody]</InArgument>
+                                    <InArgument x:TypeArguments="x:String" x:Key="in_strSubject">[strExceptionEmailSubject]</InArgument>
+                                    <InArgument x:TypeArguments="s:String[]" x:Key="in_arrToEmail">[Config("SystemExceptionEmail").ToString.Split(","c)]</InArgument>
+                                    <InArgument x:TypeArguments="scg:List(x:String)" x:Key="in_listAttachmentFiles">[strScreenshotFilePath.Split(","c).ToList]</InArgument>
+                                    <InArgument x:TypeArguments="x:String" x:Key="in_strTenantIDAsset">[Config("O365TenantID").ToString]</InArgument>
+                                    <InArgument x:TypeArguments="x:String" x:Key="in_strAppSecretAsset">[Config("O365ApplicationSecret").ToString]</InArgument>
+                                    <InArgument x:TypeArguments="x:String" x:Key="in_strAppIDAsset">[Config("O365AppID").ToString]</InArgument>
+                                    <InArgument x:TypeArguments="x:String" x:Key="in_strOrchestratorFolder">[Config("OrchestratorFolder").ToString]</InArgument>
+                                    <InArgument x:TypeArguments="s:String[]" x:Key="in_arrCCEmail">[Config("SE_EmailCC").ToString.Split(","c)]</InArgument>
                                   </ui:InvokeWorkflowFile.Arguments>
                                 </ui:InvokeWorkflowFile>
                               </Sequence>
@@ -720,9 +717,9 @@
                   </sap:WorkflowViewStateService.ViewState>
                   <Transition.Condition>[SystemException IsNot Nothing]</Transition.Condition>
                   <Transition.To>
-                    <State x:Name="__ReferenceID3" sap2010:Annotation.AnnotationText="Read configuration file and initialize applications used in the process." DisplayName="Initialization" sap:VirtualizedContainerService.HintSize="254,104" sap2010:WorkflowViewState.IdRef="State_2">
+                    <State x:Name="__ReferenceID3" sap2010:Annotation.AnnotationText="Read configuration file and initialize applications used in the process." DisplayName="Initialization" sap:VirtualizedContainerService.HintSize="648,2933" sap2010:WorkflowViewState.IdRef="State_2">
                       <State.Entry>
-                        <TryCatch DisplayName="Try initializing settings and applications" sap:VirtualizedContainerService.HintSize="536,880" sap2010:WorkflowViewState.IdRef="TryCatch_2">
+                        <TryCatch DisplayName="Try initializing settings and applications" sap:VirtualizedContainerService.HintSize="602,2514" sap2010:WorkflowViewState.IdRef="TryCatch_2">
                           <sap:WorkflowViewStateService.ViewState>
                             <scg:Dictionary x:TypeArguments="x:String, x:Object">
                               <x:Boolean x:Key="IsExpanded">True</x:Boolean>
@@ -730,7 +727,7 @@
                             </scg:Dictionary>
                           </sap:WorkflowViewStateService.ViewState>
                           <TryCatch.Try>
-                            <Sequence DisplayName="Load configurations and open applications" sap:VirtualizedContainerService.HintSize="496,2266" sap2010:WorkflowViewState.IdRef="Sequence_4">
+                            <Sequence DisplayName="Load configurations and open applications" sap:VirtualizedContainerService.HintSize="496,548" sap2010:WorkflowViewState.IdRef="Sequence_4">
                               <sap:WorkflowViewStateService.ViewState>
                                 <scg:Dictionary x:TypeArguments="x:String, x:Object">
                                   <x:Boolean x:Key="IsExpanded">True</x:Boolean>
@@ -745,7 +742,7 @@
                                   <InArgument x:TypeArguments="s:Exception">[Nothing]</InArgument>
                                 </Assign.Value>
                               </Assign>
-                              <If sap2010:Annotation.AnnotationText="An uninitialized Config dictionary indicates that it is the first run of the process." Condition="[Config is Nothing]" DisplayName="If first run, read local configuration file" sap:VirtualizedContainerService.HintSize="434,1481" sap2010:WorkflowViewState.IdRef="If_1">
+                              <If sap2010:Annotation.AnnotationText="An uninitialized Config dictionary indicates that it is the first run of the process." Condition="[Config is Nothing]" DisplayName="If first run, read local configuration file" sap:VirtualizedContainerService.HintSize="434,224" sap2010:WorkflowViewState.IdRef="If_1">
                                 <sap:WorkflowViewStateService.ViewState>
                                   <scg:Dictionary x:TypeArguments="x:String, x:Object">
                                     <x:Boolean x:Key="IsExpanded">True</x:Boolean>
@@ -847,7 +844,7 @@
                                   </Sequence>
                                 </If.Else>
                               </If>
-                              <If sap2010:Annotation.AnnotationText="If MaxConsecutiveSystemExceptions number was reached, throw Exception at initialization and go to End Process state, thus finalizing the execution. &#xA;If MaxConsecutiveSystemExceptions is 0, then any number of consecutive System Exceptions is allowed." Condition="[Cint(Config(&quot;MaxConsecutiveSystemExceptions&quot;))&gt;0 AndAlso ConsecutiveSystemExceptions&gt;=Cint(Config(&quot;MaxConsecutiveSystemExceptions&quot;))]" DisplayName="If maxConsecutiveSystemExceptions exceeded" sap:VirtualizedContainerService.HintSize="434,359" sap2010:WorkflowViewState.IdRef="If_13">
+                              <If sap2010:Annotation.AnnotationText="If MaxConsecutiveSystemExceptions number was reached, throw Exception at initialization and go to End Process state, thus finalizing the execution. &#xA;If MaxConsecutiveSystemExceptions is 0, then any number of consecutive System Exceptions is allowed." Condition="[Cint(Config(&quot;MaxConsecutiveSystemExceptions&quot;))&gt;0 AndAlso ConsecutiveSystemExceptions&gt;=Cint(Config(&quot;MaxConsecutiveSystemExceptions&quot;))]" DisplayName="If maxConsecutiveSystemExceptions exceeded" sap:VirtualizedContainerService.HintSize="434,269" sap2010:WorkflowViewState.IdRef="If_13">
                                 <sap:WorkflowViewStateService.ViewState>
                                   <scg:Dictionary x:TypeArguments="x:String, x:Object">
                                     <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
@@ -870,7 +867,7 @@
                             </Sequence>
                           </TryCatch.Try>
                           <TryCatch.Catches>
-                            <Catch x:TypeArguments="s:Exception" sap:VirtualizedContainerService.HintSize="502,717" sap2010:WorkflowViewState.IdRef="Catch`1_3">
+                            <Catch x:TypeArguments="s:Exception" sap:VirtualizedContainerService.HintSize="568,2351" sap2010:WorkflowViewState.IdRef="Catch`1_3">
                               <sap:WorkflowViewStateService.ViewState>
                                 <scg:Dictionary x:TypeArguments="x:String, x:Object">
                                   <x:Boolean x:Key="IsExpanded">True</x:Boolean>
@@ -881,13 +878,13 @@
                                 <ActivityAction.Argument>
                                   <DelegateInArgument x:TypeArguments="s:Exception" Name="Exception" />
                                 </ActivityAction.Argument>
-                                <Sequence DisplayName="Handle System Exception" sap:VirtualizedContainerService.HintSize="496,648" sap2010:WorkflowViewState.IdRef="Sequence_35">
+                                <Sequence DisplayName="Handle System Exception" sap:VirtualizedContainerService.HintSize="562,2282" sap2010:WorkflowViewState.IdRef="Sequence_35">
                                   <sap:WorkflowViewStateService.ViewState>
                                     <scg:Dictionary x:TypeArguments="x:String, x:Object">
                                       <x:Boolean x:Key="IsExpanded">True</x:Boolean>
                                     </scg:Dictionary>
                                   </sap:WorkflowViewStateService.ViewState>
-                                  <Assign sap2010:Annotation.AnnotationText="Failures during the initialization are considered system exceptions and lead to the End Process state, thus finalizing the execution." DisplayName="Assign SystemException" sap:VirtualizedContainerService.HintSize="434,124" sap2010:WorkflowViewState.IdRef="Assign_21">
+                                  <Assign sap2010:Annotation.AnnotationText="Failures during the initialization are considered system exceptions and lead to the End Process state, thus finalizing the execution." DisplayName="Assign SystemException" sap:VirtualizedContainerService.HintSize="500,124" sap2010:WorkflowViewState.IdRef="Assign_21">
                                     <Assign.To>
                                       <OutArgument x:TypeArguments="s:Exception">[SystemException]</OutArgument>
                                     </Assign.To>
@@ -900,7 +897,7 @@
                                       </scg:Dictionary>
                                     </sap:WorkflowViewStateService.ViewState>
                                   </Assign>
-                                  <TryCatch DisplayName="Try Catch - Handle System Exception" sap:VirtualizedContainerService.HintSize="434,373" sap2010:WorkflowViewState.IdRef="TryCatch_13">
+                                  <TryCatch DisplayName="Try Catch - Handle System Exception" sap:VirtualizedContainerService.HintSize="500,2007" sap2010:WorkflowViewState.IdRef="TryCatch_13">
                                     <sap:WorkflowViewStateService.ViewState>
                                       <scg:Dictionary x:TypeArguments="x:String, x:Object">
                                         <x:Boolean x:Key="IsExpanded">True</x:Boolean>
@@ -908,7 +905,7 @@
                                       </scg:Dictionary>
                                     </sap:WorkflowViewStateService.ViewState>
                                     <TryCatch.Try>
-                                      <If Condition="[Config IsNot Nothing]" DisplayName="If config is not nothing" sap:VirtualizedContainerService.HintSize="462,1329" sap2010:WorkflowViewState.IdRef="If_15">
+                                      <If Condition="[Config IsNot Nothing]" DisplayName="If config is not nothing" sap:VirtualizedContainerService.HintSize="462,1779" sap2010:WorkflowViewState.IdRef="If_15">
                                         <sap:WorkflowViewStateService.ViewState>
                                           <scg:Dictionary x:TypeArguments="x:String, x:Object">
                                             <x:Boolean x:Key="IsExpanded">True</x:Boolean>
@@ -916,13 +913,13 @@
                                           </scg:Dictionary>
                                         </sap:WorkflowViewStateService.ViewState>
                                         <If.Then>
-                                          <Sequence sap:VirtualizedContainerService.HintSize="428,1147" sap2010:WorkflowViewState.IdRef="Sequence_36">
+                                          <Sequence sap:VirtualizedContainerService.HintSize="428,1597" sap2010:WorkflowViewState.IdRef="Sequence_36">
                                             <sap:WorkflowViewStateService.ViewState>
                                               <scg:Dictionary x:TypeArguments="x:String, x:Object">
                                                 <x:Boolean x:Key="IsExpanded">True</x:Boolean>
                                               </scg:Dictionary>
                                             </sap:WorkflowViewStateService.ViewState>
-                                            <ui:ModifyText DisplayName="Modify Text - Exception Email Subject" sap:VirtualizedContainerService.HintSize="386,52" sap2010:WorkflowViewState.IdRef="ModifyText_7" OutputText="[strExceptionEmailSubject]" SourceText="[Config(&quot;SystemException_EmailSubject&quot;).ToString]">
+                                            <ui:ModifyText DisplayName="Modify Text - Exception Email Subject" sap:VirtualizedContainerService.HintSize="386,343" sap2010:WorkflowViewState.IdRef="ModifyText_7" OutputText="[strExceptionEmailSubject]" SourceText="[Config(&quot;SystemException_EmailSubject&quot;).ToString]">
                                               <ui:ModifyText.Body>
                                                 <ActivityAction>
                                                   <Sequence DisplayName="Replace Values" sap:VirtualizedContainerService.HintSize="449.99999999999994,262" sap2010:WorkflowViewState.IdRef="Sequence_52">
@@ -931,18 +928,18 @@
                                                         <x:Boolean x:Key="IsExpanded">True</x:Boolean>
                                                       </scg:Dictionary>
                                                     </sap:WorkflowViewStateService.ViewState>
-                                                    <ucat:FindAndReplaceTextModification DisplayName="Find and replace process name -SE" sap:VirtualizedContainerService.HintSize="334,149" sap2010:WorkflowViewState.IdRef="FindAndReplaceTextModification_13" MatchCase="True" ReplaceText="[Config(&quot;logF_BusinessProcessName&quot;).ToString]" SearchText="&lt;ProcessName&gt;" />
+                                                    <ucat:FindAndReplaceTextModification DisplayName="Find and replace exception detail -SE" sap:VirtualizedContainerService.HintSize="334,149" sap2010:WorkflowViewState.IdRef="FindAndReplaceTextModification_13" MatchCase="True" ReplaceText="[SystemException.Message]" SearchText="&lt;ExceptionDetail&gt;" />
                                                   </Sequence>
                                                 </ActivityAction>
                                               </ui:ModifyText.Body>
                                               <sap:WorkflowViewStateService.ViewState>
                                                 <scg:Dictionary x:TypeArguments="x:String, x:Object">
-                                                  <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+                                                  <x:Boolean x:Key="IsExpanded">True</x:Boolean>
                                                   <x:Boolean x:Key="IsPinned">False</x:Boolean>
                                                 </scg:Dictionary>
                                               </sap:WorkflowViewStateService.ViewState>
                                             </ui:ModifyText>
-                                            <ui:ModifyText DisplayName="Modify Text - Exception Email Body" sap:VirtualizedContainerService.HintSize="386,661" sap2010:WorkflowViewState.IdRef="ModifyText_8" OutputText="[strExceptionEmailBody]" SourceText="[Config(&quot;SystemException_EmailBody&quot;).ToString]">
+                                            <ui:ModifyText DisplayName="Modify Text - Exception Email Body" sap:VirtualizedContainerService.HintSize="386,820" sap2010:WorkflowViewState.IdRef="ModifyText_8" OutputText="[strExceptionEmailBody]" SourceText="[Config(&quot;SystemException_EmailBody&quot;).ToString]">
                                               <ui:ModifyText.Body>
                                                 <ActivityAction>
                                                   <Sequence DisplayName="Replace Process Name" sap:VirtualizedContainerService.HintSize="450,260" sap2010:WorkflowViewState.IdRef="Sequence_53">
@@ -953,6 +950,7 @@
                                                     </sap:WorkflowViewStateService.ViewState>
                                                     <ucat:FindAndReplaceTextModification DisplayName="Find and replace Process Name" sap:VirtualizedContainerService.HintSize="334,149" sap2010:WorkflowViewState.IdRef="FindAndReplaceTextModification_14" ReplaceText="[Config(&quot;logF_BusinessProcessName&quot;).ToString]" SearchText="&lt;ProcessName&gt;" />
                                                     <ucat:FindAndReplaceTextModification DisplayName="Find and replace Time" sap:VirtualizedContainerService.HintSize="334,149" sap2010:WorkflowViewState.IdRef="FindAndReplaceTextModification_15" ReplaceText="[Now.ToString(&quot;MM/dd/yyyy hh:mm tt&quot;)]" SearchText="&lt;MM/DD/YYYY HH:MM AM/PM&gt;" />
+                                                    <ucat:FindAndReplaceTextModification DisplayName="Find and replace HR Email" sap:VirtualizedContainerService.HintSize="334,149" sap2010:WorkflowViewState.IdRef="FindAndReplaceTextModification_19" ReplaceText="[Config(&quot;HR_Email&quot;).ToString]" SearchText="&lt;HR Email&gt;" />
                                                     <ucat:FindAndReplaceTextModification DisplayName="Find and replace exception message" sap:VirtualizedContainerService.HintSize="334,149" sap2010:WorkflowViewState.IdRef="FindAndReplaceTextModification_16" ReplaceText="[SystemException.Message+&quot; at &quot;+SystemException.Source]" SearchText="&lt;SystemException&gt;" />
                                                   </Sequence>
                                                 </ActivityAction>
@@ -972,15 +970,36 @@
                                             </ui:InvokeWorkflowFile>
                                             <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="Send SE Email" sap:VirtualizedContainerService.HintSize="386,113" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_38" UnSafe="False" WorkflowFileName="Email\SendEmail-O365.xaml">
                                               <ui:InvokeWorkflowFile.Arguments>
-                                                <InArgument x:TypeArguments="x:String" x:Key="in_strAccount">[Config("EmailAccount").ToString]</InArgument>
-                                                <InArgument x:TypeArguments="x:String" x:Key="in_strBody">[strExceptionEmailBody]</InArgument>
-                                                <InArgument x:TypeArguments="x:String" x:Key="in_strSubject">[strExceptionEmailSubject]</InArgument>
-                                                <InArgument x:TypeArguments="s:String[]" x:Key="in_arrToEmail">[Config("ExceptionEmail").ToString.Split(","c)]</InArgument>
-                                                <InArgument x:TypeArguments="scg:List(x:String)" x:Key="in_listAttachmentFiles">[strScreenshotFilePath.Split(","c).ToList]</InArgument>
-                                                <InArgument x:TypeArguments="x:String" x:Key="in_strTenantIDAsset">[Config("O365TenantID").ToString]</InArgument>
-                                                <InArgument x:TypeArguments="x:String" x:Key="in_strAppSecretAsset">[Config("O365ApplicationSecret").ToString]</InArgument>
-                                                <InArgument x:TypeArguments="x:String" x:Key="in_strAppIDAsset">[Config("O365AppID").ToString]</InArgument>
-                                                <InArgument x:TypeArguments="x:String" x:Key="in_strOrchestratorFolder">[Config("OrchestratorFolder").ToString]</InArgument>
+                                                <InArgument x:TypeArguments="x:String" x:Key="in_strAccount">
+                                                  <VisualBasicValue x:TypeArguments="x:String" ExpressionText="Config(&quot;EmailAccount&quot;).ToString" />
+                                                </InArgument>
+                                                <InArgument x:TypeArguments="x:String" x:Key="in_strBody">
+                                                  <VisualBasicValue x:TypeArguments="x:String" ExpressionText="strExceptionEmailBody" />
+                                                </InArgument>
+                                                <InArgument x:TypeArguments="x:String" x:Key="in_strSubject">
+                                                  <VisualBasicValue x:TypeArguments="x:String" ExpressionText="strExceptionEmailSubject" />
+                                                </InArgument>
+                                                <InArgument x:TypeArguments="s:String[]" x:Key="in_arrToEmail">
+                                                  <VisualBasicValue x:TypeArguments="s:String[]" ExpressionText="Config(&quot;SystemExceptionEmail&quot;).ToString.Split(&quot;,&quot;c)" />
+                                                </InArgument>
+                                                <InArgument x:TypeArguments="scg:List(x:String)" x:Key="in_listAttachmentFiles">
+                                                  <VisualBasicValue x:TypeArguments="scg:List(x:String)" ExpressionText="strScreenshotFilePath.Split(&quot;,&quot;c).ToList" />
+                                                </InArgument>
+                                                <InArgument x:TypeArguments="x:String" x:Key="in_strTenantIDAsset">
+                                                  <VisualBasicValue x:TypeArguments="x:String" ExpressionText="Config(&quot;O365TenantID&quot;).ToString" />
+                                                </InArgument>
+                                                <InArgument x:TypeArguments="x:String" x:Key="in_strAppSecretAsset">
+                                                  <VisualBasicValue x:TypeArguments="x:String" ExpressionText="Config(&quot;O365ApplicationSecret&quot;).ToString" />
+                                                </InArgument>
+                                                <InArgument x:TypeArguments="x:String" x:Key="in_strAppIDAsset">
+                                                  <VisualBasicValue x:TypeArguments="x:String" ExpressionText="Config(&quot;O365AppID&quot;).ToString" />
+                                                </InArgument>
+                                                <InArgument x:TypeArguments="x:String" x:Key="in_strOrchestratorFolder">
+                                                  <VisualBasicValue x:TypeArguments="x:String" ExpressionText="Config(&quot;OrchestratorFolder&quot;).ToString" />
+                                                </InArgument>
+                                                <InArgument x:TypeArguments="s:String[]" x:Key="in_arrCCEmail">
+                                                  <VisualBasicValue x:TypeArguments="s:String[]" ExpressionText="Config(&quot;SE_EmailCC&quot;).ToString.Split(&quot;,&quot;c)" />
+                                                </InArgument>
                                               </ui:InvokeWorkflowFile.Arguments>
                                             </ui:InvokeWorkflowFile>
                                           </Sequence>
@@ -998,10 +1017,10 @@
                                       </If>
                                     </TryCatch.Try>
                                     <TryCatch.Catches>
-                                      <Catch x:TypeArguments="s:Exception" sap:VirtualizedContainerService.HintSize="400,210" sap2010:WorkflowViewState.IdRef="Catch`1_14">
+                                      <Catch x:TypeArguments="s:Exception" sap:VirtualizedContainerService.HintSize="466,21" sap2010:WorkflowViewState.IdRef="Catch`1_14">
                                         <sap:WorkflowViewStateService.ViewState>
                                           <scg:Dictionary x:TypeArguments="x:String, x:Object">
-                                            <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                                            <x:Boolean x:Key="IsExpanded">False</x:Boolean>
                                             <x:Boolean x:Key="IsPinned">False</x:Boolean>
                                           </scg:Dictionary>
                                         </sap:WorkflowViewStateService.ViewState>

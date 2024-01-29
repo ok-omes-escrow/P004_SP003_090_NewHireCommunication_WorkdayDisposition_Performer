@@ -9,7 +9,7 @@
   <VisualBasic.Settings>
     <x:Null />
   </VisualBasic.Settings>
-  <sap:VirtualizedContainerService.HintSize>1514,6106</sap:VirtualizedContainerService.HintSize>
+  <sap:VirtualizedContainerService.HintSize>1514,6255</sap:VirtualizedContainerService.HintSize>
   <sap2010:WorkflowViewState.IdRef>Workday_LogIn_1</sap2010:WorkflowViewState.IdRef>
   <TextExpression.NamespacesForImplementation>
     <sco:Collection x:TypeArguments="x:String">
@@ -129,20 +129,20 @@
       <AssemblyReference>System.Linq.Queryable</AssemblyReference>
     </sco:Collection>
   </TextExpression.ReferencesForImplementation>
-  <Sequence sap2010:Annotation.AnnotationText="This workflow will move forward candidates to Offer stage followed by Ready To Hire stage in workday" DisplayName="MoveForwardCandidates" sap:VirtualizedContainerService.HintSize="1112,6041" sap2010:WorkflowViewState.IdRef="Sequence_1">
+  <Sequence sap2010:Annotation.AnnotationText="This workflow will move forward candidates to Offer stage followed by Ready To Hire stage in workday" DisplayName="MoveForwardCandidates" sap:VirtualizedContainerService.HintSize="1112,6190" sap2010:WorkflowViewState.IdRef="Sequence_1">
     <sap:WorkflowViewStateService.ViewState>
       <scg:Dictionary x:TypeArguments="x:String, x:Object">
         <x:Boolean x:Key="IsExpanded">True</x:Boolean>
         <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
       </scg:Dictionary>
     </sap:WorkflowViewStateService.ViewState>
-    <uix:NApplicationCard AttachMode="ByInstance" CloseMode="Never" DisplayName="Edge Workday Portal" sap:VirtualizedContainerService.HintSize="1050,5899" sap2010:WorkflowViewState.IdRef="NApplicationCard_2" InteractionMode="DebuggerApi" OpenMode="Never" ScopeGuid="b19c4cf9-5d80-48b2-b7f6-62067aaa767e" Version="V2" WindowResize="Maximize">
+    <uix:NApplicationCard AttachMode="ByInstance" CloseMode="Never" DisplayName="Edge Workday Portal" sap:VirtualizedContainerService.HintSize="1050,6048" sap2010:WorkflowViewState.IdRef="NApplicationCard_2" InteractionMode="DebuggerApi" OpenMode="Never" ScopeGuid="b19c4cf9-5d80-48b2-b7f6-62067aaa767e" Version="V2" WindowResize="Maximize">
       <uix:NApplicationCard.Body>
         <ActivityAction x:TypeArguments="x:Object">
           <ActivityAction.Argument>
             <DelegateInArgument x:TypeArguments="x:Object" Name="WSSessionData" />
           </ActivityAction.Argument>
-          <Sequence DisplayName="Do" sap:VirtualizedContainerService.HintSize="1016,5682" sap2010:WorkflowViewState.IdRef="Sequence_4">
+          <Sequence DisplayName="Do" sap:VirtualizedContainerService.HintSize="1016,5831" sap2010:WorkflowViewState.IdRef="Sequence_4">
             <Sequence.Variables>
               <Variable x:TypeArguments="x:Boolean" Name="boolEmployeeEnabled" />
             </Sequence.Variables>
@@ -164,7 +164,7 @@
                 </ui:Target>
               </ui:Activate.Target>
             </ui:Activate>
-            <uix:NCheckState DisplayName="Check App State Candidates" sap:VirtualizedContainerService.HintSize="954,529" sap2010:WorkflowViewState.IdRef="NCheckState_3" ScopeIdentifier="b19c4cf9-5d80-48b2-b7f6-62067aaa767e" Timeout="[Cdbl(in_Config(&quot;DelayTimeXS&quot;).ToString)]" Version="V3">
+            <uix:NCheckState DisplayName="Check App State Candidates" sap:VirtualizedContainerService.HintSize="954,489" sap2010:WorkflowViewState.IdRef="NCheckState_3" ScopeIdentifier="b19c4cf9-5d80-48b2-b7f6-62067aaa767e" Timeout="[Cdbl(in_Config(&quot;DelayTimeXS&quot;).ToString)]" Version="V3">
               <uix:NCheckState.IfExists>
                 <Sequence DisplayName="Candidate Tab appears" sap:VirtualizedContainerService.HintSize="450,272" sap2010:WorkflowViewState.IdRef="Sequence_18">
                   <sap:WorkflowViewStateService.ViewState>
@@ -218,10 +218,10 @@
                 </uix:TargetAnchorable>
               </uix:NClick.Target>
             </uix:NClick>
-            <ui:LogMessage DisplayName="Move forward to offer Log Message" sap:VirtualizedContainerService.HintSize="954,141" sap2010:WorkflowViewState.IdRef="LogMessage_4" Level="[UiPath.Core.Activities.LogLevel.Trace]" Message="[&quot;Moving forward candidate to &quot;+in_strOfferStage]" />
+            <ui:LogMessage DisplayName="Move forward to offer Log Message" sap:VirtualizedContainerService.HintSize="954,143" sap2010:WorkflowViewState.IdRef="LogMessage_4" Level="[UiPath.Core.Activities.LogLevel.Trace]" Message="[&quot;Moving forward candidate to &quot;+in_strOfferStage]" />
             <uix:NCheckState DisplayName="Check App State Employee Checkbox" sap:VirtualizedContainerService.HintSize="954,52" sap2010:WorkflowViewState.IdRef="NCheckState_4" ScopeIdentifier="b19c4cf9-5d80-48b2-b7f6-62067aaa767e" Timeout="[Cdbl(in_Config(&quot;DelayTimeSmall&quot;).ToString)]" Version="V3">
               <uix:NCheckState.IfExists>
-                <Sequence DisplayName="Employee Checkbox found" sap:VirtualizedContainerService.HintSize="450,320" sap2010:WorkflowViewState.IdRef="Sequence_20">
+                <Sequence DisplayName="Employee Checkbox found" sap:VirtualizedContainerService.HintSize="450,322" sap2010:WorkflowViewState.IdRef="Sequence_20">
                   <sap:WorkflowViewStateService.ViewState>
                     <scg:Dictionary x:TypeArguments="x:String, x:Object">
                       <x:Boolean x:Key="IsExpanded">True</x:Boolean>
@@ -368,7 +368,8 @@
                 </uix:TargetAnchorable>
               </uix:NClick.Target>
             </uix:NClick>
-            <ui:LogMessage DisplayName="Move Forward to hire stage Log Message" sap:VirtualizedContainerService.HintSize="954,141" sap2010:WorkflowViewState.IdRef="LogMessage_5" Level="[UiPath.Core.Activities.LogLevel.Trace]" Message="[&quot;Moving forward candidate to &quot;+in_strHireStage]" />
+            <ui:LogMessage DisplayName="Move forward to offer Log Message - Success" sap:VirtualizedContainerService.HintSize="954,143" sap2010:WorkflowViewState.IdRef="LogMessage_9" Level="[UiPath.Core.Activities.LogLevel.Trace]" Message="[&quot;Candidate moved forward to &quot;+in_strOfferStage]" />
+            <ui:LogMessage DisplayName="Move Forward to hire stage Log Message" sap:VirtualizedContainerService.HintSize="954,143" sap2010:WorkflowViewState.IdRef="LogMessage_5" Level="[UiPath.Core.Activities.LogLevel.Trace]" Message="[&quot;Moving forward candidate to &quot;+in_strHireStage]" />
             <uix:NClick ActivateBefore="True" ClickType="Single" DelayAfter="[Convert.ToDouble(in_Config(&quot;DelayTimeSmall&quot;).ToString)]" DisplayName="Click 'All Active Candidates'" sap:VirtualizedContainerService.HintSize="954,157" sap2010:WorkflowViewState.IdRef="NClick_26" KeyModifiers="None" MouseButton="Left" ScopeIdentifier="b19c4cf9-5d80-48b2-b7f6-62067aaa767e" Version="V3">
               <uix:NClick.Target>
                 <uix:TargetAnchorable BrowserURL="https://impl.workday.com/okgov2/d/inst/1$14180/5303$19713.htmld#TABINDEX=1&amp;SUBTABINDEX=0" ContentHash="pn2wj1Ahd0W0WQnZRF1O1w" DesignTimeRectangle="373, 546, 198, 40" DesignTimeScaleFactor="1" ElementType="Button" FriendlyName="'All Active Candidates'" FullSelectorArgument="&lt;webctrl aria-label='All Active Candidates 9423!CM9JEgoKBggEENucARIAEiQKBggEEO_cARIaQ*' tag='BUTTON' type='button' /&gt;" FuzzySelectorArgument="&lt;webctrl tag='BUTTON' type='button' aaname='All Active Candidates' check:innerText='All Active Candidates' /&gt;" Guid="ff20b126-6426-4c06-b09d-f8dd6fdfeca7" ImageBase64="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" InformativeScreenshot="40cb8cf42f2df9d99dec1ab59a016634.png" Reference="wDbVrwCpcUa5WxKMRE0Bcg/cPME5LD0uUewuERoGg4sRQ" ScopeSelectorArgument="&lt;html app='msedge.exe' title='JR21479 Administrative Programs Ofcr - Workday' /&gt;" SearchSteps="FuzzySelector" Version="V2" Visibility="Interactive">
@@ -529,7 +530,7 @@
                 </uix:TargetAnchorable>
               </uix:NClick.Target>
             </uix:NClick>
-            <ui:LogMessage DisplayName="Workflow end Log Message" sap:VirtualizedContainerService.HintSize="954,141" sap2010:WorkflowViewState.IdRef="LogMessage_6" Level="[UiPath.Core.Activities.LogLevel.Trace]" Message="[&quot;Candidate moved forward to &quot;+in_strHireStage]" />
+            <ui:LogMessage DisplayName="Workflow end Log Message" sap:VirtualizedContainerService.HintSize="954,143" sap2010:WorkflowViewState.IdRef="LogMessage_6" Level="[UiPath.Core.Activities.LogLevel.Trace]" Message="[&quot;Candidate moved forward to &quot;+in_strHireStage]" />
           </Sequence>
         </ActivityAction>
       </uix:NApplicationCard.Body>

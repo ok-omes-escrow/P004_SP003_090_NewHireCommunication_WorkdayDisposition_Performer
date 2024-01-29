@@ -5,7 +5,7 @@
   <VisualBasic.Settings>
     <x:Null />
   </VisualBasic.Settings>
-  <sap:VirtualizedContainerService.HintSize>1514,966</sap:VirtualizedContainerService.HintSize>
+  <sap:VirtualizedContainerService.HintSize>1514,1926</sap:VirtualizedContainerService.HintSize>
   <sap2010:WorkflowViewState.IdRef>Initialization_1</sap2010:WorkflowViewState.IdRef>
   <TextExpression.NamespacesForImplementation>
     <sco:Collection x:TypeArguments="x:String">
@@ -118,26 +118,83 @@
       <AssemblyReference>System.IO.FileSystem.DriveInfo</AssemblyReference>
     </sco:Collection>
   </TextExpression.ReferencesForImplementation>
-  <Sequence sap2010:Annotation.AnnotationText="Open applications used in the process and do necessary initialization procedures (e.g., login)." DisplayName="Initialize All Applications" sap:VirtualizedContainerService.HintSize="554,901" sap2010:WorkflowViewState.IdRef="Sequence_9">
+  <Sequence sap2010:Annotation.AnnotationText="Open applications used in the process and do necessary initialization procedures (e.g., login)." DisplayName="Initialize All Applications" sap:VirtualizedContainerService.HintSize="600,1861" sap2010:WorkflowViewState.IdRef="Sequence_9">
+    <Sequence.Variables>
+      <Variable x:TypeArguments="x:Int32" Name="intCounter" />
+      <Variable x:TypeArguments="x:Boolean" Name="boolLogInSuccess" />
+    </Sequence.Variables>
     <sap:WorkflowViewStateService.ViewState>
       <scg:Dictionary x:TypeArguments="x:String, x:Object">
         <x:Boolean x:Key="IsExpanded">True</x:Boolean>
         <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
       </scg:Dictionary>
     </sap:WorkflowViewStateService.ViewState>
-    <ui:LogMessage DisplayName="Log message (Initialize applications)" sap:VirtualizedContainerService.HintSize="492,141" sap2010:WorkflowViewState.IdRef="LogMessage_1" Level="Trace" Message="[&quot;Opening applications...&quot;]" />
-    <ui:CreateDirectory ContinueOnError="{x:Null}" Output="{x:Null}" DisplayName="Create Folder to store runtime files" sap:VirtualizedContainerService.HintSize="492,80" sap2010:WorkflowViewState.IdRef="CreateDirectory_1" Path="[Path.Combine(in_Config(&quot;RuntimeLocalFolderPath&quot;).ToString,in_Config(&quot;logF_BusinessProcessName&quot;).ToString)]" />
-    <ui:RetryScope DisplayName="Retry Scope - Workday LogIn" sap:VirtualizedContainerService.HintSize="492,458" sap2010:WorkflowViewState.IdRef="RetryScope_1" NumberOfRetries="[cint(in_Config(&quot;RetryScopeAttempts&quot;).ToString)]">
+    <ui:LogMessage DisplayName="Log message (Initialize applications)" sap:VirtualizedContainerService.HintSize="538,141" sap2010:WorkflowViewState.IdRef="LogMessage_1" Level="Trace" Message="[&quot;Opening applications...&quot;]" />
+    <ui:LogMessage DisplayName="Log message -Create Folder" sap:VirtualizedContainerService.HintSize="538,141" sap2010:WorkflowViewState.IdRef="LogMessage_2" Level="Trace" Message="[&quot;Creating folder for the process in local&quot;]" />
+    <ui:CreateDirectory ContinueOnError="{x:Null}" Output="{x:Null}" DisplayName="Create Folder to store runtime files" sap:VirtualizedContainerService.HintSize="538,80" sap2010:WorkflowViewState.IdRef="CreateDirectory_1" Path="[Path.Combine(in_Config(&quot;RuntimeLocalFolderPath&quot;).ToString,in_Config(&quot;logF_BusinessProcessName&quot;).ToString)]" />
+    <Assign DisplayName="Assign counter to 0" sap:VirtualizedContainerService.HintSize="538,82" sap2010:WorkflowViewState.IdRef="Assign_1">
+      <Assign.To>
+        <OutArgument x:TypeArguments="x:Int32">[intCounter]</OutArgument>
+      </Assign.To>
+      <Assign.Value>
+        <InArgument x:TypeArguments="x:Int32">0</InArgument>
+      </Assign.Value>
+    </Assign>
+    <Assign DisplayName="Assign False to login success" sap:VirtualizedContainerService.HintSize="538,82" sap2010:WorkflowViewState.IdRef="Assign_3">
+      <Assign.To>
+        <OutArgument x:TypeArguments="x:Boolean">[boolLogInSuccess]</OutArgument>
+      </Assign.To>
+      <Assign.Value>
+        <InArgument x:TypeArguments="x:Boolean">False</InArgument>
+      </Assign.Value>
+    </Assign>
+    <ui:RetryScope DisplayName="Retry Scope - Workday LogIn" sap:VirtualizedContainerService.HintSize="538,993" sap2010:WorkflowViewState.IdRef="RetryScope_1" NumberOfRetries="[cint(in_Config(&quot;RetryScopeAttempts&quot;).ToString)]">
       <ui:RetryScope.ActivityBody>
         <ActivityAction>
-          <Sequence sap2010:Annotation.AnnotationText="Log in to Workday Application (SSO)" DisplayName="Log In" sap:VirtualizedContainerService.HintSize="450,283" sap2010:WorkflowViewState.IdRef="Sequence_10">
+          <Sequence sap2010:Annotation.AnnotationText="Log in to Workday Application (SSO)" DisplayName="Log In" sap:VirtualizedContainerService.HintSize="496,818" sap2010:WorkflowViewState.IdRef="Sequence_10">
             <sap:WorkflowViewStateService.ViewState>
               <scg:Dictionary x:TypeArguments="x:String, x:Object">
                 <x:Boolean x:Key="IsExpanded">True</x:Boolean>
                 <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
               </scg:Dictionary>
             </sap:WorkflowViewStateService.ViewState>
-            <l:LoggingToWorkday_WorkdayLogIn DisplayName="Log In to Workday" sap:VirtualizedContainerService.HintSize="388,141" sap2010:WorkflowViewState.IdRef="LoggingToWorkday_WorkdayLogIn_1" in_strSELoginFailure="[in_Config(&quot;SE_1&quot;).ToString]" in_strURL="[in_Config(&quot;WorkdayURL&quot;).ToString]" />
+            <Assign DisplayName="Assign counter" sap:VirtualizedContainerService.HintSize="434,82" sap2010:WorkflowViewState.IdRef="Assign_2">
+              <Assign.To>
+                <OutArgument x:TypeArguments="x:Int32">[intCounter]</OutArgument>
+              </Assign.To>
+              <Assign.Value>
+                <InArgument x:TypeArguments="x:Int32">[intCounter+1]</InArgument>
+              </Assign.Value>
+            </Assign>
+            <If Condition="[intCounter &lt;= cint(in_Config(&quot;RetryScopeAttempts&quot;).ToString) AND boolLogInSuccess = false]" DisplayName="If retry count is less than retry limit" sap:VirtualizedContainerService.HintSize="434,322" sap2010:WorkflowViewState.IdRef="If_1">
+              <sap:WorkflowViewStateService.ViewState>
+                <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                  <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                  <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                </scg:Dictionary>
+              </sap:WorkflowViewStateService.ViewState>
+              <If.Then>
+                <Sequence sap:VirtualizedContainerService.HintSize="300,140" sap2010:WorkflowViewState.IdRef="Sequence_11">
+                  <sap:WorkflowViewStateService.ViewState>
+                    <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                      <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                    </scg:Dictionary>
+                  </sap:WorkflowViewStateService.ViewState>
+                  <ui:KillProcess AppliesTo="{x:Null}" ContinueOnError="{x:Null}" Process="{x:Null}" DisplayName="Kill EDGE" sap:VirtualizedContainerService.HintSize="258,52" sap2010:WorkflowViewState.IdRef="KillProcess_2" ProcessName="MSEDGE">
+                    <sap:WorkflowViewStateService.ViewState>
+                      <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                        <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+                        <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                      </scg:Dictionary>
+                    </sap:WorkflowViewStateService.ViewState>
+                  </ui:KillProcess>
+                </Sequence>
+              </If.Then>
+              <If.Else>
+                <Sequence sap2010:WorkflowViewState.IdRef="Sequence_12" />
+              </If.Else>
+            </If>
+            <l:LoggingToWorkday_WorkdayLogIn DisplayName="Log In to Workday" sap:VirtualizedContainerService.HintSize="434,192" sap2010:WorkflowViewState.IdRef="LoggingToWorkday_WorkdayLogIn_1" in_strSELoginFailure="[in_Config(&quot;SE_1&quot;).ToString]" in_strURL="[in_Config(&quot;WorkdayURL&quot;).ToString]" out_boolLoginSuccess="[boolLogInSuccess]" />
           </Sequence>
         </ActivityAction>
       </ui:RetryScope.ActivityBody>

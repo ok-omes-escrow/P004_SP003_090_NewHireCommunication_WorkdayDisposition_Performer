@@ -7,7 +7,7 @@
   <VisualBasic.Settings>
     <x:Null />
   </VisualBasic.Settings>
-  <sap:VirtualizedContainerService.HintSize>1514,4113</sap:VirtualizedContainerService.HintSize>
+  <sap:VirtualizedContainerService.HintSize>1514,4067</sap:VirtualizedContainerService.HintSize>
   <sap2010:WorkflowViewState.IdRef>ProcessTransaction_1</sap2010:WorkflowViewState.IdRef>
   <TextExpression.NamespacesForImplementation>
     <scg:List x:TypeArguments="x:String" Capacity="100">
@@ -144,7 +144,7 @@
       <AssemblyReference>LIB_GraphAPI</AssemblyReference>
     </scg:List>
   </TextExpression.ReferencesForImplementation>
-  <Sequence sap2010:Annotation.AnnotationText="Invoke major steps of the business process, which are usually implemented by multiple subworkflows.&#xA;&#xA;If a BusinessRuleException is thrown, the transaction is skipped. &#xA;If another kind of exception occurs, the current transaction can be retried. " DisplayName="Process" sap:VirtualizedContainerService.HintSize="639,4048" sap2010:WorkflowViewState.IdRef="Sequence_1">
+  <Sequence sap2010:Annotation.AnnotationText="Invoke major steps of the business process, which are usually implemented by multiple subworkflows.&#xA;&#xA;If a BusinessRuleException is thrown, the transaction is skipped. &#xA;If another kind of exception occurs, the current transaction can be retried. " DisplayName="Process" sap:VirtualizedContainerService.HintSize="752,4002" sap2010:WorkflowViewState.IdRef="Sequence_1">
     <Sequence.Variables>
       <Variable x:TypeArguments="s:DateTime" Name="dateDOH" />
       <Variable x:TypeArguments="x:String" Name="strDOHValue" />
@@ -155,8 +155,8 @@
         <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
       </scg:Dictionary>
     </sap:WorkflowViewStateService.ViewState>
-    <ui:LogMessage DisplayName="Log Message - Check DOH in sharepoint list" sap:VirtualizedContainerService.HintSize="577,141" sap2010:WorkflowViewState.IdRef="LogMessage_5" Level="[UiPath.Core.Activities.LogLevel.Trace]" Message="[&quot;Checking if Date of Hire Value of the employee is updated in sharepoint list &quot;]" />
-    <Assign DisplayName="Assign Postpone False" sap:VirtualizedContainerService.HintSize="577,82" sap2010:WorkflowViewState.IdRef="Assign_3">
+    <ui:LogMessage DisplayName="Log Message - Check DOH in sharepoint list" sap:VirtualizedContainerService.HintSize="690,141" sap2010:WorkflowViewState.IdRef="LogMessage_5" Level="[UiPath.Core.Activities.LogLevel.Trace]" Message="[&quot;Checking if Date of Hire Value of the employee is updated in sharepoint list &quot;]" />
+    <Assign DisplayName="Assign Postpone False" sap:VirtualizedContainerService.HintSize="690,82" sap2010:WorkflowViewState.IdRef="Assign_3">
       <Assign.To>
         <OutArgument x:TypeArguments="x:Boolean">[out_boolPostponeItem]</OutArgument>
       </Assign.To>
@@ -164,28 +164,28 @@
         <InArgument x:TypeArguments="x:Boolean">False</InArgument>
       </Assign.Value>
     </Assign>
-    <l:Get_List_Item_Field_Value DisplayName="Get List Item - DOH" sap:VirtualizedContainerService.HintSize="577,498" sap2010:WorkflowViewState.IdRef="Get_List_Item_Field_Value_2" in_ColumnDisplayName="[in_Config(&quot;DOH_ColumnDisplayName&quot;).ToString]" in_FilterCondition="[&quot;(fields/EmployeeName eq '&quot;+in_TransactionItem.SpecificContent(&quot;Employee Name&quot;).ToString+&quot;') and (fields/JRNumber eq '&quot;+in_TransactionItem.SpecificContent(&quot;JR Number&quot;).ToString+&quot;')&quot;]" in_strApplicationIDAssetName="[in_Config(&quot;O365AppID&quot;).ToString]" in_strApplicationSecretAssetName="[in_Config(&quot;O365ApplicationSecret&quot;).ToString]" in_strOrchestratorFolderPath="[in_Config(&quot;OrchestratorFolder&quot;).ToString]" in_strSharepointListName="[in_Config(&quot;NHC_SharepointListName&quot;).ToString]" in_strSharepointURL="[in_Config(&quot;NHC_SharepointURL&quot;).ToString]" in_strTenantIDAssetName="[in_Config(&quot;O365TenantID&quot;).ToString]" out_FieldValue="[strDOHValue]">
+    <l:Get_List_Item_Field_Value DisplayName="Get List Item - DOH" sap:VirtualizedContainerService.HintSize="690,52" sap2010:WorkflowViewState.IdRef="Get_List_Item_Field_Value_2" in_ColumnDisplayName="[in_Config(&quot;DOH_ColumnDisplayName&quot;).ToString]" in_FilterCondition="[&quot;(fields/EmployeeName eq '&quot;+in_TransactionItem.SpecificContent(&quot;Employee Name&quot;).ToString+&quot;') and (fields/JRNumber eq '&quot;+in_TransactionItem.SpecificContent(&quot;JR Number&quot;).ToString+&quot;')&quot;]" in_strApplicationIDAssetName="[in_Config(&quot;O365AppID&quot;).ToString]" in_strApplicationSecretAssetName="[in_Config(&quot;O365ApplicationSecret&quot;).ToString]" in_strOrchestratorFolderPath="[in_Config(&quot;OrchestratorFolder&quot;).ToString]" in_strSharepointListName="[in_Config(&quot;NHC_SharepointListName&quot;).ToString]" in_strSharepointURL="[in_Config(&quot;NHC_SharepointURL&quot;).ToString]" in_strTenantIDAssetName="[in_Config(&quot;O365TenantID&quot;).ToString]" out_FieldValue="[strDOHValue]">
       <sap:WorkflowViewStateService.ViewState>
         <scg:Dictionary x:TypeArguments="x:String, x:Object">
-          <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+          <x:Boolean x:Key="IsExpanded">False</x:Boolean>
           <x:Boolean x:Key="IsPinned">False</x:Boolean>
         </scg:Dictionary>
       </sap:WorkflowViewStateService.ViewState>
     </l:Get_List_Item_Field_Value>
-    <If sap2010:Annotation.AnnotationText="If DOH is not updated for more than two days in sharepoint, throw exeption. If it is less than 2 days, postpone the transaction to next day." Condition="[strDOHValue isNot Nothing]" DisplayName="If DOH is not empty" sap:VirtualizedContainerService.HintSize="577,3024" sap2010:WorkflowViewState.IdRef="If_1">
+    <If sap2010:Annotation.AnnotationText="If DOH is not updated for more than two days in sharepoint, throw exeption. If it is less than 2 days, postpone the transaction to next day." Condition="[strDOHValue isNot Nothing]" DisplayName="If DOH is not empty" sap:VirtualizedContainerService.HintSize="690,3424" sap2010:WorkflowViewState.IdRef="If_1">
       <sap:WorkflowViewStateService.ViewState>
         <scg:Dictionary x:TypeArguments="x:String, x:Object">
           <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
         </scg:Dictionary>
       </sap:WorkflowViewStateService.ViewState>
       <If.Then>
-        <Sequence sap:VirtualizedContainerService.HintSize="543,2800" sap2010:WorkflowViewState.IdRef="Sequence_6">
+        <Sequence sap:VirtualizedContainerService.HintSize="656,3200" sap2010:WorkflowViewState.IdRef="Sequence_6">
           <sap:WorkflowViewStateService.ViewState>
             <scg:Dictionary x:TypeArguments="x:String, x:Object">
               <x:Boolean x:Key="IsExpanded">True</x:Boolean>
             </scg:Dictionary>
           </sap:WorkflowViewStateService.ViewState>
-          <Assign DisplayName="Assign DOH" sap:VirtualizedContainerService.HintSize="501,82" sap2010:WorkflowViewState.IdRef="Assign_1">
+          <Assign DisplayName="Assign DOH" sap:VirtualizedContainerService.HintSize="614,82" sap2010:WorkflowViewState.IdRef="Assign_1">
             <Assign.To>
               <OutArgument x:TypeArguments="s:DateTime">[dateDOH]</OutArgument>
             </Assign.To>
@@ -193,15 +193,16 @@
               <InArgument x:TypeArguments="s:DateTime">[convert.ToDateTime(strDOHValue)]</InArgument>
             </Assign.Value>
           </Assign>
-          <ui:LogMessage DisplayName="Log Message Start disposition in WD" sap:VirtualizedContainerService.HintSize="501,141" sap2010:WorkflowViewState.IdRef="LogMessage_1" Level="Info" Message="[&quot;Started dispositioning in workday for employee &quot;+in_TransactionItem.SpecificContent(&quot;Employee Name&quot;).ToString]" />
-          <l1:SearchJRNumber_Workday sap2010:Annotation.AnnotationText="Search input JR Number in workday" DisplayName="Search JR Number in WD to start disposition" sap:VirtualizedContainerService.HintSize="501,274" sap2010:WorkflowViewState.IdRef="SearchJRNumber_Workday_1" in_strBEJRNumber="[in_Config(&quot;BE_1&quot;).ToString.Replace(&quot;&lt;JR Number&gt;&quot;,in_TransactionItem.SpecificContent(&quot;JR Number&quot;).ToString)]" in_strJRNumber="[in_TransactionItem.SpecificContent(&quot;JR Number&quot;).ToString]" in_strSEHomeNotFound="[in_Config(&quot;SE_10&quot;).ToString]" in_strURL="[in_Config(&quot;WorkdayURL&quot;).ToString]">
+          <ui:LogMessage DisplayName="Log Message DOH updated" sap:VirtualizedContainerService.HintSize="614,141" sap2010:WorkflowViewState.IdRef="LogMessage_1" Level="[UiPath.Core.Activities.LogLevel.Trace]" Message="[&quot;DOH value is updated for the employee in sharepoint&quot;]" />
+          <ui:LogMessage DisplayName="Log Message Start disposition in WD" sap:VirtualizedContainerService.HintSize="614,141" sap2010:WorkflowViewState.IdRef="LogMessage_7" Level="[UiPath.Core.Activities.LogLevel.Trace]" Message="[&quot;Started dispositioning in workday for employee &quot;+in_TransactionItem.SpecificContent(&quot;Employee Name&quot;).ToString]" />
+          <l1:SearchJRNumber_Workday sap2010:Annotation.AnnotationText="Search input JR Number in workday" DisplayName="Search JR Number in WD to start disposition" sap:VirtualizedContainerService.HintSize="614,274" sap2010:WorkflowViewState.IdRef="SearchJRNumber_Workday_1" in_strBEJRNumber="[in_Config(&quot;BE_1&quot;).ToString.Replace(&quot;&lt;JR Number&gt;&quot;,in_TransactionItem.SpecificContent(&quot;JR Number&quot;).ToString)]" in_strJRNumber="[in_TransactionItem.SpecificContent(&quot;JR Number&quot;).ToString]" in_strSEHomeNotFound="[in_Config(&quot;SE_10&quot;).ToString]" in_strURL="[in_Config(&quot;WorkdayURL&quot;).ToString]">
             <sap:WorkflowViewStateService.ViewState>
               <scg:Dictionary x:TypeArguments="x:String, x:Object">
                 <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
               </scg:Dictionary>
             </sap:WorkflowViewStateService.ViewState>
           </l1:SearchJRNumber_Workday>
-          <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" sap2010:Annotation.AnnotationText="Move forward candidate to offer followed by Ready to hire stage in workday" DisplayName="MoveForwardCandidate_Workday.xaml - Invoke Workflow File" sap:VirtualizedContainerService.HintSize="501,155" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_4" UnSafe="False" WorkflowFileName="Workday\MoveForwardCandidate_Workday.xaml">
+          <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" sap2010:Annotation.AnnotationText="Move forward candidate to offer followed by Ready to hire stage in workday" DisplayName="MoveForwardCandidate_Workday.xaml - Invoke Workflow File" sap:VirtualizedContainerService.HintSize="614,155" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_4" UnSafe="False" WorkflowFileName="Workday\MoveForwardCandidate_Workday.xaml">
             <ui:InvokeWorkflowFile.Arguments>
               <InArgument x:TypeArguments="scg:Dictionary(x:String, x:Object)" x:Key="in_Config">[in_Config]</InArgument>
               <InArgument x:TypeArguments="x:String" x:Key="in_strURL">[in_Config("WorkdayURL").ToString.Trim]</InArgument>
@@ -215,7 +216,7 @@
               </scg:Dictionary>
             </sap:WorkflowViewStateService.ViewState>
           </ui:InvokeWorkflowFile>
-          <ui:IfElseIf DisplayName="Else If - External Transfer Type" sap:VirtualizedContainerService.HintSize="501,1524" sap2010:WorkflowViewState.IdRef="IfElseIf_1">
+          <ui:IfElseIf DisplayName="Else If - External Transfer Type" sap:VirtualizedContainerService.HintSize="614,1743" sap2010:WorkflowViewState.IdRef="IfElseIf_1">
             <ui:IfElseIf.ConditionBlocks>
               <sc:BindingList x:TypeArguments="ui:IfElseIfBlock" AllowEdit="True" AllowNew="True" AllowRemove="True" RaiseListChangedEvents="True">
                 <ui:IfElseIfBlock BlockType="If" Condition="[in_TransactionItem.SpecificContent(&quot;Transfer Type&quot;).ToString.Trim.ToLower = &quot;external&quot;]">
@@ -252,7 +253,7 @@
                 </ui:IfElseIfBlock>
                 <ui:IfElseIfBlock BlockType="ElseIf" Condition="[in_TransactionItem.SpecificContent(&quot;Transfer Type&quot;).ToString.Trim.ToLower = &quot;internal&quot;]">
                   <ui:IfElseIfBlock.Then>
-                    <Sequence sap2010:Annotation.AnnotationText="Submit disposition for internal transfer type candidate" DisplayName="Internal Transfer Type" sap:VirtualizedContainerService.HintSize="450,467" sap2010:WorkflowViewState.IdRef="Sequence_5">
+                    <Sequence sap2010:Annotation.AnnotationText="Submit disposition for internal transfer type candidate" DisplayName="Internal Transfer Type" sap:VirtualizedContainerService.HintSize="450,505" sap2010:WorkflowViewState.IdRef="Sequence_5">
                       <sap:WorkflowViewStateService.ViewState>
                         <scg:Dictionary x:TypeArguments="x:String, x:Object">
                           <x:Boolean x:Key="IsExpanded">True</x:Boolean>
@@ -260,32 +261,53 @@
                         </scg:Dictionary>
                       </sap:WorkflowViewStateService.ViewState>
                       <ui:LogMessage DisplayName="Log Message - Internal Transfer Type" sap:VirtualizedContainerService.HintSize="388,141" sap2010:WorkflowViewState.IdRef="LogMessage_3" Level="[UiPath.Core.Activities.LogLevel.Info]" Message="[&quot;Employee is of internal transfer type&quot;]" />
-                      <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" sap2010:Annotation.AnnotationText="Submit disposition for internal transfer type" DisplayName="Workday\SubmitInternalTransferEmployee_Workday.xaml - Invoke Workflow File" sap:VirtualizedContainerService.HintSize="388,144" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_6" UnSafe="False" WorkflowFileName="Workday\SubmitInternalTransferEmployee_Workday.xaml">
-                        <ui:InvokeWorkflowFile.Arguments>
-                          <InArgument x:TypeArguments="scg:Dictionary(x:String, x:Object)" x:Key="in_Config">[in_Config]</InArgument>
-                          <InArgument x:TypeArguments="x:String" x:Key="in_strURL">[in_Config("WorkdayURL").ToString.Trim]</InArgument>
-                          <InArgument x:TypeArguments="x:String" x:Key="in_strEmployeeName">[in_TransactionItem.SpecificContent("Employee Name").ToString.Trim]</InArgument>
-                          <InArgument x:TypeArguments="x:String" x:Key="in_strJRNumber">[in_TransactionItem.SpecificContent("JR Number").ToString.Trim]</InArgument>
-                          <InArgument x:TypeArguments="x:String" x:Key="in_strDOJ">[dateDOH.ToString("MM/dd/yyyy")]</InArgument>
-                        </ui:InvokeWorkflowFile.Arguments>
+                      <Throw DisplayName="Throw internal transfer type BE" Exception="[new BusinessRuleException(in_Config(&quot;BE_4&quot;).ToString)]" sap:VirtualizedContainerService.HintSize="388,90" sap2010:WorkflowViewState.IdRef="Throw_3" />
+                      <ui:CommentOut DisplayName="Comment Out _ Internal Transfer type" sap:VirtualizedContainerService.HintSize="388,52" sap2010:WorkflowViewState.IdRef="CommentOut_1">
+                        <ui:CommentOut.Body>
+                          <Sequence DisplayName="Ignored Activities" sap:VirtualizedContainerService.HintSize="450,194" sap2010:WorkflowViewState.IdRef="Sequence_11">
+                            <sap:WorkflowViewStateService.ViewState>
+                              <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                              </scg:Dictionary>
+                            </sap:WorkflowViewStateService.ViewState>
+                            <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" sap2010:Annotation.AnnotationText="Submit disposition for internal transfer type" DisplayName="Workday\SubmitInternalTransferEmployee_Workday.xaml - Invoke Workflow File" sap:VirtualizedContainerService.HintSize="388,83" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_6" UnSafe="False" WorkflowFileName="Workday\SubmitInternalTransferEmployee_Workday.xaml">
+                              <ui:InvokeWorkflowFile.Arguments>
+                                <InArgument x:TypeArguments="scg:Dictionary(x:String, x:Object)" x:Key="in_Config">[in_Config]</InArgument>
+                                <InArgument x:TypeArguments="x:String" x:Key="in_strURL">[in_Config("WorkdayURL").ToString.Trim]</InArgument>
+                                <InArgument x:TypeArguments="x:String" x:Key="in_strEmployeeName">[in_TransactionItem.SpecificContent("Employee Name").ToString.Trim]</InArgument>
+                                <InArgument x:TypeArguments="x:String" x:Key="in_strJRNumber">[in_TransactionItem.SpecificContent("JR Number").ToString.Trim]</InArgument>
+                                <InArgument x:TypeArguments="x:String" x:Key="in_strDOJ">[dateDOH.ToString("MM/dd/yyyy")]</InArgument>
+                              </ui:InvokeWorkflowFile.Arguments>
+                              <sap:WorkflowViewStateService.ViewState>
+                                <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                  <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
+                                  <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+                                  <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                                </scg:Dictionary>
+                              </sap:WorkflowViewStateService.ViewState>
+                            </ui:InvokeWorkflowFile>
+                          </Sequence>
+                        </ui:CommentOut.Body>
                         <sap:WorkflowViewStateService.ViewState>
                           <scg:Dictionary x:TypeArguments="x:String, x:Object">
-                            <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
+                            <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+                            <x:Boolean x:Key="IsPinned">False</x:Boolean>
                           </scg:Dictionary>
                         </sap:WorkflowViewStateService.ViewState>
-                      </ui:InvokeWorkflowFile>
+                      </ui:CommentOut>
                     </Sequence>
                   </ui:IfElseIfBlock.Then>
                 </ui:IfElseIfBlock>
                 <ui:IfElseIfBlock BlockType="Else">
                   <ui:IfElseIfBlock.Then>
-                    <Sequence sap2010:Annotation.AnnotationText="Throw error in case of other transfer types" DisplayName="Unknown Transfer Type" sap:VirtualizedContainerService.HintSize="450,232" sap2010:WorkflowViewState.IdRef="Sequence_8">
+                    <Sequence sap2010:Annotation.AnnotationText="Throw error in case of other transfer types" DisplayName="Unknown Transfer Type" sap:VirtualizedContainerService.HintSize="450,413" sap2010:WorkflowViewState.IdRef="Sequence_8">
                       <sap:WorkflowViewStateService.ViewState>
                         <scg:Dictionary x:TypeArguments="x:String, x:Object">
                           <x:Boolean x:Key="IsExpanded">True</x:Boolean>
                           <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
                         </scg:Dictionary>
                       </sap:WorkflowViewStateService.ViewState>
+                      <ui:LogMessage DisplayName="Log Message unknown transfer type" sap:VirtualizedContainerService.HintSize="388,141" sap2010:WorkflowViewState.IdRef="LogMessage_8" Level="[UiPath.Core.Activities.LogLevel.Error]" Message="[in_Config(&quot;BE_2&quot;).ToString+&quot; : &quot;+in_TransactionItem.SpecificContent(&quot;Transfer Type&quot;).ToString]" />
                       <Throw DisplayName="Throw Unknown transfer type exception" Exception="[new BusinessRuleException(in_Config(&quot;BE_2&quot;).ToString+&quot; : &quot;+in_TransactionItem.SpecificContent(&quot;Transfer Type&quot;).ToString)]" sap:VirtualizedContainerService.HintSize="388,90" sap2010:WorkflowViewState.IdRef="Throw_2" />
                     </Sequence>
                   </ui:IfElseIfBlock.Then>
@@ -299,8 +321,8 @@
               </scg:Dictionary>
             </sap:WorkflowViewStateService.ViewState>
           </ui:IfElseIf>
-          <ui:LogMessage DisplayName="Log Message Process Start" sap:VirtualizedContainerService.HintSize="501,141" sap2010:WorkflowViewState.IdRef="LogMessage_4" Level="Info" Message="[&quot;Completed dispositioning in workday for employee &quot;+in_TransactionItem.SpecificContent(&quot;Employee Name&quot;).ToString]" />
-          <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" sap2010:Annotation.AnnotationText="Add to disposition approval queue to check status in workday" DisplayName="AdddToQueue.xaml - Invoke Workflow File" sap:VirtualizedContainerService.HintSize="501,155" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_7" UnSafe="False" WorkflowFileName="AdddToQueue.xaml">
+          <ui:LogMessage DisplayName="Log Message Process Start" sap:VirtualizedContainerService.HintSize="614,141" sap2010:WorkflowViewState.IdRef="LogMessage_4" Level="Info" Message="[&quot;Completed dispositioning in workday for employee &quot;+in_TransactionItem.SpecificContent(&quot;Employee Name&quot;).ToString]" />
+          <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" sap2010:Annotation.AnnotationText="Add to disposition approval queue to check status in workday" DisplayName="AdddToQueue.xaml - Invoke Workflow File" sap:VirtualizedContainerService.HintSize="614,155" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_7" UnSafe="False" WorkflowFileName="AdddToQueue.xaml">
             <ui:InvokeWorkflowFile.Arguments>
               <InArgument x:TypeArguments="ui:QueueItem" x:Key="in_QueueData">[in_TransactionItem]</InArgument>
               <InArgument x:TypeArguments="x:String" x:Key="in_strOrchestratorFolderPath">[in_Config("OrchestratorQueueFolder").ToString]</InArgument>
@@ -316,13 +338,13 @@
         </Sequence>
       </If.Then>
       <If.Else>
-        <Sequence sap:VirtualizedContainerService.HintSize="552,853" sap2010:WorkflowViewState.IdRef="Sequence_7">
+        <Sequence sap:VirtualizedContainerService.HintSize="552,1212" sap2010:WorkflowViewState.IdRef="Sequence_7">
           <sap:WorkflowViewStateService.ViewState>
             <scg:Dictionary x:TypeArguments="x:String, x:Object">
               <x:Boolean x:Key="IsExpanded">True</x:Boolean>
             </scg:Dictionary>
           </sap:WorkflowViewStateService.ViewState>
-          <If Condition="[strDOHValue is Nothing AND (DateDiff(DateInterval.Day,Convert.ToDateTime(in_TransactionItem.SpecificContent(&quot;Creation Date&quot;).ToString),today) &lt;= Convert.ToDouble(in_Config(&quot;DOHWaitDays&quot;).ToString))]" DisplayName="If DOH is nothing" sap:VirtualizedContainerService.HintSize="510,765" sap2010:WorkflowViewState.IdRef="If_2">
+          <If Condition="[strDOHValue is Nothing AND (DateDiff(DateInterval.Day,Convert.ToDateTime(in_TransactionItem.SpecificContent(&quot;Creation Date&quot;).ToString),today) &lt;= Convert.ToDouble(in_Config(&quot;DOHWaitDays&quot;).ToString))]" DisplayName="If DOH is nothing" sap:VirtualizedContainerService.HintSize="510,1124" sap2010:WorkflowViewState.IdRef="If_2">
             <If.Then>
               <Sequence sap:VirtualizedContainerService.HintSize="476,583" sap2010:WorkflowViewState.IdRef="Sequence_9">
                 <sap:WorkflowViewStateService.ViewState>
@@ -330,7 +352,7 @@
                     <x:Boolean x:Key="IsExpanded">True</x:Boolean>
                   </scg:Dictionary>
                 </sap:WorkflowViewStateService.ViewState>
-                <ui:LogMessage DisplayName="Log Message - Postpone transaction" sap:VirtualizedContainerService.HintSize="434,141" sap2010:WorkflowViewState.IdRef="LogMessage_6" Level="[UiPath.Core.Activities.LogLevel.Trace]" Message="[&quot;Postponing transaction&quot;]" />
+                <ui:LogMessage DisplayName="Log Message - Postpone transaction" sap:VirtualizedContainerService.HintSize="434,141" sap2010:WorkflowViewState.IdRef="LogMessage_6" Level="[UiPath.Core.Activities.LogLevel.Trace]" Message="[&quot;DOH value is not updated in sharepoint list. Postponing transaction&quot;]" />
                 <ui:PostponeTransactionItem ContinueOnError="{x:Null}" TimeoutMS="{x:Null}" DeferDate="[Convert.ToDateTime(Today).AddDays(CInt(in_Config(&quot;PostponeDays&quot;).ToString))]" DisplayName="Postpone Transaction Item - Next Day" FolderPath="[in_Config(&quot;OrchestratorQueueFolder&quot;).ToString]" sap:VirtualizedContainerService.HintSize="434,192" sap2010:WorkflowViewState.IdRef="PostponeTransactionItem_1" TransactionItem="[in_TransactionItem]" />
                 <Assign DisplayName="Assign Postpone True" sap:VirtualizedContainerService.HintSize="434,82" sap2010:WorkflowViewState.IdRef="Assign_4">
                   <Assign.To>
@@ -343,12 +365,13 @@
               </Sequence>
             </If.Then>
             <If.Else>
-              <Sequence sap:VirtualizedContainerService.HintSize="376,178" sap2010:WorkflowViewState.IdRef="Sequence_10">
+              <Sequence sap:VirtualizedContainerService.HintSize="376,359" sap2010:WorkflowViewState.IdRef="Sequence_10">
                 <sap:WorkflowViewStateService.ViewState>
                   <scg:Dictionary x:TypeArguments="x:String, x:Object">
                     <x:Boolean x:Key="IsExpanded">True</x:Boolean>
                   </scg:Dictionary>
                 </sap:WorkflowViewStateService.ViewState>
+                <ui:LogMessage DisplayName="Log Message - DOH is blank" sap:VirtualizedContainerService.HintSize="334,141" sap2010:WorkflowViewState.IdRef="LogMessage_9" Level="[UiPath.Core.Activities.LogLevel.Error]" Message="[in_Config(&quot;BE_3&quot;).ToString]" />
                 <Throw DisplayName="Throw - DOH is nothing" Exception="[new BusinessRuleException(in_Config(&quot;BE_3&quot;).ToString)]" sap:VirtualizedContainerService.HintSize="334,90" sap2010:WorkflowViewState.IdRef="Throw_1" />
               </Sequence>
             </If.Else>

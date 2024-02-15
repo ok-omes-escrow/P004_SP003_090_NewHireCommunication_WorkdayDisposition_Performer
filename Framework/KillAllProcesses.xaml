@@ -1,4 +1,4 @@
-<Activity mc:Ignorable="sap sap2010" x:Class="KillAllProcesses" VisualBasic.Settings="{x:Null}" sap:VirtualizedContainerService.HintSize="1514,750" sap2010:WorkflowViewState.IdRef="CloseAllApplications_1" xmlns="http://schemas.microsoft.com/netfx/2009/xaml/activities" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:sap="http://schemas.microsoft.com/netfx/2009/xaml/activities/presentation" xmlns:sap2010="http://schemas.microsoft.com/netfx/2010/xaml/activities/presentation" xmlns:scg="clr-namespace:System.Collections.Generic;assembly=System.Private.CoreLib" xmlns:sco="clr-namespace:System.Collections.ObjectModel;assembly=System.Private.CoreLib" xmlns:ui="http://schemas.uipath.com/workflow/activities" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+<Activity mc:Ignorable="sap sap2010" x:Class="KillAllProcesses" VisualBasic.Settings="{x:Null}" sap:VirtualizedContainerService.HintSize="1794,827" sap2010:WorkflowViewState.IdRef="CloseAllApplications_1" xmlns="http://schemas.microsoft.com/netfx/2009/xaml/activities" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:sap="http://schemas.microsoft.com/netfx/2009/xaml/activities/presentation" xmlns:sap2010="http://schemas.microsoft.com/netfx/2010/xaml/activities/presentation" xmlns:scg="clr-namespace:System.Collections.Generic;assembly=System.Private.CoreLib" xmlns:sco="clr-namespace:System.Collections.ObjectModel;assembly=System.Private.CoreLib" xmlns:ui="http://schemas.uipath.com/workflow/activities" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
   <TextExpression.NamespacesForImplementation>
     <sco:Collection x:TypeArguments="x:String">
       <x:String>System.Activities</x:String>
@@ -83,7 +83,7 @@
       </scg:Dictionary>
     </sap:WorkflowViewStateService.ViewState>
     <ui:LogMessage DisplayName="Log message (Kill processes)" sap:VirtualizedContainerService.HintSize="388,141" sap2010:WorkflowViewState.IdRef="LogMessage_1" Level="Trace" Message="[&quot;Killing processes...&quot;]" />
-    <ui:KillProcess AppliesTo="{x:Null}" ContinueOnError="{x:Null}" Process="{x:Null}" DisplayName="Kill EDGE Process Involved" sap:VirtualizedContainerService.HintSize="388,133" sap2010:WorkflowViewState.IdRef="KillProcess_1" ProcessName="MSEDGE" />
-    <ui:KillProcess AppliesTo="{x:Null}" ContinueOnError="{x:Null}" Process="{x:Null}" DisplayName="Kill Excel Process Involved" sap:VirtualizedContainerService.HintSize="388,133" sap2010:WorkflowViewState.IdRef="KillProcess_2" ProcessName="EXCEL" />
+    <ui:KillProcess ContinueOnError="{x:Null}" Process="{x:Null}" AppliesTo="OnlyCurrentUser" DisplayName="Kill EDGE Process Involved" sap:VirtualizedContainerService.HintSize="388,133" sap2010:WorkflowViewState.IdRef="KillProcess_1" ProcessName="MSEDGE" />
+    <ui:KillProcess ContinueOnError="{x:Null}" Process="{x:Null}" AppliesTo="OnlyCurrentUser" DisplayName="Kill Excel Process Involved" sap:VirtualizedContainerService.HintSize="388,133" sap2010:WorkflowViewState.IdRef="KillProcess_2" ProcessName="EXCEL" />
   </Sequence>
 </Activity>

@@ -119,17 +119,15 @@
         <InArgument x:TypeArguments="x:String" x:Key="Last Name">[in_QueueData.SpecificContent("Last Name").ToString]</InArgument>
         <InArgument x:TypeArguments="x:String" x:Key="DOB">[in_QueueData.SpecificContent("DOB").ToString]</InArgument>
         <InArgument x:TypeArguments="s:DateTime" x:Key="Creation Date">[Today]</InArgument>
-        <InArgument x:TypeArguments="x:String" x:Key="Date of Hire">[in_QueueData.SpecificContent("Date of Hire").ToString]</InArgument>
-        <InArgument x:TypeArguments="x:String" x:Key="SSN1">[in_QueueData.SpecificContent("SSN1").ToString]</InArgument>
-        <InArgument x:TypeArguments="x:String" x:Key="SSN2">[in_QueueData.SpecificContent("SSN2").ToString]</InArgument>
-        <InArgument x:TypeArguments="x:String" x:Key="SSN3">[in_QueueData.SpecificContent("SSN3").ToString]</InArgument>
+        <InArgument x:TypeArguments="x:String" x:Key="Date of Hire">[in_strDOH]</InArgument>
+        <InArgument x:TypeArguments="x:String" x:Key="SSN">[in_QueueData.SpecificContent("SSN").ToString]</InArgument>
         <InArgument x:TypeArguments="x:String" x:Key="Address">[in_QueueData.SpecificContent("Address").ToString]</InArgument>
-        <InArgument x:TypeArguments="x:String" x:Key="AptNo">[in_QueueData.SpecificContent("AptNo").ToString]</InArgument>
         <InArgument x:TypeArguments="x:String" x:Key="City">[in_QueueData.SpecificContent("City").ToString]</InArgument>
         <InArgument x:TypeArguments="x:String" x:Key="State">[in_QueueData.SpecificContent("State").ToString]</InArgument>
         <InArgument x:TypeArguments="x:String" x:Key="Zip">[in_QueueData.SpecificContent("Zip").ToString]</InArgument>
         <InArgument x:TypeArguments="x:String" x:Key="Primary Phone">[in_QueueData.SpecificContent("Primary Phone").ToString]</InArgument>
         <InArgument x:TypeArguments="x:String" x:Key="Supervisor Email">[in_QueueData.SpecificContent("Supervisor Email").ToString]</InArgument>
+        <InArgument x:TypeArguments="x:String" x:Key="Sharepoint Employee Name">[in_QueueData.SpecificContent("SharepointEmpName").ToString]</InArgument>
       </ui:AddQueueItem.ItemInformation>
     </ui:AddQueueItem>
     <ui:LogMessage DisplayName="Log Message - Add to Queue success" sap:VirtualizedContainerService.HintSize="388,141" sap2010:WorkflowViewState.IdRef="LogMessage_2" Level="[UiPath.Core.Activities.LogLevel.Info]" Message="[&quot;Successfully added  item into disposition approval queue&quot;+in_strQueueName]" />

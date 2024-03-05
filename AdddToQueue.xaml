@@ -8,7 +8,7 @@
   <VisualBasic.Settings>
     <x:Null />
   </VisualBasic.Settings>
-  <sap:VirtualizedContainerService.HintSize>1514,827</sap:VirtualizedContainerService.HintSize>
+  <sap:VirtualizedContainerService.HintSize>1498,827</sap:VirtualizedContainerService.HintSize>
   <sap2010:WorkflowViewState.IdRef>AdddToQueue_1</sap2010:WorkflowViewState.IdRef>
   <TextExpression.NamespacesForImplementation>
     <sco:Collection x:TypeArguments="x:String">
@@ -128,6 +128,8 @@
         <InArgument x:TypeArguments="x:String" x:Key="Primary Phone">[in_QueueData.SpecificContent("Primary Phone").ToString]</InArgument>
         <InArgument x:TypeArguments="x:String" x:Key="Supervisor Email">[in_QueueData.SpecificContent("Supervisor Email").ToString]</InArgument>
         <InArgument x:TypeArguments="x:String" x:Key="Sharepoint Employee Name">[in_QueueData.SpecificContent("SharepointEmpName").ToString]</InArgument>
+        <InArgument x:TypeArguments="x:String" x:Key="Building Name">[in_QueueData.SpecificContent("BuildingName").ToString]</InArgument>
+        <InArgument x:TypeArguments="x:String" x:Key="Building Address">[in_QueueData.SpecificContent("BuildingAddress").ToString]</InArgument>
       </ui:AddQueueItem.ItemInformation>
     </ui:AddQueueItem>
     <ui:LogMessage DisplayName="Log Message - Add to Queue success" sap:VirtualizedContainerService.HintSize="388,141" sap2010:WorkflowViewState.IdRef="LogMessage_2" Level="[UiPath.Core.Activities.LogLevel.Info]" Message="[&quot;Successfully added  item into disposition approval queue&quot;+in_strQueueName]" />
